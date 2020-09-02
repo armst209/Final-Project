@@ -9,7 +9,9 @@ const app = express();
 
 const cors = require('cors');
 //LINKING ROUTES.JS
-const routes = require("./routes/charinfo");
+const characters = require("./routes/charinfo");
+const scores = require("./routes/scores");
+const login = require("./routes/login");
 
 
 //CORS
@@ -19,7 +21,9 @@ app.use(cors());
 app.use(express.json());
 
 //ROUTING
-app.use('/characters', routes);
+app.use('/characters', characters);
+app.use('/scores', scores);
+app.use('/login', login);
 
 //LISTENING ON PORT
 app.listen(process.env.PORT || 3000, () => {

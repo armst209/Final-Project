@@ -18,6 +18,17 @@ charinfo.get("/", (req, res) => {
     );
   });
 
+  charinfo.get("/:id", (req, res) => {
+    database.query(`SELECT * FROM charstats WHERE id=${req.params.id}`).then(
+      (result) => {
+        res.send(result.rows);
+      },
+      (error) => {
+        res.sendStatus(500);
+      }
+    );
+  });
+
 //POST
 charinfo.post("/", (req, res) => {
     database.query(`INSERT INTO charstats (charimage, id, name, hp, superpower, speed, jumpheight, magicpoints, weapon) VALUES ('${req.body.charimage}', ${req.body.id}, '${req.body.name}', ${req.body.hp}, '${req.body.superpower}', ${req.body.speed}, ${req.body.jumpheight}, ${req.body.magicpoints}, '${req.body.weapon}')`

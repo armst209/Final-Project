@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {
+    margin: 0;
+    padding: 0;
+    
+}
+
+body {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+/* STYLES THE PHASER WINDOW */
+canvas {
+
+    margin: 20px;
+    width: 60%;
+}

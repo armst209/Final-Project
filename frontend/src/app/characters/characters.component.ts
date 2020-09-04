@@ -32,12 +32,14 @@ export class CharactersComponent implements OnInit {
   }
   playerTwoSelected() {
 
-    this.gameInfoService.selectedCharacter = this.charSelect.find(x => x.id == 2)
+    this.gameInfoService.selectedCharacter = this.charSelect.find(x => x.id == 2);
+    console.log(this.gameInfoService.selectedCharacter)
   }
 
   playerThreeSelected() {
 
-    this.gameInfoService.selectedCharacter = this.charSelect.find(x => x.id === 3)
+    this.gameInfoService.selectedCharacter = this.charSelect.find(x => x.id === 3);
+    console.log(this.gameInfoService.selectedCharacter)
   }
 
   

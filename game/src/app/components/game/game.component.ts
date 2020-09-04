@@ -47,8 +47,6 @@ cursors: any;
 bombs: any;
 scoreText: any;
 score: number;
- 
-
 
   constructor() {
     

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Phaser from 'phaser';
+import { GameinfoService } from '../service/gameinfo.service';
+
 
 
 @Component({
@@ -12,7 +14,7 @@ export class PhasergameComponent implements OnInit {
   phaserGame: Phaser.Game;
   config: Phaser.Types.Core.GameConfig;
  
-  constructor() { 
+  constructor(private gameInfoService : GameinfoService) { 
 
     this.config = {
       type: Phaser.AUTO,
@@ -53,7 +55,7 @@ score: number;
  
 
 
-  constructor() {
+  constructor(private gameInfoService : GameinfoService) {
     
     super({ key: 'main' });
   }

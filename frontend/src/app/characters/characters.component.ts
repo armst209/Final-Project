@@ -24,4 +24,22 @@ export class CharactersComponent implements OnInit {
     });
   }
 
+  playerOneSelected() {
+
+    this.gameInfoService.selectedCharacter = this.charSelect.find(x => x.id== 1);
+    console.log(this.gameInfoService.selectedCharacter)
+
+  }
+  playerTwoSelected() {
+
+    this.gameInfoService.selectedCharacter = this.charSelect.find(x => x.id == 2)
+  }
+
+  playerThreeSelected() {
+
+    this.gameInfoService.selectedCharacter = this.charSelect.find(x => x.id === 3)
+  }
+
+  
+
 }

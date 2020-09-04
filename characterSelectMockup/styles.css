@@ -288,7 +288,7 @@ p::after {
 	font-weight: normal;
 }
 
-.tl-year {
+.tl-char {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -298,7 +298,7 @@ p::after {
 	border-bottom: 1px solid #fff;
 }
 
-.tl-year h2 {
+.tl-char h2 {
 	font-family: 'Permanent Marker', cursive;
 	font-size: 1.728rem;
 	line-height: 0;

@@ -21,7 +21,7 @@ export class PhasergameComponent implements OnInit {
       height: 600,
       width: 800,
       scene: [MainScene],
-      parent: 'gameContainer',
+      parent: 'game-area',
       physics: {
         default: 'arcade',
         arcade: {
@@ -37,10 +37,10 @@ export class PhasergameComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   ngOnInit() {
-
     this.phaserGame = new Phaser.Game(this.config);
+    
   }
-
+  
 }
 
 class MainScene extends Phaser.Scene {
@@ -53,8 +53,6 @@ bombs: any;
 scoreText: any;
 score: number;
  
-
-
   constructor(private gameInfoService : GameinfoService) {
     
     super({ key: 'main' });
@@ -151,8 +149,8 @@ score: number;
     
     //Playing music
     let music = this.sound.add('level1');
-    music.play();
-    console.log('create method');
+    // music.play();
+   
   }
  
   update() {
@@ -225,6 +223,7 @@ score: number;
         bomb.allowGravity = false;
 
     }
-
+  
   }
+
 }

@@ -29,7 +29,8 @@
             ],
             "scripts": [
               "node_modules/phaser/dist/phaser.min.js",
-              "src/assets/landing_script.js"
+              "node_modules/jquery/dist/jquery.js",
+              "src/assets/LPScript.js"
             ]
           },
           "configurations": {

@@ -4,6 +4,7 @@ import { GameinfoService } from '../service/gameinfo.service';
 
 
 
+
 @Component({
   selector: 'app-phasergame',
   templateUrl: './phasergame.component.html',
@@ -13,6 +14,8 @@ export class PhasergameComponent implements OnInit {
   
   phaserGame: Phaser.Game;
   config: Phaser.Types.Core.GameConfig;
+  charPhysics: any;
+ 
  
   constructor(private gameInfoService : GameinfoService) { 
 
@@ -31,17 +34,24 @@ export class PhasergameComponent implements OnInit {
     audio: {
         disableWebAudio: true
     }
-    
     };
   }
 
   // tslint:disable-next-line:typedef
   ngOnInit() {
     this.phaserGame = new Phaser.Game(this.config);
+    this.getPhysics();
     
   }
-  
+  getPhysics() {
+    this.gameInfoService.getCharInfo().subscribe(response => {
+      this.charPhysics = response;
+      console.log(response);
+    });
+  }
+
 }
+  
 
 class MainScene extends Phaser.Scene {
 platforms: any;
@@ -56,6 +66,7 @@ score: number;
   constructor(private gameInfoService : GameinfoService) {
     
     super({ key: 'main' });
+  
   }
  
   preload() {
@@ -136,6 +147,7 @@ score: number;
 
     //  The score
     this.scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
+   
 
     //  Collide the player and the stars with thethis.platforms
     this.physics.add.collider(this.player,this.platforms);
@@ -226,4 +238,16 @@ score: number;
   
   }
 
+  
+ 
+
+  // playerOnePhysics(){
+
+  //   this.gameInfoService.selectedCharacter = this.charPhysics.find(x => x.id == 1);
+  //   console.log(this.gameInfoService.selectedCharacter)
+
+  // }
+
 }
+
+

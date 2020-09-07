@@ -13,5 +13,3 @@ export class LandingPageComponent implements OnInit {
   }
 
 }
-
-

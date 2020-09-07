@@ -8,12 +8,14 @@ import { Observable } from 'rxjs';
 export class GameinfoService {
 
   selectedCharacter: any;
-
+ 
   constructor(private http: HttpClient ) { }
 
   getCharInfo(): Observable<any> {
     return this.http.get<any>('https://char-info.herokuapp.com/characters/');
   }
 
-
+  selectPlayerOne(): Observable<any>{
+    return this.http.get<any>(`https://char-info.herokuapp.com/characters/1`);
+  }
 }

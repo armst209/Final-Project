@@ -4,7 +4,7 @@
             <div [routerLink]="['/home']" class="logo">
                 <p data-text="Break">Break</p>
             </div>
-            <div [routerLink]="['/home']"class="item" id="selected">Discover</div>
+            <div [routerLink]="['/home']" class="item" id="selected">Discover</div>
             <div class="item">Library</div>
             <div class="item">High Score</div>
             <div class="item">About us</div>
@@ -13,7 +13,7 @@
 </div>
 <section id="characterLine">
 
-    <div (click)="playerOneSelected()" class="tl-item">
+    <div class="tl-item">
 
         <div class="tl-bg" style="background-image: url(https://i.ibb.co/z8MpCkP/IMG-0291-1.png)"></div>
 
@@ -21,19 +21,23 @@
             <h2 class="f2 heading--sanSerif">Aaron</h2>
         </div>
 
-        <div class="tl-content">
-            <h1>Lorem ipsum dolor sit</h1>
-            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit.</h3>
-            <button (click)="playerOneSelected()">SELECT</button>
+        <div  class="tl-content">
+            <h1>STATS</h1>
+            <div *ngIf="charSelect">
+                <div>Super Power: {{charSelect[2].superpower}}</div>
+                <div>Speed: {{charSelect[2].speed}}</div>
+                <div>JumpHeight: {{charSelect[2].jumpheight}}</div>
+                <div>Weapon: {{charSelect[2].weapon}}</div>
+            </div>
+            
+            <button [routerLink]="['/game']" (click)="playerOneSelected()">SELECT</button>
 
         </div>
 
 
     </div>
 
-    <div (click)="playerTwoSelected()" class="tl-item">
+    <div class="tl-item">
 
         <div class="tl-bg" style="background-image: url(https://i.ibb.co/ZJRx4TZ/IMG-0289-1.png)"></div>
 
@@ -42,16 +46,19 @@
         </div>
 
         <div class="tl-content">
-            <h1 class="f3 text--accent ttu">Vestibulum laoreet lorem</h1>
-            <h3>Suspendisse potenti. Sed sollicitudin eros lorem, eget accumsan risus dictum id. Maecenas dignissim
-                ipsum vel mi rutrum egestas. Donec mauris nibh, facilisis ut hendrerit vel, fringilla sed felis. Morbi
-                sed nisl et arcu.</h3>
-
+            <h1>STATS</h1>
+            <div *ngIf="charSelect">
+                <div>Super Power: {{charSelect[1].superpower}}</div>
+                <div>Speed: {{charSelect[1].speed}}</div>
+                <div>JumpHeight: {{charSelect[1].jumpheight}}</div>
+                <div>Weapon: {{charSelect[1].weapon}}</div>
+            </div>
+            <button [routerLink]="['/game']" (click)="playerTwoSelected()">SELECT</button>
         </div>
 
     </div>
 
-    <div (click)="playerThreeSelected()"class="tl-item">
+    <div class="tl-item">
 
         <div class="tl-bg" style="background-image: url(https://i.ibb.co/ScJdgSw/IMG-0290-1.png)"></div>
 
@@ -60,12 +67,14 @@
         </div>
 
         <div class="tl-content">
-            <h1 class="f3 text--accent ttu">Phasellus mauris elit</h1>
-            <h3>Mauris cursus magna at libero lobortis tempor. Suspendisse potenti. Aliquam interdum vulputate neque sit
-                amet varius. Maecenas ac pulvinar nisi. Fusce vitae nunc ultrices, tristique dolor at, porttitor dolor.
-                Etiam id cursus arcu, in dapibus nibh. Pellentesque non porta leo. Nulla eros odio, egestas quis
-                efficitur vel, pretium sed.</h3>
-
+            <h1>STATS</h1>
+            <div *ngIf="charSelect">
+                <div>Super Power: {{charSelect[1].superpower}}</div>
+                <div>Speed: {{charSelect[1].speed}}</div>
+                <div>JumpHeight: {{charSelect[1].jumpheight}}</div>
+                <div>Weapon: {{charSelect[1].weapon}}</div>
+            </div>
+            <button [routerLink]="['/game']" (click)="playerOneSelected()">SELECT</button>
         </div>
     </div>
 

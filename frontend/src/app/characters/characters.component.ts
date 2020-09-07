@@ -9,6 +9,7 @@ import { GameinfoService } from '../service/gameinfo.service';
 export class CharactersComponent implements OnInit {
 
   charSelect: any;
+  
 
   constructor(private gameInfoService: GameinfoService) { }
 
@@ -16,24 +17,23 @@ export class CharactersComponent implements OnInit {
     this.getCharacters();
   }
 
-  // tslint:disable-next-line:typedef
   getCharacters() {
     this.gameInfoService.getCharInfo().subscribe(response => {
       this.charSelect = response;
       console.log(response);
     });
   }
-
+  
   playerOneSelected() {
 
-    this.gameInfoService.selectedCharacter = this.charSelect.find(x => x.id== 1);
+    this.gameInfoService.selectedCharacter = this.charSelect.find(x => x.id == 1);
     console.log(this.gameInfoService.selectedCharacter)
 
   }
   playerTwoSelected() {
 
     this.gameInfoService.selectedCharacter = this.charSelect.find(x => x.id == 2);
-    console.log(this.gameInfoService.selectedCharacter)
+    console.log(this.gameInfoService.selectedCharacter);
   }
 
   playerThreeSelected() {

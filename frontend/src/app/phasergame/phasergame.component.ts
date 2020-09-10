@@ -60,19 +60,23 @@ class MainScene extends Phaser.Scene {
   player: any;
   cursors: any;
   // tslint:disable-next-line:semicolon
-  groundLayer: any; coinLayer: any;
+  groundLayer: any;
+  coinLayer: any;
   groundTiles: any;
   text: any;
   coinTiles: any;
   score: any;
+   
 
   constructor(private gameInfoService: GameinfoService) {
 
     super({ key: 'main' });
 
-    //collectCoin();
 
+  }
 
+  getSelectedPlayer() {
+    return this.gameInfoService.selectedCharacter;
   }
 
   preload() {
@@ -119,10 +123,10 @@ class MainScene extends Phaser.Scene {
     //player will collide with the level tiles 
     this.physics.add.collider(this.groundLayer, this.player);
 
-    /*this.coinLayer.setTileIndexCallback(17, collectCoin(), this);
+    this.coinLayer.setTileIndexCallback(17, this.collectCoin(), this);
     // when the player overlaps with a tile with index 17, collectCoin 
     // will be called    
-    this.physics.add.overlap(this.player, this.coinLayer);*/
+    this.physics.add.overlap(this.player, this.coinLayer);
 
     // player walk animation
     this.anims.create({
@@ -161,28 +165,29 @@ class MainScene extends Phaser.Scene {
   update(time, delta) {
     if (this.cursors.left.isDown)
     {
-        this.player.body.setVelocityX(-200); // move left
+        this.player.body.setVelocityX(-this.getSelectedPlayer().speed); // move left
         this.player.anims.play('walk', true); // play walk animation
         this.player.flipX= true; // flip the sprite to the left
     }
     else if (this.cursors.right.isDown)
     {
-        this.player.body.setVelocityX(200); // move right
+        this.player.body.setVelocityX(this.getSelectedPlayer().speed); // move right
         this.player.anims.play('walk', true); // play walk animatio
         this.player.flipX = false; // use the original sprite looking to the right
     } else {
-        this.player.body.setVelocityX(0);
+        this.player.body.setVelocityX(this.getSelectedPlayer().speed);
         this.player.anims.play('idle', true);
     }
   }
 
   // tslint:disable-next-line:typedef
-  /*collectCoin(sprite, tile) {
-    this.coinLayer.removeTileAt(tile.x, tile.y); // remove the tile/coin
-    this.score++; // increment the score
-    this.text.setText(this.score); // set the text to show the current score
+  collectCoin() {
+    //this.coinLayer.removeTileAt(tile.x, tile.y); // remove the tile/coin
+    console.log('ran into coin');
+    /*this.score++; // increment the score
+    this.text.setText(this.score); // set the text to show the current score*/
     return false;
-  }*/
+  }
 }
 
 

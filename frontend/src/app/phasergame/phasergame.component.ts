@@ -56,19 +56,24 @@ export class PhasergameComponent implements OnInit {
 
 class MainScene extends Phaser.Scene {
 
-  /*var map;
-  var player;
-  var cursors;
-  var groundLayer, coinLayer;
-  var text;*/
+  map: any;
+  player: any;
+  cursors: any;
+  // tslint:disable-next-line:semicolon
+  groundLayer: any; coinLayer: any;
+  groundTiles: any;
+  text: any;
+  coinTiles: any;
+  score: any;
 
   constructor(private gameInfoService: GameinfoService) {
 
     super({ key: 'main' });
 
+    //collectCoin();
+
+
   }
-
-
 
   preload() {
     // map made with Tiled in JSON format
@@ -85,39 +90,39 @@ class MainScene extends Phaser.Scene {
 
   create() {
     // load the map 
-    map = this.make.tilemap({ key: 'map' });
+    this.map = this.make.tilemap({ key: 'map' });
 
     // tiles for the ground layer
-    var groundTiles = map.addTilesetImage('tiles');
+    this.groundTiles = this.map.addTilesetImage('tiles');
     // create the ground layer
-    groundLayer = map.createDynamicLayer('World', groundTiles, 0, 0);
+    this.groundLayer = this.map.createDynamicLayer('World', this.groundTiles, 0, 0);
     // the player will collide with this layer
-    groundLayer.setCollisionByExclusion([-1]);
+    this.groundLayer.setCollisionByExclusion([-1]);
 
     // coin image used as tileset
-    var coinTiles = map.addTilesetImage('coin');
+    this.coinTiles = this.map.addTilesetImage('coin');
     // add coins as tiles
-    coinLayer = map.createDynamicLayer('Coins', coinTiles, 0, 0);
+    this.coinLayer = this.map.createDynamicLayer('Coins', this.coinTiles, 0, 0);
 
     // set the boundaries of our game world
-    this.physics.world.bounds.width = groundLayer.width;
-    this.physics.world.bounds.height = groundLayer.height;
+    this.physics.world.bounds.width = this.groundLayer.width;
+    this.physics.world.bounds.height = this.groundLayer.height;
 
     // create the player sprite    
-    player = this.physics.add.sprite(200, 200, 'player');
-    player.setBounce(0.2); // our player will bounce from items
-    player.setCollideWorldBounds(true); // don't go out of the map    
+    this.player = this.physics.add.sprite(200, 200, 'player');
+    this.player.setBounce(0.2); // our player will bounce from items
+    this.player.setCollideWorldBounds(true); // don't go out of the map    
 
     // small fix to our player images, we resize the physics body object slightly
-    player.body.setSize(player.width, player.height - 8);
+    this.player.body.setSize(this.player.width, this.player.height - 8);
 
-    // player will collide with the level tiles 
-    this.physics.add.collider(groundLayer, player);
+    //player will collide with the level tiles 
+    this.physics.add.collider(this.groundLayer, this.player);
 
-    coinLayer.setTileIndexCallback(17, collectCoin, this);
+    /*this.coinLayer.setTileIndexCallback(17, collectCoin(), this);
     // when the player overlaps with a tile with index 17, collectCoin 
     // will be called    
-    this.physics.add.overlap(player, coinLayer);
+    this.physics.add.overlap(this.player, this.coinLayer);*/
 
     // player walk animation
     this.anims.create({
@@ -126,6 +131,7 @@ class MainScene extends Phaser.Scene {
       frameRate: 10,
       repeat: -1
     });
+
     // idle with only one frame, so repeat is not neaded
     this.anims.create({
       key: 'idle',
@@ -134,45 +140,49 @@ class MainScene extends Phaser.Scene {
     });
 
 
-    cursors = this.input.keyboard.createCursorKeys();
+    this.cursors = this.input.keyboard.createCursorKeys();
 
     // set bounds so the camera won't go outside the game world
-    this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+    this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
     // make the camera follow the player
-    this.cameras.main.startFollow(player);
+    this.cameras.main.startFollow(this.player);
 
     // set background color, so the sky is not black    
     this.cameras.main.setBackgroundColor('#ccccff');
-    text = this.add.text(20, 570, '0', {
+    
+    this.text = this.add.text(20, 570, '0', {
       fontSize: '20px',
       fill: '#ffffff'
     });
-    text.setScrollFactor(0);
+    this.text.setScrollFactor(0);
   }
 
   // tslint:disable-next-line:typedef
   update(time, delta) {
-    if (cursors.left.isDown) {
-      player.body.setVelocityX(-200); // move left
-      player.anims.play('walk', true); // play walk animation
-      player.flipX = true; // flip the sprite to the left
+    if (this.cursors.left.isDown)
+    {
+        this.player.body.setVelocityX(-200); // move left
+        this.player.anims.play('walk', true); // play walk animation
+        this.player.flipX= true; // flip the sprite to the left
     }
-    else if (cursors.right.isDown) {
-      player.body.setVelocityX(200); // move right
-      player.anims.play('walk', true); // play walk animatio
-      player.flipX = false; // use the original sprite looking to the right
+    else if (this.cursors.right.isDown)
+    {
+        this.player.body.setVelocityX(200); // move right
+        this.player.anims.play('walk', true); // play walk animatio
+        this.player.flipX = false; // use the original sprite looking to the right
     } else {
-      player.body.setVelocityX(0);
-      player.anims.play('idle', true);
+        this.player.body.setVelocityX(0);
+        this.player.anims.play('idle', true);
     }
   }
 
-  collectCoin(sprite, tile) {
-    coinLayer.removeTileAt(tile.x, tile.y); // remove the tile/coin
-    score++; // increment the score
-    text.setText(score); // set the text to show the current score
+  // tslint:disable-next-line:typedef
+  /*collectCoin(sprite, tile) {
+    this.coinLayer.removeTileAt(tile.x, tile.y); // remove the tile/coin
+    this.score++; // increment the score
+    this.text.setText(this.score); // set the text to show the current score
     return false;
-  }
+  }*/
 }
 
 

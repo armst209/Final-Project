@@ -4,20 +4,19 @@ import { GameinfoService } from '../service/gameinfo.service';
 
 
 
-
 @Component({
   selector: 'app-phasergame',
   templateUrl: './phasergame.component.html',
   styleUrls: ['./phasergame.component.css']
 })
 export class PhasergameComponent implements OnInit {
-  
+
   phaserGame: Phaser.Game;
   config: Phaser.Types.Core.GameConfig;
   charPhysics: any;
- 
- 
-  constructor(private gameInfoService : GameinfoService) { 
+
+
+  constructor(private gameInfoService: GameinfoService) {
 
     this.config = {
       type: Phaser.AUTO,
@@ -28,12 +27,13 @@ export class PhasergameComponent implements OnInit {
       physics: {
         default: 'arcade',
         arcade: {
-          gravity: { y: 100 }
+          gravity: { y: 500 },
+          debug: false
         }
-      }, 
-    audio: {
+      },
+      audio: {
         disableWebAudio: true
-    }
+      }
     };
   }
 
@@ -41,8 +41,9 @@ export class PhasergameComponent implements OnInit {
   ngOnInit() {
     this.phaserGame = new Phaser.Game(this.config);
     this.getPhysics();
-    
+
   }
+  // tslint:disable-next-line:typedef
   getPhysics() {
     this.gameInfoService.getCharInfo().subscribe(response => {
       this.charPhysics = response;
@@ -51,203 +52,127 @@ export class PhasergameComponent implements OnInit {
   }
 
 }
-  
+
 
 class MainScene extends Phaser.Scene {
-platforms: any;
-player: any;
-stars: any;
-gameOver: boolean;
-cursors: any;
-bombs: any;
-scoreText: any;
-score: number;
- 
-  constructor(private gameInfoService : GameinfoService) {
-    
+
+  /*var map;
+  var player;
+  var cursors;
+  var groundLayer, coinLayer;
+  var text;*/
+
+  constructor(private gameInfoService: GameinfoService) {
+
     super({ key: 'main' });
-  
+
   }
- 
+
+
+
   preload() {
-     //MUSIC
-     this.load.audio('level1', [
-      'assets/level_1.mp3'
-  ])
-  this.load.image('sky', 'assets/sky.png');
-  this.load.image('ground', 'assets/platform.png');
-  this.load.image('coin', 'assets/jacob_coin-1.png');
-  this.load.image('bomb', 'assets/bomb.png');
-  this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
-    console.log('preload method');
+    // map made with Tiled in JSON format
+    this.load.tilemapTiledJSON('map', './assets/map.json');
+    // tiles in spritesheet 
+    this.load.spritesheet('tiles', './assets/tiles.png', { frameWidth: 70, frameHeight: 70 });
+    // simple coin image
+    this.load.image('coin', './assets/coinGold.png');
+    // player animations
+    this.load.atlas('player', './assets/player.png', 'assets/player.json');
   }
+
+
+
   create() {
-   
-    //  A simple background for our game
-    this.add.image(400, 300, 'sky');
+    // load the map 
+    map = this.make.tilemap({ key: 'map' });
 
-    //  Thethis.platforms group contains the ground and the 2 ledges we can jump on
-   this.platforms = this.physics.add.staticGroup();
+    // tiles for the ground layer
+    var groundTiles = map.addTilesetImage('tiles');
+    // create the ground layer
+    groundLayer = map.createDynamicLayer('World', groundTiles, 0, 0);
+    // the player will collide with this layer
+    groundLayer.setCollisionByExclusion([-1]);
 
-    //  Here we create the ground.
-    //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
-   this.platforms.create(400, 568, 'ground').setScale(2).refreshBody();
+    // coin image used as tileset
+    var coinTiles = map.addTilesetImage('coin');
+    // add coins as tiles
+    coinLayer = map.createDynamicLayer('Coins', coinTiles, 0, 0);
 
-    //  Now let's create some ledges
-   this.platforms.create(600, 400, 'ground');
-   this.platforms.create(50, 250, 'ground');
-   this.platforms.create(750, 220, 'ground');
+    // set the boundaries of our game world
+    this.physics.world.bounds.width = groundLayer.width;
+    this.physics.world.bounds.height = groundLayer.height;
 
-    // The player and its settings
-    this.player = this.physics.add.sprite(100, 450, 'dude');
+    // create the player sprite    
+    player = this.physics.add.sprite(200, 200, 'player');
+    player.setBounce(0.2); // our player will bounce from items
+    player.setCollideWorldBounds(true); // don't go out of the map    
 
-    //  Player physics properties. Give the little guy a slight bounce.
-    this.player.setBounce(0.2);
-    this.player.setCollideWorldBounds(true);
+    // small fix to our player images, we resize the physics body object slightly
+    player.body.setSize(player.width, player.height - 8);
 
-    //  Our player animations, turning, walking left and walking right.
+    // player will collide with the level tiles 
+    this.physics.add.collider(groundLayer, player);
+
+    coinLayer.setTileIndexCallback(17, collectCoin, this);
+    // when the player overlaps with a tile with index 17, collectCoin 
+    // will be called    
+    this.physics.add.overlap(player, coinLayer);
+
+    // player walk animation
     this.anims.create({
-        key: 'left',
-        frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
-        frameRate: 10,
-        repeat: -1
+      key: 'walk',
+      frames: this.anims.generateFrameNames('player', { prefix: 'p1_walk', start: 1, end: 11, zeroPad: 2 }),
+      frameRate: 10,
+      repeat: -1
     });
-
+    // idle with only one frame, so repeat is not neaded
     this.anims.create({
-        key: 'turn',
-        frames: [ { key: 'dude', frame: 4 } ],
-        frameRate: 20
+      key: 'idle',
+      frames: [{ key: 'player', frame: 'p1_stand' }],
+      frameRate: 10,
     });
 
-    this.anims.create({
-        key: 'right',
-        frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
-        frameRate: 10,
-        repeat: -1
+
+    cursors = this.input.keyboard.createCursorKeys();
+
+    // set bounds so the camera won't go outside the game world
+    this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+    // make the camera follow the player
+    this.cameras.main.startFollow(player);
+
+    // set background color, so the sky is not black    
+    this.cameras.main.setBackgroundColor('#ccccff');
+    text = this.add.text(20, 570, '0', {
+      fontSize: '20px',
+      fill: '#ffffff'
     });
-
-    //  Input Events
-    this.cursors = this.input.keyboard.createCursorKeys();
-
-    //  Some stars to collect, 12 in total, evenly spaced 70 pixels apart along the x axis
-    this.stars = this.physics.add.group({
-        key: 'coin',
-        repeat: 11,
-        setXY: { x: 12, y: 0, stepX: 70 }
-    });
-
-    this.stars.children.iterate(function (child) {
-
-        //  Give each star a slightly different bounce
-        child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
-
-    });
-
-    this.bombs = this.physics.add.group();
-
-    //  The score
-    this.scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
-   
-
-    //  Collide the player and the stars with thethis.platforms
-    this.physics.add.collider(this.player,this.platforms);
-    this.physics.add.collider(this.stars,this.platforms);
-    this.physics.add.collider(this.bombs,this.platforms);
-
-    //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
-    this.physics.add.overlap(this.player, this.stars, this.collectStar, null, this);
-
-    this.physics.add.collider(this.player, this.bombs, this.hitBomb, null, this);
-    
-    //Playing music
-    let music = this.sound.add('level1');
-    // music.play();
-   
-  }
- 
-  update() {
-  
-    
-    if (this.gameOver)
-    {
-        return;
-    }
-
-    if (this.cursors.left.isDown)
-    {
-        this.player.setVelocityX(-160);
-
-        this.player.anims.play('left', true);
-    }
-    else if (this.cursors.right.isDown)
-    {
-        this.player.setVelocityX(160);
-
-        this.player.anims.play('right', true);
-    }
-    else
-    {
-        this.player.setVelocityX(0);
-
-        this.player.anims.play('turn');
-    }
-
-    if (this.cursors.up.isDown && this.player.body.touching.down)
-    {
-        this.player.setVelocityY(-330);
-    }
-    console.log('update method');
+    text.setScrollFactor(0);
   }
 
-  hitBomb (player, bomb)
-  {   
-      this.physics.pause();
-  
-      player.setTint(0xff0000);
-  
-      player.anims.play('turn');
-  
-      this.gameOver = true;
-  }
- collectStar (player, star)
-{
-    star.disableBody(true, true);
-
-    //  Add and update the score
-    this.score += 10;
-    this.scoreText.setText('Score: ' + this.score);
-
-    if (this.stars.countActive(true) === 0)
-    {
-        //  A new batch of stars to collect
-        this.stars.children.iterate(function (child) {
-
-            child.enableBody(true, child.x, 0, true, true);
-
-        });
-
-        var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
-
-        var bomb = this.bombs.create(x, 16, 'bomb');
-        bomb.setBounce(1);
-        bomb.setCollideWorldBounds(true);
-        bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
-        bomb.allowGravity = false;
-
+  // tslint:disable-next-line:typedef
+  update(time, delta) {
+    if (cursors.left.isDown) {
+      player.body.setVelocityX(-200); // move left
+      player.anims.play('walk', true); // play walk animation
+      player.flipX = true; // flip the sprite to the left
     }
-  
+    else if (cursors.right.isDown) {
+      player.body.setVelocityX(200); // move right
+      player.anims.play('walk', true); // play walk animatio
+      player.flipX = false; // use the original sprite looking to the right
+    } else {
+      player.body.setVelocityX(0);
+      player.anims.play('idle', true);
+    }
   }
 
-  
- 
-
-  // playerOnePhysics(){
-
-  //   this.gameInfoService.selectedCharacter = this.charPhysics.find(x => x.id == 1);
-  //   console.log(this.gameInfoService.selectedCharacter)
-
-  // }
-
+  collectCoin(sprite, tile) {
+    coinLayer.removeTileAt(tile.x, tile.y); // remove the tile/coin
+    score++; // increment the score
+    text.setText(score); // set the text to show the current score
+    return false;
+  }
 }
 
 

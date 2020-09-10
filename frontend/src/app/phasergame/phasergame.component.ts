@@ -59,14 +59,14 @@ class MainScene extends Phaser.Scene {
   map: any;
   player: any;
   cursors: any;
-  // tslint:disable-next-line:semicolon
   groundLayer: any;
   coinLayer: any;
   groundTiles: any;
   text: any;
   coinTiles: any;
-  score: any;
-   
+  score: 0;
+  tile: any;
+
 
   constructor(private gameInfoService: GameinfoService) {
 
@@ -87,7 +87,7 @@ class MainScene extends Phaser.Scene {
     // simple coin image
     this.load.image('coin', './assets/coinGold.png');
     // player animations
-    this.load.atlas('player', './assets/player.png', 'assets/player.json');
+    this.load.atlas('player', './assets/Aaron.png', 'assets/Aaron copy.json');
   }
 
 
@@ -123,15 +123,22 @@ class MainScene extends Phaser.Scene {
     //player will collide with the level tiles 
     this.physics.add.collider(this.groundLayer, this.player);
 
-    this.coinLayer.setTileIndexCallback(17, this.collectCoin(), this);
+    // this.coinLayer.setTileIndexCallback(17, this.collectCoin(this.tile), this);
     // when the player overlaps with a tile with index 17, collectCoin 
     // will be called    
     this.physics.add.overlap(this.player, this.coinLayer);
 
     // player walk animation
     this.anims.create({
-      key: 'walk',
-      frames: this.anims.generateFrameNames('player', { prefix: 'p1_walk', start: 1, end: 11, zeroPad: 2 }),
+      key: 'right',
+      frames: this.anims.generateFrameNames('player', { prefix: 'p1_walk', start: 1, end: 4, zeroPad: 2 }),
+      frameRate: 10,
+      repeat: -1
+    });
+
+    this.anims.create({
+      key: 'left',
+      frames: this.anims.generateFrameNames('player', { prefix: 'p1_walk', start: 7, end: 10, zeroPad: 2 }),
       frameRate: 10,
       repeat: -1
     });
@@ -143,6 +150,11 @@ class MainScene extends Phaser.Scene {
       frameRate: 10,
     });
 
+    this.anims.create({
+      key: 'jump',
+      frames: [{ key: 'player', frame: 'p1_jump' }],
+      frameRate: 10,
+    });
 
     this.cursors = this.input.keyboard.createCursorKeys();
 
@@ -161,31 +173,38 @@ class MainScene extends Phaser.Scene {
     this.text.setScrollFactor(0);
   }
 
-  // tslint:disable-next-line:typedef
   update(time, delta) {
+    // this.getSelectedPlayer().speed
     if (this.cursors.left.isDown)
     {
-        this.player.body.setVelocityX(-this.getSelectedPlayer().speed); // move left
-        this.player.anims.play('walk', true); // play walk animation
-        this.player.flipX= true; // flip the sprite to the left
+        this.player.body.setVelocityX(-200); 
+        this.player.anims.play('left', true); 
+        this.player.flipX = false; 
     }
     else if (this.cursors.right.isDown)
     {
-        this.player.body.setVelocityX(this.getSelectedPlayer().speed); // move right
-        this.player.anims.play('walk', true); // play walk animatio
-        this.player.flipX = false; // use the original sprite looking to the right
-    } else {
-        this.player.body.setVelocityX(this.getSelectedPlayer().speed);
+        this.player.body.setVelocityX(200); 
+        this.player.anims.play('right', true); 
+        this.player.flipX = false; 
+    } else if ((this.cursors.down.isDown || this.cursors.up.isDown) && this.player.body.onFloor())
+    {
+        this.player.body.setVelocityY(-500); //jump up
+        this.player.anims.play('jump', true); 
+    }
+    else {
+        this.player.body.setVelocityX(0);
         this.player.anims.play('idle', true);
     }
-  }
 
-  // tslint:disable-next-line:typedef
-  collectCoin() {
-    //this.coinLayer.removeTileAt(tile.x, tile.y); // remove the tile/coin
+}
+
+  
+
+  collectCoin(sprite, tile) {
+    this.coinLayer.removeTileAt(tile.x, tile.y); 
     console.log('ran into coin');
-    /*this.score++; // increment the score
-    this.text.setText(this.score); // set the text to show the current score*/
+    this.score++; 
+    this.text.setText(this.score); 
     return false;
   }
 }

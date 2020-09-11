@@ -50,7 +50,6 @@ export class PhasergameComponent implements OnInit {
       console.log(response);
     });
   }
-
 }
 
 
@@ -105,6 +104,7 @@ class MainScene extends Phaser.Scene {
 
     // coin image used as tileset
     this.coinTiles = this.map.addTilesetImage('coin');
+    this.tile = this.coinTiles;
     // add coins as tiles
     this.coinLayer = this.map.createDynamicLayer('Coins', this.coinTiles, 0, 0);
 
@@ -123,7 +123,7 @@ class MainScene extends Phaser.Scene {
     //player will collide with the level tiles 
     this.physics.add.collider(this.groundLayer, this.player);
 
-    // this.coinLayer.setTileIndexCallback(17, this.collectCoin(this.tile), this);
+    this.coinLayer.setTileIndexCallback(0, this.collectCoin(this.tile), this);
     // when the player overlaps with a tile with index 17, collectCoin 
     // will be called    
     this.physics.add.overlap(this.player, this.coinLayer);
@@ -152,8 +152,9 @@ class MainScene extends Phaser.Scene {
 
     this.anims.create({
       key: 'jump',
-      frames: [{ key: 'player', frame: 'p1_jump' }],
-      frameRate: 10,
+      frames: [{ key: 'player', frame: 'jump1' }],
+      frameRate: 10, 
+      
     });
 
     this.cursors = this.input.keyboard.createCursorKeys();
@@ -186,10 +187,12 @@ class MainScene extends Phaser.Scene {
         this.player.body.setVelocityX(200); 
         this.player.anims.play('right', true); 
         this.player.flipX = false; 
-    } else if ((this.cursors.down.isDown || this.cursors.up.isDown) && this.player.body.onFloor())
+    } 
+    else if (this.cursors.up.isDown && this.player.body.onFloor())
     {
         this.player.body.setVelocityY(-500); //jump up
         this.player.anims.play('jump', true); 
+        this.player.flipX = false; 
     }
     else {
         this.player.body.setVelocityX(0);
@@ -198,14 +201,15 @@ class MainScene extends Phaser.Scene {
 
 }
 
-  
-
-  collectCoin(sprite, tile) {
-    this.coinLayer.removeTileAt(tile.x, tile.y); 
-    console.log('ran into coin');
-    this.score++; 
-    this.text.setText(this.score); 
+  collectCoin(tile) {
+   
+    this.coinLayer.removeTileAt(this.tile.texCoordinates[0].x , this.tile.texCoordinates[0].y); 
+    // this.score++; 
+    // this.text.setText(this.score); 
+    console.log(tile);
+    
     return false;
+    
   }
 }
 

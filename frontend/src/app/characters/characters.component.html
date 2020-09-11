@@ -58,12 +58,12 @@
         <div class="tl-content">
             <h1>STATS</h1>
             <div *ngIf="charSelect">
-                <div>Super Power: {{charSelect[1].superpower}}</div>
-                <div>Speed: {{charSelect[1].speed}}</div>
-                <div>JumpHeight: {{charSelect[1].jumpheight}}</div>
-                <div>Weapon: {{charSelect[1].weapon}}</div>
+                <div>Super Power: {{charSelect[0].superpower}}</div>
+                <div>Speed: {{charSelect[0].speed}}</div>
+                <div>JumpHeight: {{charSelect[0].jumpheight}}</div>
+                <div>Weapon: {{charSelect[0].weapon}}</div>
             </div>
-            <button [routerLink]="['/game']" (click)="playerTwoSelected()">SELECT</button>
+            <button [routerLink]="['/game2']" (click)="playerTwoSelected()">SELECT</button>
         </div>
 
     </div>

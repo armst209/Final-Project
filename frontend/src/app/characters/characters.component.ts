@@ -29,27 +29,52 @@ export class CharactersComponent implements OnInit {
   playerOneSelected() {
 
     document.getElementById('characterName').innerText = 'Aaron';
-    
+
     console.log(document.getElementById('characterName').innerText);
-    this.route.navigate(["/game"]);
+
+    let bleep = new Audio();
+    bleep.src = 'assets/menu-select.mp3';
+    bleep.play();
+
+    setTimeout(() => {
+      this.route.navigate(["/game"]);
+    }, 3000);
+
 
   }
+    
+
   playerTwoSelected() {
-    console.log('you hit player two selected')
+    console.log('you hit player two selected');
 
     document.getElementById('characterName').innerText = 'Amber';
     
     console.log(document.getElementById('characterName').innerText);
-    this.route.navigate(["/game"]);
+    
+    let bleep = new Audio();
+    bleep.src = 'assets/menu-select.mp3';
+    bleep.play();
+
+    setTimeout(() => {
+      this.route.navigate(["/game"]);
+    }, 3000);
 
   }
 
   playerThreeSelected() {
+    console.log('you hit player three selected');
 
     document.getElementById('characterName').innerText = this.charSelect.find(x => x.id == 3).name;
     
     console.log(document.getElementById('characterName').innerText);
-    this.route.navigate(["/game"]);
+   
+    let bleep = new Audio();
+    bleep.src = 'assets/menu-select.mp3';
+    bleep.play();
+
+    setTimeout(() => {
+      this.route.navigate(["/game"]);
+    }, 3000);
 
   }
 

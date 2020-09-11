@@ -69,7 +69,7 @@
   </tile>
  </tileset>
  <tileset firstgid="17" name="coin" tilewidth="70" tileheight="70" tilecount="1" columns="1">
-  <image source="coinGold.png" width="70" height="70"/>
+  <image source="jacob_coin.png" width="70" height="70"/>
  </tileset>
  <layer name="World" width="30" height="10">
   <data encoding="base64">

@@ -1,4 +1,6 @@
+import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { GameinfoService } from '../service/gameinfo.service';
 
 @Component({
@@ -11,7 +13,7 @@ export class CharactersComponent implements OnInit {
   charSelect: any;
   
 
-  constructor(private gameInfoService: GameinfoService) { }
+  constructor(private gameInfoService: GameinfoService, private route : Router) { }
 
   ngOnInit(): void {
     this.getCharacters();
@@ -26,20 +28,29 @@ export class CharactersComponent implements OnInit {
   
   playerOneSelected() {
 
-    this.gameInfoService.selectedCharacter = this.charSelect.find(x => x.id == 1);
-    console.log(this.gameInfoService.selectedCharacter)
+    document.getElementById('characterName').innerText = 'Aaron';
+    
+    console.log(document.getElementById('characterName').innerText);
+    this.route.navigate(["/game"]);
 
   }
   playerTwoSelected() {
+    console.log('you hit player two selected')
 
-    this.gameInfoService.selectedCharacter = this.charSelect.find(x => x.id == 2);
-    console.log(this.gameInfoService.selectedCharacter);
+    document.getElementById('characterName').innerText = 'Amber';
+    
+    console.log(document.getElementById('characterName').innerText);
+    this.route.navigate(["/game"]);
+
   }
 
   playerThreeSelected() {
 
-    this.gameInfoService.selectedCharacter = this.charSelect.find(x => x.id === 3);
-    console.log(this.gameInfoService.selectedCharacter)
+    document.getElementById('characterName').innerText = this.charSelect.find(x => x.id == 3).name;
+    
+    console.log(document.getElementById('characterName').innerText);
+    this.route.navigate(["/game"]);
+
   }
 
   

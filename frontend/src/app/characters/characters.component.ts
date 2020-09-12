@@ -66,7 +66,7 @@ export class CharactersComponent implements OnInit {
 
     document.getElementById('characterName').innerText = this.charSelect.find(x => x.id == 3).name;
     
-    console.log(document.getElementById('characterName').innerText);
+    console.log(document.getElementById('characterName').innerText = 'Garrett');
    
     let bleep = new Audio();
     bleep.src = 'assets/menu-select.mp3';

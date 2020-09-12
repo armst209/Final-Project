@@ -130,7 +130,7 @@ class MainScene extends Phaser.Scene {
         'assets/jacob_coin.json'
       );
       // player animations
-      this.load.atlas('player', './assets/Garrett.png', 'assets/Garret.json');
+      this.load.atlas('player', './assets/Garrett.png', 'assets/Garrett.json');
     }
 
     //loading music
@@ -306,53 +306,55 @@ class MainScene extends Phaser.Scene {
         frames: [{ key: 'player', frame: 'p2_jump02' }],
         frameRate: 10,
       });
-    } else if (
-      document.getElementById('characterName').innerText == 'Garrett'
-    ) {
-      this.anims.create({
-        key: 'right',
-        frames: this.anims.generateFrameNames('player', {
-          prefix: 'p2_walk',
-          start: 1,
-          end: 4,
-          zeroPad: 2,
-        }),
-        frameRate: 3,
-        repeat: -1,
-      });
+    } 
 
-      this.anims.create({
-        key: 'left',
-        frames: this.anims.generateFrameNames('player', {
-          prefix: 'p2_walk',
-          start: 5,
-          end: 8,
-          zeroPad: 2,
-        }),
-        frameRate: 3,
-        repeat: -1,
-      });
+      // player 3 animation
 
-      // idle with only one frame, so repeat is not neaded
-      this.anims.create({
-        key: 'idle',
-        frames: this.anims.generateFrameNames('player', {
-          prefix: 'p2_walk',
-          start: 1,
-          end: 2,
-          zeroPad: 2,
-        }),
-        // frames: [{key: 'player', frame: 'p1_stand02'}],
-        frameRate: 2,
-        repeat: -1,
-      });
-
-      this.anims.create({
-        key: 'jump',
-        frames: [{ key: 'player', frame: 'p2_jump02' }],
-        frameRate: 10,
-      });
-    }
+      else if (document.getElementById('characterName').innerText == 'Garrett') {
+        this.anims.create({
+          key: 'right',
+          frames: this.anims.generateFrameNames('player', {
+            prefix: 'p3_walk',
+            start: 1,
+            end: 4,
+            zeroPad: 2,
+          }),
+          frameRate: 10,
+          repeat: -1,
+        });
+  
+        this.anims.create({
+          key: 'left',
+          frames: this.anims.generateFrameNames('player', {
+            prefix: 'p3_walk',
+            start: 5,
+            end: 8,
+            zeroPad: 2,
+          }),
+          frameRate: 10,
+          repeat: -1,
+        });
+  
+        // idle with only one frame, so repeat is not neaded
+        this.anims.create({
+          key: 'idle',
+          frames: this.anims.generateFrameNames('player', {
+            prefix: 'p3_stand',
+            start: 1,
+            end: 2,
+            zeroPad: 2,
+          }),
+          // frames: [{key: 'player', frame: 'p1_stand02'}],
+          frameRate: 2,
+          repeat: -1,
+        });
+  
+        this.anims.create({
+          key: 'jump',
+          frames: [{ key: 'player', frame: 'p3_jump' }],
+          frameRate: 10,
+        });
+      } 
 
     this.cursors = this.input.keyboard.createCursorKeys();
 

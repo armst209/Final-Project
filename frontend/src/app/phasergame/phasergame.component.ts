@@ -33,22 +33,20 @@ export class PhasergameComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    document.getElementById('characterName').innerText = 'other';
+    document.getElementById('characterName').innerText = 'Choose Your Character';
     console.log(document.getElementById('game-area'));
   }
 
   // tslint:disable-next-line:typedef
   ngOnInit() {
     this.phaserGame = new Phaser.Game(this.config);
-    // this.getPhysics();
+   
   }
-  // tslint:disable-next-line:typedef
-  // getPhysics() {
-  //   this.gameInfoService.getCharInfo().subscribe(response => {
-  //     this.charPhysics = response;
-  //     console.log(response);
-  //   });
-  // }
+  
+  closePhaserInstance(){
+    this.phaserGame.destroy(true);
+    console.log("link is being hit");
+  }
 }
 
 class MainScene extends Phaser.Scene {

@@ -2,10 +2,10 @@
     <div class="bar">
         <div class="nav">
             <div class="logo">
-                <p [routerLink]="['/home']" data-text="Break">Break</p>
+                <p [routerLink]="['/home']" (click)="closePhaserInstance()" data-text="Break">Break</p>
             </div>
-            <div [routerLink]="['/home']"class="item" id="selected">Discover</div>
-            <div class="item">Library</div>
+            <div [routerLink]="['/home']" (click)="closePhaserInstance()" class="item" id="selected">Discover</div>
+            <div (click)="closePhaserInstance()" class="item">Library</div>
             <div class="item">High Score</div>
             <div class="item">About us</div>
             

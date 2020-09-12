@@ -202,9 +202,12 @@ p::after {
   color: teal;
   border-bottom: 2px solid goldenrod;
 }
+
 #characterLine {
 	display: flex;
 	background-color: #031625;
+	
+	
 }
 
 #characterLine:hover .tl-item {

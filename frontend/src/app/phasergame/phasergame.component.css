@@ -5,3 +5,22 @@
     /* border: 2px solid red; */
 }
 
+@media screen and (min-width:600px){
+	.nav {
+	  flex-direction: row;
+	}
+  
+	.logo {
+	  height:auto;
+	  padding: 0 1.5em 0 1em;
+	}
+	
+  }
+
+
+@media screen and (max-width:730px){
+	.nav {
+	  flex-direction: column;
+	}
+
+  }

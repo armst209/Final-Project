@@ -87,9 +87,43 @@
 	box-shadow: 0 3px 7px rgba(0, 0, 0, 0.6);
 }
 
+
+.carousel-indicators {
+	display: none;
+  }
+
+@media screen and (min-width:730px){
+  .nav {
+    flex-direction: row;
+  }
+
+  .logo {
+    height:auto;
+    padding: 0 1.5em 0 1em;
+  }
+  
+}
+
+@media screen and (max-width: 730px){
+
+	.nav {
+		flex-direction: column;
+		text-align:center;
+	  }
+
+	.item {
+		
+		text-align: center;
+	}
+	
+}
+
 @media (max-width: 400px) {
 	#modal-toggle.active ~ .modal-content,
       #modal-toggle:checked ~ .modal-content {
 		left: 0;
 	}
+
+	
+	 
 }

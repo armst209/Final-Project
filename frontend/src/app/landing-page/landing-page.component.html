@@ -1,4 +1,4 @@
-<!-- <div class="container"> -->
+
     <div class="bar">
         <div class="nav">
             <div class="logo">
@@ -21,10 +21,21 @@
         </div>
     </div>
  
-    
-<!-- </div> -->
+    <mdb-carousel style="display:flex; text-align: center; width: 100%; padding-top: 1em" [isControls]="true" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
+      [animation]="'slide'">
+      <mdb-carousel-item style="margin-top: 1em;" *ngFor="let item of slides; let i = index">
+        <div class="col-md-4" [ngClass]="{'d-none d-md-block': cardIndex !== 0}"
+          *ngFor="let card of item; let cardIndex = index">
+          <mdb-card class="my-1">
+            <mdb-card-img [src]="card.img" alt="Card image cap"></mdb-card-img>
+          </mdb-card>
+        </div>
+      </mdb-carousel-item>
+    </mdb-carousel>
 
-<div class="games-carousel">
+
+
+<!-- <div class="games-carousel">
     
       <div class="nine columns">
         <div class="coverflow">
@@ -37,7 +48,7 @@
           <a class="next-arrow"></a>
         </div>
       </div>
-</div>
+</div> -->
 
 <div class="l-container">
     <div class="b-game-card">

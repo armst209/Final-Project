@@ -163,7 +163,7 @@ p::after {
 
 .bar {
   background-color: #18181b;
-  height: 50px;
+  height: auto;
   box-shadow: 0px 1px 1px black;
   z-index: 2;
   display: flex;
@@ -205,7 +205,9 @@ p::after {
 
 #characterLine {
 	display: flex;
+	
 	background-color: #031625;
+	padding: 3em 0;
 	
 	
 }
@@ -319,3 +321,15 @@ p::after {
 	transition: filter 0.5s ease;
 	filter: grayscale(100%);
 }
+
+@media screen and (min-width:600px){
+	.nav {
+	  flex-direction: row;
+	}
+  
+	.logo {
+	  height:auto;
+	  padding: 0 1.5em 0 1em;
+	}
+	
+  }

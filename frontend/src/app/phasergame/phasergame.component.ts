@@ -82,6 +82,7 @@ export class MainScene extends Phaser.Scene {
   timedEvent: any;
   winText: any;
   phaserGame: Phaser.Game;
+  gameOver = false;
 
 
   constructor(private gameInfoService: GameinfoService, private route : Router) {
@@ -485,11 +486,19 @@ export class MainScene extends Phaser.Scene {
   }
 
   collectCoin(sprite, tile) {
+  
     this.coinLayer.removeTileAt(tile.x, tile.y);
     this.score++;
+    if (this.score == 18) {
+      prompt('Enter Unique Username:');
+      this.player.pause(true);
+      // this.player.setTint('red');
+     
+    }
+    // document.getElementById('unique-id').innerHTML = prompt('Enter Unique Username:'); 
     document.getElementById('high-score').innerHTML = this.score.toString();
     this.text.setText(this.score);
-  
+   
     return false;
   }
 

@@ -1,4 +1,6 @@
-
+body{
+    background-color: #000;
+}
 img {
     max-width: 100%;
 }
@@ -13,7 +15,7 @@ img {
 }
 
 #team .team-single {
-    border: 8px solid #e6e9f4;
+    border: 8px solid #008080;
     margin: 0 auto;
     padding: 15px;
     width: 320px;
@@ -53,7 +55,7 @@ img {
 
 #team .team-social>ul>li>a {
     border-radius: 50%;
-    color: #3e6edf;
+    color: #DAA520;
     display: block;
     font-size: 18px;
     height: 40px;
@@ -67,7 +69,7 @@ img {
     transition: .3s
 }
 #team .team-social>ul>li>a:hover {
-    background: #3e6edf;
+    background: #008080;
     color: #fff
 }
 
@@ -178,7 +180,7 @@ img {
 .signature {
   width: 100%;
   display: inline-block;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
 }
 
@@ -201,7 +203,7 @@ h1:before {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	color: #000;
+	color:#DAA520;
 	overflow: hidden;
 	border-right: 1px solid #000;
 	animation: type 10s steps(30) infinite;

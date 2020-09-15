@@ -1,0 +1,57 @@
+{
+    "frames": [
+        {
+        "filename":"coin_turn01",
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 70,
+                "h": 70
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 70,
+                "h": 70
+            },
+            "sourceSize": {
+                "w": 70,
+                "h": 70
+            }
+        },
+        {
+        "filename": "coin_turn02",
+            "frame": {
+                "x": 70,
+                "y": 0,
+                "w": 70,
+                "h": 70
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 70,
+                "h": 70
+            },
+            "sourceSize": {
+                "w": 70,
+                "h": 70
+            }
+        }
+    ],
+    "meta": {
+        "app": "https://github.com/piskelapp/piskel/",
+        "version": "1.0",
+        "image": "jacob_coin.png",
+        "format": "RGBA8888",
+        "size": {
+            "w": 140,
+            "h": 70
+        },
+        "scale": 1
+    }
+}

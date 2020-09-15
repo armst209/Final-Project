@@ -26,7 +26,9 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
   ];
 
   slides: any = [[]];
-  constructor(private renderer : Renderer2, private gameInfoService : GameinfoService) {}
+  constructor(private renderer : Renderer2, private gameInfoService : GameinfoService) {
+ 
+  }
 
   chunk(arr: any, chunkSize: number) {
     let R = [];
@@ -51,7 +53,7 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
   }
 
   getHighScore(){
-    console.log(document.getElementById('high-score').innerHTML)
+    
     return document.getElementById('high-score').innerHTML;
   }
 

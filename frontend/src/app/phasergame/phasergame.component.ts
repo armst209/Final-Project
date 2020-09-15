@@ -13,6 +13,17 @@ export class PhasergameComponent implements OnInit, OnDestroy {
   config: Phaser.Types.Core.GameConfig;
   charPhysics: any;
 
+   getHighScore(){
+      
+      return document.getElementById('high-score').innerHTML;
+    }
+
+    getUniqueId(){
+
+      return document.getElementById('unique-id').innerHTML;
+    }
+  
+
   constructor(private gameInfoService: GameinfoService) {
     this.config = {
       type: Phaser.AUTO,
@@ -35,7 +46,7 @@ export class PhasergameComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     document.getElementById('characterName').innerText = 'Choose Your Character';
-    console.log(document.getElementById('game-area'));
+    
   }
 
   // tslint:disable-next-line:typedef
@@ -46,11 +57,16 @@ export class PhasergameComponent implements OnInit, OnDestroy {
   
   closePhaserInstance(){
     this.phaserGame.destroy(true);
-    console.log("link is being hit");
+ 
   }
 }
 
-class MainScene extends Phaser.Scene {
+@Component({
+  selector: 'app-game',
+  template: '',
+  styles: []
+})
+export class MainScene extends Phaser.Scene {
   map: any;
   player: any;
   cursors: any;
@@ -70,7 +86,7 @@ class MainScene extends Phaser.Scene {
 
   constructor(private gameInfoService: GameinfoService, private route : Router) {
     super({ key: 'main' });
-    
+   
 
   }
 
@@ -80,9 +96,9 @@ class MainScene extends Phaser.Scene {
   }
 
   preload() {
-    console.log(document.getElementById('characterName').innerText);
+    
     if (document.getElementById('characterName').innerText == 'Aaron') {
-      console.log('you hit 1');
+     
       // map made with Tiled in JSON format
       this.load.tilemapTiledJSON('map', './assets/map.json');
       // tiles in spritesheet
@@ -101,7 +117,7 @@ class MainScene extends Phaser.Scene {
 
       // this.load.image('sky', './assets/sky.png');
     } else if (document.getElementById('characterName').innerText == 'Amber') {
-      console.log('you hit 2');
+    
       // map made with Tiled in JSON format
       this.load.tilemapTiledJSON('map', './assets/map.json');
       // tiles in spritesheet
@@ -120,7 +136,7 @@ class MainScene extends Phaser.Scene {
     } else if (
       document.getElementById('characterName').innerText == 'Garrett'
     ) {
-      console.log('you hit 2');
+      
       // map made with Tiled in JSON format
       this.load.tilemapTiledJSON('map', './assets/map.json');
       // tiles in spritesheet
@@ -169,7 +185,7 @@ class MainScene extends Phaser.Scene {
 
     // coin image used as tileset
     this.coinTiles = this.map.addTilesetImage('coin');
-    console.log(this.coinTiles);
+   
     // this.tile = this.coinTiles;
     // add coins as tiles
     this.coinLayer = this.map.createDynamicLayer('Coins', this.coinTiles, 0, 0);
@@ -384,7 +400,7 @@ class MainScene extends Phaser.Scene {
 
     //playing music
     this.music = this.sound.add('level1', {volume: 0.3});
-    this.music.play();
+    // this.music.play();
   }
 
   update(time, delta) {
@@ -473,8 +489,8 @@ class MainScene extends Phaser.Scene {
     this.score++;
     document.getElementById('high-score').innerHTML = this.score.toString();
     this.text.setText(this.score);
-    console.log(tile);
-
+  
     return false;
   }
+
 }

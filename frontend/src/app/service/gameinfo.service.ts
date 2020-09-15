@@ -9,6 +9,7 @@ export class GameinfoService {
 
   selectedCharacter: any;
   playerOne: any;
+  random: string = 'random';
  
   constructor(private http: HttpClient ) { }
 

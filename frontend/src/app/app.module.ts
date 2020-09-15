@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CharactersComponent } from './characters/characters.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { PhasergameComponent } from './phasergame/phasergame.component';
+import { PhasergameComponent, MainScene } from './phasergame/phasergame.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { PhasergameComponent } from './phasergame/phasergame.component';
     CharactersComponent,
     LandingPageComponent,
     PhasergameComponent,
-   
+    MainScene
   ],
   imports: [
     BrowserModule,

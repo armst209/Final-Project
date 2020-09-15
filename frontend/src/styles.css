@@ -231,7 +231,9 @@ p::after {
 
 #selected {
   color: teal;
+  
   border-bottom: 2px solid goldenrod;
+  /* text-decoration: underline goldenrod; */
   display: flex;
   justify-content: center;
   align-items: center;

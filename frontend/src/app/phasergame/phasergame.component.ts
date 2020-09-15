@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import Phaser from 'phaser';
 import { GameinfoService } from '../service/gameinfo.service';
 
@@ -66,10 +67,14 @@ class MainScene extends Phaser.Scene {
   winText: any;
   phaserGame: Phaser.Game;
 
-  constructor(private gameInfoService: GameinfoService) {
+
+  constructor(private gameInfoService: GameinfoService, private route : Router) {
     super({ key: 'main' });
+    
+
   }
 
+ 
   getSelectedPlayer() {
     return this.gameInfoService.selectedCharacter;
   }
@@ -466,6 +471,7 @@ class MainScene extends Phaser.Scene {
   collectCoin(sprite, tile) {
     this.coinLayer.removeTileAt(tile.x, tile.y);
     this.score++;
+    document.getElementById('high-score').innerHTML = this.score.toString();
     this.text.setText(this.score);
     console.log(tile);
 

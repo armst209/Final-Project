@@ -1,4 +1,6 @@
-import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, OnInit, Renderer2} from '@angular/core';
+
+import { GameinfoService } from '../service/gameinfo.service';
 
 
 
@@ -8,6 +10,9 @@ import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit, AfterViewInit {
+
+
+
   cards = [
     {img: 'https://image-cdn.essentiallysports.com/wp-content/uploads/20200829002100/Animal-Crossing-New-Horizons-PC-Unlocked-Version-Download-Full-Free-Game-Setup-1600x900-4.jpg'},
     {img: 'https://i1.wp.com/www.newsgroove.co.uk/wp-content/uploads/2019/08/_467_The-20-Most-Popular-Video-Games-Right-Now-2019-Wealthy-Gorilla.jpg?resize=800%2C400&ssl=1'},
@@ -21,7 +26,7 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
   ];
 
   slides: any = [[]];
-  constructor(private renderer : Renderer2) {}
+  constructor(private renderer : Renderer2, private gameInfoService : GameinfoService) {}
 
   chunk(arr: any, chunkSize: number) {
     let R = [];
@@ -44,7 +49,12 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
       this.renderer.addClass(el.firstElementChild, 'fa-3x');
     });
   }
-    
+
+  getHighScore(){
+    console.log(document.getElementById('high-score').innerHTML)
+    return document.getElementById('high-score').innerHTML;
+  }
+
 }
 
 

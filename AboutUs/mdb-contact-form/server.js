@@ -11,8 +11,8 @@ const transporter = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
-    user: ' ', // Enter here email address from which you want to send emails
-    pass: ' ' // Enter here password for email account from which you want to send emails
+    user: 'amber.dostert@gmail.com ', 
+    pass: '^_^4znfacE'
   },
   tls: {
   rejectUnauthorized: false
@@ -37,7 +37,7 @@ app.post('/send', function (req, res) {
   let copyToSender = req.body.contactFormCopy;
 
   let mailOptions = {
-    to: [' '], // Enter here the email address on which you want to send emails from your customers
+    to: ['amber.dostert@gmmail.com'], 
     from: senderName,
     subject: messageSubject,
     text: messageText,
@@ -92,5 +92,5 @@ app.post('/send', function (req, res) {
 });
 
 app.listen(port, function () {
-  console.log('Express started on port: ', port);
+  console.log('Express started on port: 3000 ', port);
 });

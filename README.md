@@ -42,15 +42,17 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-blah blah blah
+[![Product Name Screen Shot]
+blah blah blah stuff about the project
 
 ### Built With
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+
+* [Angular](https://angular.io)
 * [Bootstrap](https://getbootstrap.com)
 * [JQuery](https://jquery.com)
 * [phaser](https://phaser.io/)
-*[angular](https://angular.io/)
+* [NodeMailer](https://nodemailer.com)
 
 
 

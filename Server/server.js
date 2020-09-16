@@ -3,7 +3,7 @@
 //LINK SERVER ON HEROKU
 //CREATE GIT INIT FIRST THEN NEW HEROKU
 //CREATE DATABASE WITH PGADMIN
-
+const nodemailer = require("nodemailer");
 const express = require('express');
 const app = express();
 
@@ -24,6 +24,7 @@ app.use(express.json());
 app.use('/characters', characters);
 app.use('/scores', scores);
 app.use('/login', login);
+app.get('/email',)
 
 //LISTENING ON PORT
 app.listen(process.env.PORT || 3000, () => {

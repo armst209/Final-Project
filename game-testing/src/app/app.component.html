@@ -1,14 +1,10 @@
 <div id='game-area'>
-
-  <!-- CONTAINS PHASER GAME, DONT PUT ANYTHING ELSE INSIDE THIS DIV -->
-
-
+  <!-- UNIQUE ID FORM -->
   <div id="form">
-    
-    Enter Unique ID: <input name="id" type="text">
-    <button (click)="submitUniqueId()"> ENTER</button>
+    <label for=""> Enter Unique ID:</label>
+    <input type="text" #uniqueId  />
+    <button (click)="getUniqueIdValue(uniqueId.value)">ENTER</button>
   </div>
-
 </div>
+<p>Unique ID: {{value}}</p>
 
-<!-- YOU WIN FORM -->

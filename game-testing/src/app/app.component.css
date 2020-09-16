@@ -1,7 +1,28 @@
 #form {
     display:none;
-    position:absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    color:white;
+    
     top: 1em;
+    background-color: rgba(0, 0, 0, 0.562);
+    top:5em;
+    z-index: 999;
+    width:800px;
+    height:600px;
    
 
+}
+
+.closeX {
+
+    cursor: pointer;
+}
+
+input, button {
+
+/* 
+    width:25em; */
 }

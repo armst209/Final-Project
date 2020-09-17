@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "mdb-contact-form"
+    }
+  },
+  "defaultProject": "mdb-contact-form",
+  "cli": {
+    "analytics": "d7dd3884-837e-4ab0-826a-5db890ed02e5"
+  }
 }

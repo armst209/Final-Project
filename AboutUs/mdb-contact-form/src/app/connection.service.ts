@@ -13,4 +13,8 @@ sendMessage(messageContent: any) {
   JSON.stringify(messageContent),
   { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' });
 }
+
+sendEmail(subject, message, email) {
+  this.http.post('http://localhost:3000/send-email', {subject: subject, message: message, email: email});
+}
 }

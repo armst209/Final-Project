@@ -1,234 +1,234 @@
 {
     "frames": [
          {
-        "filename":"p1_walk01",
+        "filename": "p1_walk01",
             "frame": {
                 "x": 0,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             },
             "rotated": false,
             "trimmed": false,
             "spriteSourceSize": {
                 "x": 0,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             },
             "sourceSize": {
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             }
         },
         {
-        "filename":"p1_walk02",
+        "filename": "p1_walk02",
             "frame": {
-                "x": 144,
+                "x": 70,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             },
             "rotated": false,
             "trimmed": false,
             "spriteSourceSize": {
                 "x": 0,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             },
             "sourceSize": {
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             }
         },
         {
-        "filename": "p1_walk03", 
+        "filename": "p1_walk03",
             "frame": {
-                "x": 288,
+                "x": 140,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             },
             "rotated": false,
             "trimmed": false,
             "spriteSourceSize": {
                 "x": 0,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             },
             "sourceSize": {
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             }
         },
         {
         "filename": "p1_walk04",
             "frame": {
-                "x": 432,
+                "x": 210,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             },
             "rotated": false,
             "trimmed": false,
             "spriteSourceSize": {
                 "x": 0,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             },
             "sourceSize": {
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             }
         },
         {
         "filename": "p1_stand01",
             "frame": {
-                "x": 576,
+                "x": 280,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             },
             "rotated": false,
             "trimmed": false,
             "spriteSourceSize": {
                 "x": 0,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             },
             "sourceSize": {
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             }
         },
         {
         "filename":"p1_stand02",
             "frame": {
-                "x": 720,
+                "x": 350,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             },
             "rotated": false,
             "trimmed": false,
             "spriteSourceSize": {
                 "x": 0,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             },
             "sourceSize": {
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             }
         },
         {
         "filename": "jump",
             "frame": {
-                "x": 864,
+                "x": 420,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             },
             "rotated": false,
             "trimmed": false,
             "spriteSourceSize": {
                 "x": 0,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             },
             "sourceSize": {
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             }
         },
         {
         "filename":"p1_walk05",
             "frame": {
-                "x": 1008,
+                "x": 490,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             },
             "rotated": false,
             "trimmed": false,
             "spriteSourceSize": {
                 "x": 0,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             },
             "sourceSize": {
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             }
         },
         {
-        "filename":"p1_walk06",
+        "filename": "p1_walk06",
             "frame": {
-                "x": 1152,
+                "x": 560,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             },
             "rotated": false,
             "trimmed": false,
             "spriteSourceSize": {
                 "x": 0,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             },
             "sourceSize": {
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             }
         },
         {
-        "filename":"p1_walk07",
+        "filename": "p1_walk07",
             "frame": {
-                "x": 1296,
+                "x": 630,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             },
             "rotated": false,
             "trimmed": false,
             "spriteSourceSize": {
                 "x": 0,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             },
             "sourceSize": {
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             }
         },
         {
         "filename": "p1_walk08",
             "frame": {
-                "x": 1440,
+                "x": 700,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             },
             "rotated": false,
             "trimmed": false,
             "spriteSourceSize": {
                 "x": 0,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             },
             "sourceSize": {
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 65
             }
         }
     ],
@@ -238,8 +238,8 @@
         "image": "Aaron.png",
         "format": "RGBA8888",
         "size": {
-            "w": 1584,
-            "h": 144
+            "w": 770,
+            "h": 65
         },
         "scale": 1
     }

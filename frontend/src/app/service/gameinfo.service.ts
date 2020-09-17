@@ -17,5 +17,11 @@ export class GameinfoService {
     return this.http.get<any>('https://char-info.herokuapp.com/characters/');
   }
 
+  getUniqueScore(id: string, score: number){
+
+    return this.http.post<any>('https://game-backend3412.herokuapp.com/scores/', {id:id, score: score})
+   }
+
+
 
 }

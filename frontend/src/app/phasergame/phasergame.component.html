@@ -1,28 +1,40 @@
-
-    <div class="bar" >
-        <div class="nav">
-            <div [routerLink]="['/home']" (click)="closePhaserInstance()"class="logo">
-                <p data-text="Break" >Break</p>
-            </div>
-            <div class="item" id="selected" (click)="closePhaserInstance()">Discover</div>
-            <div class="item" (click)="closePhaserInstance()">Library</div>
-            <div class="modal-container">
-              <input id="modal-toggle" type="checkbox">
-          <label class="item" for="modal-toggle">Current Score</label>
-          <label class="modal-backdrop" for="modal-toggle"></label>
-          <div class="modal-content">
-            <label class="modal-close" for="modal-toggle">&#x2715;</label>
-            <h2>{{getUniqueId()}}</h2><hr />
-            <h1>{{getHighScore()}}</h1> 
-            <label class="modal-content-btn" for="modal-toggle">OK</label>   
-          </div>   
-          </div> 
-            <div class="item">About us</div>
-        </div>
+<div class="bar">
+  <div class="nav">
+    <div [routerLink]="['/home']" (click)="closePhaserInstance()" class="logo">
+      <p data-text="Break">Break</p>
     </div>
-
-    <div id='game-area'>
-
-    <!-- CONTAINS PHASER GAME, DONT PUT ANYTHING ELSE INSIDE THIS DIV -->
-
+    <div class="item" id="selected" (click)="closePhaserInstance()">Discover</div>
+    <div class="item" (click)="closePhaserInstance()">Library</div>
+    <div class="modal-container">
+      <input id="modal-toggle" type="checkbox">
+      <label class="item" for="modal-toggle">Current Score</label>
+      <label class="modal-backdrop" for="modal-toggle"></label>
+      <div class="modal-content">
+        <label class="modal-close" for="modal-toggle">&#x2715;</label>
+        <h2></h2>
+        <hr />
+        <h1></h1>
+        <label class="modal-content-btn" for="modal-toggle">OK</label>
+      </div>
     </div>
+    <div class="item">About us</div>
+  </div>
+</div>
+
+<div id='game-area'>
+  
+  <div id="form">
+    <div class="closeX" (click)="closeGameEnd()">X</div>
+    <h1>Try Again!</h1>
+    <label for=""> Enter Unique ID:</label>
+    <input type="text" #uniqueId />
+    <button (click)="getUniqueIdValue(uniqueId.value)">ENTER</button>
+    <img class="grace-photo" src="../../assets/grace.jpg" alt="photo of Grace">
+  </div>
+</div>
+<div class="game-info">
+<div>Unique ID: {{value}}</div>
+<h3>Score:</h3>
+<div id="score"></div>
+<div>Assessment Passed: </div>
+</div>

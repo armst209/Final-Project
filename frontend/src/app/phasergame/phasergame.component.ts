@@ -11,18 +11,28 @@ import { GameinfoService } from '../service/gameinfo.service';
 export class PhasergameComponent implements OnInit, OnDestroy {
   phaserGame: Phaser.Game;
   config: Phaser.Types.Core.GameConfig;
-  charPhysics: any;
 
-   getHighScore(){
-      
-      return document.getElementById('high-score').innerHTML;
-    }
+  title = 'game-testing';
+  value = '';
 
-    getUniqueId(){
+  closeGameEnd() {
 
-      return document.getElementById('unique-id').innerHTML;
-    }
-  
+    document.getElementById('form').style.display = "none"
+    this.phaserGame.destroy(true);
+    location.reload();
+  }
+
+  getUniqueIdValue(value: string) {
+    let score = document.getElementById('score').innerHTML;
+    this.value = value;
+    console.log(this.value);
+    console.log(score);
+    this.gameInfoService.getUniqueScore(value, parseInt(score)).subscribe(response => {
+
+      console.log(response);
+    })
+  };
+
 
   constructor(private gameInfoService: GameinfoService) {
     this.config = {
@@ -46,18 +56,18 @@ export class PhasergameComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     document.getElementById('characterName').innerText = 'Choose Your Character';
-    
+
   }
 
   // tslint:disable-next-line:typedef
   ngOnInit() {
     this.phaserGame = new Phaser.Game(this.config);
-   
+
   }
-  
-  closePhaserInstance(){
+
+  closePhaserInstance() {
     this.phaserGame.destroy(true);
- 
+
   }
 }
 
@@ -72,168 +82,131 @@ export class MainScene extends Phaser.Scene {
   cursors: any;
   groundLayer: any;
   coinLayer: any;
+  enemies: any;
   groundTiles: any;
   text: any;
   coinTiles: any;
+  coins: any;
   score = 0;
-  music:any;
+  assessment = 0;
+  scoreText: any;
+  assessText: any;
+  music: any;
+  failSound: any;
+  loadScreen: any;
   sprite: any;
-  timerText: any;
+  timeText: any;
   timedEvent: any;
+  timer: any;
+  bombs: any;
+  bomb: any;
+  x: any;
+  background: any;
+  platforms: any;
+  movingPlatform: any;
+  enemyHitSound: any;
+  uniqueId: string;
   winText: any;
-  phaserGame: Phaser.Game;
-  uniqueId: string = prompt("Enter Your Unique ID:")
-  
+  gameOver = false;
 
 
-  constructor(private gameInfoService: GameinfoService, private route : Router) {
+  constructor(private gameInfoService: GameinfoService, private route: Router) {
     super({ key: 'main' });
-   
+
 
   }
 
- 
+
   getSelectedPlayer() {
     return this.gameInfoService.selectedCharacter;
   }
 
   preload() {
-    
-    if (document.getElementById('characterName').innerText == 'Aaron') {
-     
-      // map made with Tiled in JSON format
-      this.load.tilemapTiledJSON('map', './assets/map.json');
-      // tiles in spritesheet
-      this.load.spritesheet('tiles', './assets/tiles.png', {
-        frameWidth: 70,
-        frameHeight: 70,
-      });
-      // simple coin image
-      this.load.atlas(
-        'coin',
-        './assets/jacob_coin.png',
-        'assets/jacob_coin.json'
-      );
-      // player animations
-      this.load.atlas('player', './assets/Aaron.png', 'assets/Aaron.json');
 
-      // this.load.image('sky', './assets/sky.png');
-    } else if (document.getElementById('characterName').innerText == 'Amber') {
-    
-      // map made with Tiled in JSON format
-      this.load.tilemapTiledJSON('map', './assets/map.json');
-      // tiles in spritesheet
-      this.load.spritesheet('tiles', './assets/tiles.png', {
-        frameWidth: 70,
-        frameHeight: 70,
-      });
-      // simple coin image
+    if (document.getElementById('characterName').innerText == 'Aaron') {
+
+      //loading background
+      this.load.image('sky', 'assets/sky.png');
+
+      //loading coins
       this.load.atlas(
-        'coin',
-        './assets/jacob_coin.png',
-        'assets/jacob_coin.json'
+        'coin', '../assets/jacob_coin.png', '../assets/jacob_coin.json'
       );
+
       // player animations
-      this.load.atlas('player', './assets/Amber.png', 'assets/Amber.json');
+      this.load.atlas('player', '../assets/Aaron.png', '../assets/Aaron.json');
+
+      //loading platforms
+
+      this.load.image('ground', 'assets/platform.png');
+      //loads enemies
+
+      this.load.image('bomb', 'assets/html.png');
+      this.load.image('bomb-1', 'assets/css.png');
+      this.load.image('bomb2', 'assets/javascript.png');
+      this.load.image('bomb3', 'assets/dom.png');
+      this.load.image('bomb4', 'assets/typescript.png');
+      this.load.image('nicole', 'assets/nicon.png');
+    } else if (document.getElementById('characterName').innerText == 'Amber') {
+
+
     } else if (
       document.getElementById('characterName').innerText == 'Garrett'
     ) {
-      
-      // map made with Tiled in JSON format
-      this.load.tilemapTiledJSON('map', './assets/map.json');
-      // tiles in spritesheet
-      this.load.spritesheet('tiles', './assets/tiles.png', {
-        frameWidth: 70,
-        frameHeight: 70,
-      });
-      // simple coin image
-      this.load.atlas(
-        'coin',
-        './assets/jacob_coin.png',
-        'assets/jacob_coin.json'
-      );
-      // player animations
-      this.load.atlas('player', './assets/Garrett.png', 'assets/Garrett.json');
+
+
     }
 
     //loading music
     this.load.audio('level1', [
       'assets/level_2.ogg',
       'assets/level_2.mp3'
-  ])
+    ])
+    this.load.audio('tryagain', '../assets/arp.wav');
+    this.load.audio('loadScreen', '../assets/level_1.mp3')
+
   }
 
   create() {
-    //timer
-    this.timerText = this.add.text(20, 100, '');
-    this.timedEvent = this.time.delayedCall(10000, this.onEvent, []);
-    this.timerText.setScrollFactor(0);
+    this.background = this.add.image(400, 300, 'sky');
 
-    this.add.image(400, 300, 'sky');
-    // load the map
-    this.map = this.make.tilemap({ key: 'map' });
+    //playing music
+    this.music = this.sound.add('level1', { volume: 0.3 });
+    this.failSound = this.sound.add('tryagain');
+    this.loadScreen = this.sound.add('loadScreen');
+     this.music.play();
 
-    // tiles for the ground layer
-    this.groundTiles = this.map.addTilesetImage('tiles');
-    // create the ground layer
-    this.groundLayer = this.map.createDynamicLayer(
-      'World',
-      this.groundTiles,
-      0,
-      0
-    );
-    // the player will collide with this layer
-    this.groundLayer.setCollisionByExclusion([-1]);
+    this.timeText = this.add.text(720, 20, 'Time', { fontSize: '20px', fill: '#222222' });
 
-    // coin image used as tileset
-    this.coinTiles = this.map.addTilesetImage('coin');
-   
-    // this.tile = this.coinTiles;
-    // add coins as tiles
-    this.coinLayer = this.map.createDynamicLayer('Coins', this.coinTiles, 0, 0);
+    this.text = this.add.text(32, 32, '');
+    this.timedEvent = this.time.delayedCall(3000, this.onEvent, [], this);
 
-    // set the boundaries of our game world
-    this.physics.world.bounds.width = this.groundLayer.width;
-    this.physics.world.bounds.height = this.groundLayer.height;
+    this.platforms = this.physics.add.staticGroup();
+    //  Here we create the ground.
+    //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
+    this.platforms.create(400, 568, 'ground').setScale(2).refreshBody();
+
+
+    //  Now let's create some ledges
+    //  this.platforms.create(600, 400, 'ground');
+    this.platforms.create(50, 300, 'ground');
+    this.platforms.create(750, 220, 'ground');
+
 
     // create the player sprite
     if (document.getElementById('characterName').innerText == 'Aaron') {
-      this.player = this.physics.add.sprite(10, 0, 'player');
+      this.player = this.physics.add.sprite(100, 450, 'player');
     } else if (document.getElementById('characterName').innerText == 'Amber') {
-      this.player = this.physics.add.sprite(10, 30, 'player');
+      // this.player = this.physics.add.sprite(10, 30, 'player');
     } else if (
       document.getElementById('characterName').innerText == 'Garrett'
     ) {
-      this.player = this.physics.add.sprite(10, 0, 'player');
+      // this.player = this.physics.add.sprite(10, 0, 'player');
     }
 
     this.player.setBounce(0.2); // our player will bounce from items
     this.player.setCollideWorldBounds(true); // don't go out of the map
-    this.sprite = this.player;
-    // small fix to our player images, we resize the physics body object slightly
-    this.player.body.setSize(this.player.width, this.player.height - 8);
 
-    //player will collide with the level tiles
-    this.physics.add.collider(this.groundLayer, this.player);
-
-    this.coinLayer.setTileIndexCallback(17, this.collectCoin, this);
-    // when the player overlaps with a tile with index 17, collectCoin
-    // will be called
-    this.physics.add.overlap(this.player, this.coinLayer);
-
-    //coin animation
-
-    this.anims.create({
-      key: 'coinTurn',
-      frames: this.anims.generateFrameNames('coin', {
-        prefix: 'coin_turn',
-        start: 1,
-        end: 2,
-        zeroPad: 2,
-      }),
-      frameRate: 4,
-      repeat: -1,
-    });
 
     // player 1 animation
 
@@ -329,84 +302,108 @@ export class MainScene extends Phaser.Scene {
         frames: [{ key: 'player', frame: 'p2_jump02' }],
         frameRate: 10,
       });
-    } 
+    }
 
-      // player 3 animation
+    // player 3 animation
 
-      else if (document.getElementById('characterName').innerText == 'Garrett') {
-        this.anims.create({
-          key: 'right',
-          frames: this.anims.generateFrameNames('player', {
-            prefix: 'p3_walk',
-            start: 1,
-            end: 4,
-            zeroPad: 2,
-          }),
-          frameRate: 10,
-          repeat: -1,
-        });
-  
-        this.anims.create({
-          key: 'left',
-          frames: this.anims.generateFrameNames('player', {
-            prefix: 'p3_walk',
-            start: 5,
-            end: 8,
-            zeroPad: 2,
-          }),
-          frameRate: 10,
-          repeat: -1,
-        });
-  
-        // idle with only one frame, so repeat is not neaded
-        this.anims.create({
-          key: 'idle',
-          frames: this.anims.generateFrameNames('player', {
-            prefix: 'p3_stand',
-            start: 1,
-            end: 2,
-            zeroPad: 2,
-          }),
-          // frames: [{key: 'player', frame: 'p1_stand02'}],
-          frameRate: 2,
-          repeat: -1,
-        });
-  
-        this.anims.create({
-          key: 'jump',
-          frames: [{ key: 'player', frame: 'p3_jump' }],
-          frameRate: 10,
-        });
-      } 
+    else if (document.getElementById('characterName').innerText == 'Garrett') {
+      this.anims.create({
+        key: 'right',
+        frames: this.anims.generateFrameNames('player', {
+          prefix: 'p3_walk',
+          start: 1,
+          end: 4,
+          zeroPad: 2,
+        }),
+        frameRate: 10,
+        repeat: -1,
+      });
 
+      this.anims.create({
+        key: 'left',
+        frames: this.anims.generateFrameNames('player', {
+          prefix: 'p3_walk',
+          start: 5,
+          end: 8,
+          zeroPad: 2,
+        }),
+        frameRate: 10,
+        repeat: -1,
+      });
+
+      // idle with only one frame, so repeat is not neaded
+      this.anims.create({
+        key: 'idle',
+        frames: this.anims.generateFrameNames('player', {
+          prefix: 'p3_stand',
+          start: 1,
+          end: 2,
+          zeroPad: 2,
+        }),
+        // frames: [{key: 'player', frame: 'p1_stand02'}],
+        frameRate: 2,
+        repeat: -1,
+      });
+
+      this.anims.create({
+        key: 'jump',
+        frames: [{ key: 'player', frame: 'p3_jump' }],
+        frameRate: 10,
+      });
+    }
+
+    //INPUT
     this.cursors = this.input.keyboard.createCursorKeys();
 
-    // set bounds so the camera won't go outside the game world
-    this.cameras.main.setBounds(
-      0,
-      0,
-      this.map.widthInPixels,
-      this.map.heightInPixels
-    );
-    // make the camera follow the player
-    this.cameras.main.startFollow(this.player);
 
-    // set background color, so the sky is not black
-    this.cameras.main.setBackgroundColor('#ccccff');
 
-    this.text = this.add.text(20, 570, '0', {
-      fontSize: '20px',
-      fill: '#ffffff',
+    //COLLECTING COINS
+    this.coins = this.physics.add.group({
+      key: 'coin',
+      repeat: 9,
+      setXY: { x: 12, y: 0, stepX: 70 },
+      // immovable: true
+
     });
-    this.text.setScrollFactor(0);
 
-    //playing music
-    this.music = this.sound.add('level1', {volume: 0.3});
-    // this.music.play();
+    this.coins.children.iterate(function (child) {
+      //  Give each star a slightly different bounce
+      child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
+    });
+
+    this.enemies = this.physics.add.group();
+
+    this.scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '20px', fill: '#000' });
+    this.assessText = this.add.text(16, 40, 'Assesements Passed: 0', { fontSize: '20px', fill: '#000' })
+    //  Collide the player and the stars with the platforms
+    this.physics.add.collider(this.player, this.platforms);
+    this.physics.add.collider(this.coins, this.platforms);
+    this.physics.add.collider(this.enemies, this.platforms);
+
+    //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
+    this.physics.add.overlap(this.player, this.coins, this.collectStar, null, this);
+    this.physics.add.collider(this.player, this.enemies, this.hitBomb, null, this);
+
+    //CAMERA
+
+    // make the camera follow the player
+    // this.cameras.main.startFollow(this.player);
+
   }
 
   update(time, delta) {
     // this.getSelectedPlayer().speed
+
+    //MOVING PLATFORM BOUNDARIES
+    // if (this.movingPlatform.x >= 500)
+    // {
+    //     this.movingPlatform.setVelocityX(-75);
+    // }
+    // else if (this.movingPlatform.x <= 300)
+    // {
+    //     this.movingPlatform.setVelocityX(75);
+    // }
+
 
     //player 1 controls
     if (document.getElementById('characterName').innerText == 'Aaron') {
@@ -428,7 +425,7 @@ export class MainScene extends Phaser.Scene {
         this.player.body.setVelocityX(0);
         this.player.anims.play('idle', true);
       }
-    } 
+    }
     //player 2 controls
     else if (document.getElementById('characterName').innerText == 'Amber') {
       if (this.cursors.left.isDown) {
@@ -449,7 +446,7 @@ export class MainScene extends Phaser.Scene {
         this.player.body.setVelocityX(0);
         this.player.anims.play('idle', true);
       }
-    } 
+    }
     //player 3 controls
     else if (
       document.getElementById('characterName').innerText == 'Garrett'
@@ -474,39 +471,146 @@ export class MainScene extends Phaser.Scene {
       }
     }
 
-    //TIMER
-    this.timerText.setText(
-      'Time: ' + this.timedEvent.getProgress().toString().substr(0, 4)
-    );
   }
+
+  //OUR METHODS
+
+  setScore() {
+    document.getElementById('score').innerHTML = this.score.toString();
+  }
+
+  collectNicole() {
+    console.log("you hit nicole");
+    this.score += 20;
+    this.setScore();
+    this.scoreText.setText('Score: ' + this.score);
+    this.movingPlatform.destroy();
+
+  }
+
+  collectStar(player: any, coin: any) {
+    coin.disableBody(true, true);
+
+    //  Add and update the score
+    this.score += 10;
+    this.setScore();
+    this.scoreText.setText('Score: ' + this.score);
+
+    if (this.coins.countActive(true) === 2) {
+      //  A new batch of stars to collect
+      this.coins.children.iterate(function (child) {
+
+        child.enableBody(true, child.x, 0, true, true);
+
+      });
+
+      let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+
+
+    }
+    //HTML & CSS
+    if (this.score == 80) {
+      this.assessment++
+      this.assessText.setText('Assessments Passed: ' + this.assessment)
+      
+      this.movingPlatform = this.physics.add.image(16, 500, 'nicole');
+      this.movingPlatform.setImmovable(true);
+      this.movingPlatform.body.allowGravity = false;
+      this.movingPlatform.setVelocityX(50);
+      this.physics.add.overlap(this.player, this.movingPlatform, this.collectNicole, null, this);
+
+      let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+      let bomb2 = this.enemies.create(x, 16, 'bomb');
+      bomb2.setBounce(1);
+      bomb2.setCollideWorldBounds(true);
+      bomb2.setVelocity(Phaser.Math.Between(-200, 200), 20);
+      bomb2.allowGravity = false;
+
+      let bomb2One = this.enemies.create(x, 16, 'bomb-1');
+      bomb2One.setBounce(1);
+      bomb2One.setCollideWorldBounds(true);
+      bomb2One.setVelocity(Phaser.Math.Between(-200, 200), 20);
+      bomb2One.allowGravity = false;
+    }
+    //JAVASCRIPT
+    if (this.score == 160) {
+      this.assessment++
+      this.assessText.setText('Assessments Passed: ' + this.assessment)
+
+      let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+      let bomb2 = this.enemies.create(x, 16, 'bomb2');
+
+      bomb2.setBounce(1);
+      bomb2.setCollideWorldBounds(true);
+      bomb2.setVelocity(Phaser.Math.Between(-200, 200), 20);
+      bomb2.allowGravity = false;
+
+
+    }
+
+    //DOM
+
+   if (this.score == 240) {
+      this.assessment++
+      this.assessText.setText('Assessments Passed: ' + this.assessment)
+
+      let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+      let bomb2 = this.enemies.create(x, 16, 'bomb3');
+
+      this.movingPlatform = this.physics.add.image(16, 300, 'nicole');
+      this.movingPlatform.setImmovable(true);
+      this.movingPlatform.body.allowGravity = false;
+      this.movingPlatform.setVelocityX(50);
+      this.physics.add.overlap(this.player, this.movingPlatform, this.collectNicole, null, this);
+
+      
+      bomb2.setBounce(1);
+      bomb2.setCollideWorldBounds(true);
+      bomb2.setVelocity(Phaser.Math.Between(-200, 200), 20);
+      bomb2.allowGravity = false;
+    }
+    //TYPESCRIPT
+    if (this.score == 320) {
+      this.assessment++
+      this.assessText.setText('Assessments Passed: ' + this.assessment)
+      let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+      let bomb2 = this.enemies.create(x, 16, 'bomb4');
+      bomb2.setBounce(1);
+      bomb2.setCollideWorldBounds(true);
+      bomb2.setVelocity(Phaser.Math.Between(-200, 200), 20);
+      bomb2.allowGravity = false;
+    }
+
+  }
+
 
   onEvent() {
-    // this.player.pause()
-    // this.winText = this.add.text(100,100, 'YOU WIN!!');
+    // this.player.setTint(0xff0000)
+    // this.add.text(20,120, 'YOU LOSE!').setScrollFactor(0);
     // this.phaserGame.destroy(true);
+
   }
 
-  gameOver(){
-    
-    this.player.pause(true);
-    // this.player.setTint('red');
-    this.uniqueId;
-  }
- 
+  hitBomb() {
+    // this.player.setCollideWorldBounds(false);
+    document.getElementById('form').style.display = "flex";
+    this.music.stop();
+    this.failSound.play();
 
-  collectCoin(sprite, tile) {
-  
-    this.coinLayer.removeTileAt(tile.x, tile.y);
-    this.score++;
-    if (this.score == 18) {
-     this.gameOver()
-     
-    }
-    document.getElementById('unique-id').innerHTML = this.uniqueId.valueOf(); 
-    document.getElementById('high-score').innerHTML = this.score.toString();
-    this.text.setText(this.score);
-   
-    return false;
+    this.physics.pause();
+
+    this.player.setTint(0xff0000);
+    this.loadScreen.play();
+
+    // this.player.anims.play('idle');
+
+    // this.gameOver = true;
+
+  }
+
+  getScore() {
+
+    document.getElementById('score').innerText = this.score.toString();
   }
 
 }

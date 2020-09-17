@@ -1,45 +1,45 @@
 {
     "frames": [
         {
-        "filename":"coin_turn01",
+        "filename": "turn01",
             "frame": {
                 "x": 0,
                 "y": 0,
-                "w": 70,
-                "h": 70
+                "w": 38,
+                "h": 38
             },
             "rotated": false,
             "trimmed": false,
             "spriteSourceSize": {
                 "x": 0,
                 "y": 0,
-                "w": 70,
-                "h": 70
+                "w": 38,
+                "h": 38
             },
             "sourceSize": {
-                "w": 70,
-                "h": 70
+                "w": 38,
+                "h": 38
             }
         },
         {
-        "filename": "coin_turn02",
+        "filename": "turn02",
             "frame": {
-                "x": 70,
+                "x": 38,
                 "y": 0,
-                "w": 70,
-                "h": 70
+                "w": 38,
+                "h": 38
             },
             "rotated": false,
             "trimmed": false,
             "spriteSourceSize": {
                 "x": 0,
                 "y": 0,
-                "w": 70,
-                "h": 70
+                "w": 38,
+                "h": 38
             },
             "sourceSize": {
-                "w": 70,
-                "h": 70
+                "w": 38,
+                "h": 38
             }
         }
     ],
@@ -49,9 +49,9 @@
         "image": "jacob_coin.png",
         "format": "RGBA8888",
         "size": {
-            "w": 140,
-            "h": 70
+            "w": 76,
+            "h": 38
         },
-        "scale": 1
+        "scale":1
     }
 }

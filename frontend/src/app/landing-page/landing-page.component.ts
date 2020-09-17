@@ -54,7 +54,7 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
 
   getHighScore(){
     
-    return document.getElementById('high-score').innerHTML;
+    return document.getElementById('score').innerHTML;
   }
 
 }

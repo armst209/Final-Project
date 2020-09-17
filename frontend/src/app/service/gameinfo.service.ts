@@ -22,6 +22,9 @@ export class GameinfoService {
     return this.http.post<any>('https://game-backend3412.herokuapp.com/scores/', {id:id, score: score})
    }
 
+   getFullScoreInfo():Observable<any>{
 
+    return this.http.get<any>('https://game-backend3412.herokuapp.com/scores/');
+   }
 
 }

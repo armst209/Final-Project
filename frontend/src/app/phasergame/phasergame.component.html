@@ -21,20 +21,83 @@
   </div>
 </div>
 
-<div id='game-area'>
-  
-  <div id="form">
-    <div class="closeX" (click)="closeGameEnd()" [routerLink]="['/charselect']">X</div>
-    <h1>Try Again!</h1>
-    <label for=""> Enter Unique ID:</label>
-    <input type="text" #uniqueId />
-    <button (click)="getUniqueIdValue(uniqueId.value)">ENTER</button>
-    <img class="grace-photo" src="../../assets/grace.jpg" alt="photo of Grace">
+
+<div class="phaser-lms-container">
+  <!-- START OF LMS BAR -->
+  <div class="game-info">
+        <!-- START OF NAVBAR -->
+        <nav class="lms-nav">
+          <a href="">Links</a>
+          <div>{{uniqueId.value}}</div>
+        </nav>
+        <!-- STAR OF AHBC TITLE -->
+        <div style="display: flex; flex-direction:column; background-color: white; padding: 1em; margin: 10px;">
+          <div>AHBC Front-End 2020 Q2 DET</div>
+          <div>
+            <a href="">Dashboard</a> /
+            <a href="">My Course </a> /
+            <a href="">AHBC FE 2020 Q2 DET</a>
+          </div>
+        </div>
+
+        <div style=" display: flex; flex-direction: column; justify-content: center; align-items: center;background-color: white; padding: 1em; margin: 10px;">
+          <div>
+            <div>Overall Progress</div>
+              <div style="color: black; font-size: 2em; display:flex; flex-direction: row; justify-content:center;">
+                <div id="assess-comp">0</div>
+                <div>%</div>
+              </div>
+          </div>
+          <div style="text-align: center;">
+            <div >Announcements</div>
+              <a href="">CSS Tools</a> -
+              <a href="">W3Schools HTML</a> -
+              <a href="">W3Schools CSS</a> -
+              <a href="">Class Repo</a> - 
+              <a href="">JS Practice Problems</a> -
+          </div>
+    
+   
+        <div style="display:grid; grid-template-columns: 1fr 1fr; align-self: center; text-align: center;">
+        <div class="lms-box">Weekly Schedules</div>
+        <div class="lms-box">Learning to Learn</div>
+        <div class="lms-box">Slides & Guides</div>
+        <div class="lms-box">Lab & Exercises</div>
+        <div class="lms-box">Assessments</div>
+        <div class="lms-box">Resources</div>
+        <div class="lms-box">Textbook</div>
+        <div class="lms-box">Admin</div>
+        <div class="lms-box">1:1 Sign-ups</div>
+        </div>
+       </div>
+
+          <div style="color: black; font-size: 2em;background-color: white; padding: 1em;  margin:10px; display:flex; flex-direction: row;" >
+            <!-- <div>Unique ID: {{value}}</div> -->
+            <div>Score:</div>
+           <div id="score">0</div>
+          </div>
+</div>
+<!-- END OF LMS BAR -->
+
+
+  <div id='game-area'>
+    <div id="form">
+      <div class="closeX" (click)="closeGameEnd()" [routerLink]="['/charselect']">X</div>
+      <h1>Try Again!</h1>
+      <label for=""> Enter Unique ID:</label>
+      <input type="text" #uniqueId />
+      <button (click)="getUniqueIdValue(uniqueId.value)">ENTER</button>
+      <img class="grace-photo" src="../../assets/grace.png" alt="photo of Grace">
+    </div>
   </div>
 </div>
-<div class="game-info">
-<div>Unique ID: {{value}}</div>
-<h3>Score:</h3>
-<div id="score"></div>
-<div>Assessment Passed: </div>
+
+<div style="display:grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: auto; width:100%; padding: 2em;">
+  <div *ngFor="let score of scoreInfo">
+      <div style="border: 2px white solid; text-align:center; padding: 1em;">
+        <div>{{score.username}}</div>
+        <div>{{score.score}} Points</div>
+    </div>
+</div>
+
 </div>

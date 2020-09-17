@@ -14,6 +14,7 @@ export class PhasergameComponent implements OnInit, OnDestroy {
 
   title = 'game-testing';
   value = '';
+  scoreInfo: any;
 
   closeGameEnd() {
 
@@ -24,6 +25,8 @@ export class PhasergameComponent implements OnInit, OnDestroy {
 
   getUniqueIdValue(value: string) {
     let score = document.getElementById('score').innerHTML;
+    document.getElementById('form').style.display = "none";
+    this.phaserGame.destroy(true);
     this.value = value;
     console.log(this.value);
     console.log(score);
@@ -32,6 +35,16 @@ export class PhasergameComponent implements OnInit, OnDestroy {
       console.log(response);
     })
   };
+
+  getScoreInfo(){
+
+    this.gameInfoService.getFullScoreInfo().subscribe(response => {
+      this.scoreInfo = response;
+      console.log(response);
+    })
+    
+
+  }
 
 
   constructor(private gameInfoService: GameinfoService) {
@@ -62,6 +75,7 @@ export class PhasergameComponent implements OnInit, OnDestroy {
   // tslint:disable-next-line:typedef
   ngOnInit() {
     this.phaserGame = new Phaser.Game(this.config);
+    this.getScoreInfo();
 
   }
 
@@ -479,6 +493,11 @@ export class MainScene extends Phaser.Scene {
     document.getElementById('score').innerHTML = this.score.toString();
   }
 
+  setAssessComp() {
+
+    document.getElementById('assess-comp').innerText = (this.assessment * 10).toString();
+  }
+
   collectNicole() {
     console.log("you hit nicole");
     this.score += 20;
@@ -512,7 +531,8 @@ export class MainScene extends Phaser.Scene {
     if (this.score == 80) {
       this.assessment++
       this.assessText.setText('Assessments Passed: ' + this.assessment)
-      
+      this.setAssessComp();
+
       this.movingPlatform = this.physics.add.image(16, 500, 'nicole');
       this.movingPlatform.setImmovable(true);
       this.movingPlatform.body.allowGravity = false;
@@ -536,6 +556,7 @@ export class MainScene extends Phaser.Scene {
     if (this.score == 160) {
       this.assessment++
       this.assessText.setText('Assessments Passed: ' + this.assessment)
+      this.setAssessComp();
 
       let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
       let bomb2 = this.enemies.create(x, 16, 'bomb2');
@@ -553,6 +574,7 @@ export class MainScene extends Phaser.Scene {
    if (this.score == 240) {
       this.assessment++
       this.assessText.setText('Assessments Passed: ' + this.assessment)
+      this.setAssessComp();
 
       let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
       let bomb2 = this.enemies.create(x, 16, 'bomb3');
@@ -573,6 +595,8 @@ export class MainScene extends Phaser.Scene {
     if (this.score == 320) {
       this.assessment++
       this.assessText.setText('Assessments Passed: ' + this.assessment)
+      this.setAssessComp();
+
       let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
       let bomb2 = this.enemies.create(x, 16, 'bomb4');
       bomb2.setBounce(1);
@@ -612,5 +636,7 @@ export class MainScene extends Phaser.Scene {
 
     document.getElementById('score').innerText = this.score.toString();
   }
+
+  
 
 }

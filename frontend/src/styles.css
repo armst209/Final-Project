@@ -587,6 +587,14 @@ p::after {
 
 /* PHASER DIV CSS */
 
+.phaser-lms-container {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
 #game-area {
   display: flex;
   justify-content: center;
@@ -629,6 +637,20 @@ p::after {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #f4f4f4;
+  width: 300px;
+  
+}
+
+.lms-nav{
+  width:100%;
+  background-color: #373f48;
+}
+.lms-box {
+
+  border-top: 4px solid #3cc;
+  background-color: rgba(51,204,204, 0.05);
+  width: 100px;
 }
 
 .grace-photo {

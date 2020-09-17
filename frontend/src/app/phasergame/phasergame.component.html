@@ -24,7 +24,7 @@
 <div id='game-area'>
   
   <div id="form">
-    <div class="closeX" (click)="closeGameEnd()">X</div>
+    <div class="closeX" (click)="closeGameEnd()" [routerLink]="['/charselect']">X</div>
     <h1>Try Again!</h1>
     <label for=""> Enter Unique ID:</label>
     <input type="text" #uniqueId />

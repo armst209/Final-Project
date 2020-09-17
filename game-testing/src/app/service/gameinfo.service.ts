@@ -19,7 +19,7 @@ export class GameinfoService {
 
    getUniqueScore(id: string, score: number){
 
-    return this.http.post<any>('http://localhost:3000/scores', {id:id, score: score})
+    return this.http.post<any>('https://game-backend3412.herokuapp.com/scores/', {id:id, score: score})
    }
 
 }

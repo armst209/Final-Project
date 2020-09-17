@@ -320,9 +320,6 @@ export class MainScene extends Phaser.Scene {
         this.player.anims.play('idle', true);
         
       }
-
-      
-
    
   }
 
@@ -349,8 +346,6 @@ export class MainScene extends Phaser.Scene {
     this.score += 10;
     this.setScore();
     this.scoreText.setText('Score: ' + this.score);
-
-    
 
     if (this.coins.countActive(true) === 2)
     {

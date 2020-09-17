@@ -19,7 +19,7 @@ export class PhasergameComponent implements OnInit, OnDestroy {
 
     document.getElementById('form').style.display = "none"
     this.phaserGame.destroy(true);
-    location.reload();
+    // location.reload();
   }
 
   getUniqueIdValue(value: string) {

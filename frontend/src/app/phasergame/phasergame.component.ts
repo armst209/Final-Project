@@ -103,10 +103,14 @@ export class MainScene extends Phaser.Scene {
   coins: any;
   score = 0;
   assessment = 0;
+  assessScore = 1;
   scoreText: any;
   assessText: any;
   music: any;
   failSound: any;
+  coinSound: any;
+  nicoleSound: any;
+  assessComplete: any;
   loadScreen: any;
   sprite: any;
   timeText: any;
@@ -151,16 +155,19 @@ export class MainScene extends Phaser.Scene {
       this.load.atlas('player', '../assets/Aaron.png', '../assets/Aaron.json');
 
       //loading platforms
-
+      this.load.image('zoombar', 'assets/zoombar.png');
       this.load.image('ground', 'assets/platform.png');
       //loads enemies
-
+      this.load.image('nicole', 'assets/nicole.png');
       this.load.image('bomb', 'assets/html.png');
       this.load.image('bomb-1', 'assets/css.png');
       this.load.image('bomb2', 'assets/javascript.png');
       this.load.image('bomb3', 'assets/dom.png');
       this.load.image('bomb4', 'assets/typescript.png');
-      this.load.image('nicole', 'assets/nicon.png');
+      this.load.image('bomb5', 'assets/angular.png');
+      this.load.image('bomb6', 'assets/node-express.png');
+      this.load.image('bomb7', 'assets/sql.png');
+      
     } else if (document.getElementById('characterName').innerText == 'Amber') {
 
 
@@ -176,9 +183,15 @@ export class MainScene extends Phaser.Scene {
       'assets/level_2.ogg',
       'assets/level_2.mp3'
     ])
+    
+   
+    this.load.audio('coinSound', '../assets/coin_sound.mp3')
+    this.load.audio('assess_complete', '../assets/assess_complete.mp3')
     this.load.audio('tryagain', '../assets/arp.wav');
+    this.load.audio('nicoleSound', '../assets/nicolesound.mp3')
     this.load.audio('loadScreen', '../assets/level_1.mp3')
-
+    
+    
   }
 
   create() {
@@ -186,20 +199,28 @@ export class MainScene extends Phaser.Scene {
 
     //playing music
     this.music = this.sound.add('level1', { volume: 0.3 });
+    // this.music.play();
+    
+    this.coinSound = this.sound.add('coinSound', { volume: 0.4 });
+    this.nicoleSound = this.sound.add('nicoleSound');
+    this.assessComplete = this.sound.add('assess_complete');
+    
     this.failSound = this.sound.add('tryagain');
     this.loadScreen = this.sound.add('loadScreen');
-     this.music.play();
+     
+    //TIMERS
 
-    this.timeText = this.add.text(720, 20, 'Time', { fontSize: '20px', fill: '#222222' });
+    // this.timeText = this.add.text(720, 20, '', { fontSize: '20px', fill: '#222222' });
 
-    this.text = this.add.text(32, 32, '');
-    this.timedEvent = this.time.delayedCall(3000, this.onEvent, [], this);
+    // this.text = this.add.text(32, 32, '');
+    // this.timedEvent = this.time.delayedCall(3000, this.onEvent, [], this);
 
     this.platforms = this.physics.add.staticGroup();
     //  Here we create the ground.
     //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
-    this.platforms.create(400, 568, 'ground').setScale(2).refreshBody();
-
+  
+    this.platforms.create(400, 578, 'zoombar').setScale(1).refreshBody();
+   
 
     //  Now let's create some ledges
     //  this.platforms.create(600, 400, 'ground');
@@ -387,16 +408,17 @@ export class MainScene extends Phaser.Scene {
 
     this.enemies = this.physics.add.group();
 
-    this.scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '20px', fill: '#000' });
-    this.assessText = this.add.text(16, 40, 'Assesements Passed: 0', { fontSize: '20px', fill: '#000' })
+    // this.scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '20px', fill: '#000' });
+    this.assessText = this.add.text(16, 40, 'Current Assessment: Pre Test Deliverables', { fontSize: '20px', fill: '#000', fontColor: 'white' })
     //  Collide the player and the stars with the platforms
     this.physics.add.collider(this.player, this.platforms);
     this.physics.add.collider(this.coins, this.platforms);
     this.physics.add.collider(this.enemies, this.platforms);
 
-    //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
-    this.physics.add.overlap(this.player, this.coins, this.collectStar, null, this);
+    //  Checks to see if the player overlaps with any of the stars, if he does call the collectCoin function
+    this.physics.add.overlap(this.player, this.coins, this.collectCoin, null, this);
     this.physics.add.collider(this.player, this.enemies, this.hitBomb, null, this);
+   
 
     //CAMERA
 
@@ -495,25 +517,31 @@ export class MainScene extends Phaser.Scene {
 
   setAssessComp() {
 
-    document.getElementById('assess-comp').innerText = (this.assessment * 10).toString();
+    document.getElementById('assess-comp').innerText = (this.assessment += 16).toString();
+  }
+
+  setAssessCompTwo(){
+
+    document.getElementById('assess-comp').innerText = (this.assessment += 14).toString();
   }
 
   collectNicole() {
-    console.log("you hit nicole");
-    this.score += 20;
+    this.nicoleSound.play();
+    this.score += 10;
     this.setScore();
-    this.scoreText.setText('Score: ' + this.score);
+    // this.scoreText.setText('Score: ' + this.score);
     this.movingPlatform.destroy();
 
   }
 
-  collectStar(player: any, coin: any) {
+  collectCoin(player: any, coin: any) {
+    this.coinSound.play();
     coin.disableBody(true, true);
 
     //  Add and update the score
     this.score += 10;
     this.setScore();
-    this.scoreText.setText('Score: ' + this.score);
+    // this.scoreText.setText('Score: ' + this.score);
 
     if (this.coins.countActive(true) === 2) {
       //  A new batch of stars to collect
@@ -527,11 +555,14 @@ export class MainScene extends Phaser.Scene {
 
 
     }
-    //HTML & CSS
+    //LEVEL 1 - HTML & CSS
     if (this.score == 80) {
-      this.assessment++
-      this.assessText.setText('Assessments Passed: ' + this.assessment)
+     
       this.setAssessComp();
+      this.assessComplete.play();
+      this.assessText.setText('Current Assessment: ' + this.assessScore)
+      
+      
 
       this.movingPlatform = this.physics.add.image(16, 500, 'nicole');
       this.movingPlatform.setImmovable(true);
@@ -552,11 +583,14 @@ export class MainScene extends Phaser.Scene {
       bomb2One.setVelocity(Phaser.Math.Between(-200, 200), 20);
       bomb2One.allowGravity = false;
     }
-    //JAVASCRIPT
-    if (this.score == 160) {
-      this.assessment++
-      this.assessText.setText('Assessments Passed: ' + this.assessment)
-      this.setAssessComp();
+    //LEVEL 2 - JAVASCRIPT
+    else if (this.score == 160) {
+      this.assessComplete.play();
+      
+      this.setAssessCompTwo();
+      this.assessScore++
+      this.assessText.setText('Current Assessment: ' + this.assessScore)
+      
 
       let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
       let bomb2 = this.enemies.create(x, 16, 'bomb2');
@@ -569,15 +603,52 @@ export class MainScene extends Phaser.Scene {
 
     }
 
-    //DOM
+    //LEVEL 3 - DOM
 
-   if (this.score == 240) {
-      this.assessment++
-      this.assessText.setText('Assessments Passed: ' + this.assessment)
-      this.setAssessComp();
+   else if (this.score == 240) {
+      this.assessComplete.play();
+      
+      this.setAssessCompTwo();
+      this.assessScore++
+      this.assessText.setText('Current Assessment: ' + this.assessScore)
+     
 
       let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
       let bomb2 = this.enemies.create(x, 16, 'bomb3');
+      
+      bomb2.setBounce(1);
+      bomb2.setCollideWorldBounds(true);
+      bomb2.setVelocity(Phaser.Math.Between(-200, 200), 20);
+      bomb2.allowGravity = false;
+    }
+    //LEVEL 4 - TYPESCRIPT
+    else if (this.score == 320) {
+      this.assessComplete.play();
+      this.setAssessCompTwo();
+
+      this.assessScore++
+      this.assessText.setText('Current Assessment: ' + this.assessScore)
+    
+      let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+      let bomb2 = this.enemies.create(x, 16, 'bomb4');
+      bomb2.setBounce(1);
+      bomb2.setCollideWorldBounds(true);
+      bomb2.setVelocity(Phaser.Math.Between(-200, 200), 20);
+      bomb2.allowGravity = false;
+    }
+
+    //LEVEL 5 -ANGULAR
+
+    else if (this.score == 400) {
+      this.assessComplete.play();
+      
+      this.setAssessCompTwo();
+      this.assessScore++
+      this.assessText.setText('Current Assessment: ' + this.assessScore)
+      
+
+      let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+      let bomb2 = this.enemies.create(x, 16, 'bomb5');
 
       this.movingPlatform = this.physics.add.image(16, 300, 'nicole');
       this.movingPlatform.setImmovable(true);
@@ -591,19 +662,54 @@ export class MainScene extends Phaser.Scene {
       bomb2.setVelocity(Phaser.Math.Between(-200, 200), 20);
       bomb2.allowGravity = false;
     }
-    //TYPESCRIPT
-    if (this.score == 320) {
-      this.assessment++
-      this.assessText.setText('Assessments Passed: ' + this.assessment)
-      this.setAssessComp();
+
+    //LEVEL 6 - NODE & EXPRESS
+
+    else if (this.score == 480) {
+      this.assessComplete.play();
+      
+      this.setAssessCompTwo();
+      this.assessScore++
+      this.assessText.setText('Current Assessment: ' + this.assessScore)
+      
 
       let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
-      let bomb2 = this.enemies.create(x, 16, 'bomb4');
+      let bomb2 = this.enemies.create(x, 16, 'bomb6');
       bomb2.setBounce(1);
       bomb2.setCollideWorldBounds(true);
       bomb2.setVelocity(Phaser.Math.Between(-200, 200), 20);
       bomb2.allowGravity = false;
     }
+
+    //LEVEL 7 - SQL
+
+    else if (this.score == 560) {
+      this.assessComplete.play();
+     
+      this.setAssessCompTwo();
+      this.assessScore++
+      this.assessText.setText('Current Assessment: ' + this.assessScore)
+      
+
+      let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+      let bomb2 = this.enemies.create(x, 16, 'bomb7');
+      bomb2.setBounce(1);
+      bomb2.setCollideWorldBounds(true);
+      bomb2.setVelocity(Phaser.Math.Between(-200, 200), 20);
+      bomb2.allowGravity = false;
+    }
+
+  else if(this.score == 640){
+
+    
+    this.assessComplete.play();
+    this.add.text(50, 250, 'DEMO DAY');
+    this.assessText.setText('Demo Day ')
+    // this.platforms.destroy();
+    // this.coins.destroy();
+    // this.movingPlatform.destroy();
+    // this.enemies.destroy();
+  }
 
   }
 
@@ -616,7 +722,7 @@ export class MainScene extends Phaser.Scene {
   }
 
   hitBomb() {
-    // this.player.setCollideWorldBounds(false);
+    this.player.setCollideWorldBounds(false);
     document.getElementById('form').style.display = "flex";
     this.music.stop();
     this.failSound.play();
@@ -626,11 +732,8 @@ export class MainScene extends Phaser.Scene {
     this.player.setTint(0xff0000);
     this.loadScreen.play();
 
-    // this.player.anims.play('idle');
-
-    // this.gameOver = true;
-
   }
+
 
   getScore() {
 

@@ -7,7 +7,7 @@
     <div class="item" (click)="closePhaserInstance()">Library</div>
     <div class="modal-container">
       <input id="modal-toggle" type="checkbox">
-      <label class="item" for="modal-toggle">Current Score</label>
+      <label class="item" for="modal-toggle" [routerLink]="['/highscores']">High Scores</label>
       <label class="modal-backdrop" for="modal-toggle"></label>
       <div class="modal-content">
         <label class="modal-close" for="modal-toggle">&#x2715;</label>
@@ -78,15 +78,17 @@
         <div class="lms-box">1:1 Sign-ups</div>
         </div>
        </div>
-
-          <div style="color: black; font-size: 2em;background-color: white; padding: 1em;  margin:10px; display:flex; flex-direction: row;" >
-            <!-- <div>Unique ID: {{value}}</div> -->
-            <div>Score:</div>
-           <div id="score">0</div>
+      
+          <div style="color: black; font-size: 2em;background-color: white; padding: 1em;  margin:10px; display:flex; flex-direction: column; text-align: center;" >
+            <div style="display:flex; flex-direction: row;">
+              <div>Score:</div>
+              <div id="score">0</div>
+            </div>
+            <div><img src="../../assets/jacob.png" alt="jacobphoto" ></div>
+           
           </div>
 </div>
 <!-- END OF LMS BAR -->
-
 
   <div id='game-area'>
     <div id="form">
@@ -98,14 +100,6 @@
       <img class="grace-photo" src="../../assets/grace.png" alt="photo of Grace">
     </div>
   </div>
-</div>
 
-<div style="display:grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto; width:100%;">
-  <div *ngFor="let score of scoreInfo">
-      <div style="border: 2px white solid; text-align:center; padding: 1em;">
-        <div>{{score.username}}</div>
-        <div>{{score.score}} Points</div>
-    </div>
-</div>
 
 </div>

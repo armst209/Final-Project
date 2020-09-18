@@ -14,7 +14,7 @@ export class PhasergameComponent implements OnInit, OnDestroy {
 
   title = 'game-testing';
   value = '';
-  scoreInfo: any;
+  
 
   closeGameEnd() {
 
@@ -36,15 +36,6 @@ export class PhasergameComponent implements OnInit, OnDestroy {
     })
   };
 
-  getScoreInfo(){
-
-    this.gameInfoService.getFullScoreInfo().subscribe(response => {
-      this.scoreInfo = response;
-      console.log(response);
-    })
-    
-
-  }
 
 
   constructor(private gameInfoService: GameinfoService) {
@@ -75,7 +66,7 @@ export class PhasergameComponent implements OnInit, OnDestroy {
   // tslint:disable-next-line:typedef
   ngOnInit() {
     this.phaserGame = new Phaser.Game(this.config);
-    this.getScoreInfo();
+   
 
   }
 
@@ -144,18 +135,19 @@ export class MainScene extends Phaser.Scene {
     if (document.getElementById('characterName').innerText == 'Aaron') {
 
       //loading background
-      this.load.image('sky', 'assets/group.png');
+      this.load.image('sky', 'assets/city.png');
 
       //loading coins
-      this.load.atlas(
-        'coin', '../assets/jacob_coin.png', '../assets/jacob_coin.json'
-      );
+      this.load.image(
+        'coin', '../assets/coin_5.gif');
 
       // player animations
       this.load.atlas('player', '../assets/Aaron.png', '../assets/Aaron.json');
 
       //loading platforms
       this.load.image('zoombar', 'assets/zoombar.png');
+      this.load.image('youtube', 'assets/ytplatform.png');
+      this.load.image('stackover','assets/soplatform.png')
       this.load.image('ground', 'assets/platform.png');
       //loads enemies
       this.load.image('nicole', 'assets/nicole.png');
@@ -170,11 +162,36 @@ export class MainScene extends Phaser.Scene {
       
     } else if (document.getElementById('characterName').innerText == 'Amber') {
 
+ 
 
-    } else if (
-      document.getElementById('characterName').innerText == 'Garrett'
-    ) {
+    } else if (document.getElementById('characterName').innerText == 'Garrett') {
 
+            //loading background
+            this.load.image('sky', 'assets/city.png');
+
+            //loading coins
+            this.load.image(
+              'coin', '../assets/coin_5.gif');
+      
+            // player animations
+            this.load.atlas('player', '../assets/Garrett.png', '../assets/Garrett.json');
+      
+            //loading platforms
+            this.load.image('zoombar', 'assets/zoombar.png');
+            this.load.image('youtube', 'assets/ytplatform.png');
+            this.load.image('stackover','assets/soplatform.png')
+            this.load.image('ground', 'assets/platform.png');
+            //loads enemies
+            this.load.image('nicole', 'assets/nicole.png');
+            this.load.image('bomb', 'assets/html.png');
+            this.load.image('bomb-1', 'assets/css.png');
+            this.load.image('bomb2', 'assets/javascript.png');
+            this.load.image('bomb3', 'assets/dom.png');
+            this.load.image('bomb4', 'assets/typescript.png');
+            this.load.image('bomb5', 'assets/angular.png');
+            this.load.image('bomb6', 'assets/node-express.png');
+            this.load.image('bomb7', 'assets/sql.png');
+            
 
     }
 
@@ -199,33 +216,30 @@ export class MainScene extends Phaser.Scene {
 
     //playing music
     this.music = this.sound.add('level1', { volume: 0.3 });
-    // this.music.play();
+    this.music.play();
     
     this.coinSound = this.sound.add('coinSound', { volume: 0.4 });
     this.nicoleSound = this.sound.add('nicoleSound');
     this.assessComplete = this.sound.add('assess_complete');
     
     this.failSound = this.sound.add('tryagain');
-    this.loadScreen = this.sound.add('loadScreen');
+    this.loadScreen = this.sound.add('loadScreen'), { volume: 0.3 };
      
     //TIMERS
 
-    // this.timeText = this.add.text(720, 20, '', { fontSize: '20px', fill: '#222222' });
-
-    // this.text = this.add.text(32, 32, '');
-    // this.timedEvent = this.time.delayedCall(3000, this.onEvent, [], this);
 
     this.platforms = this.physics.add.staticGroup();
     //  Here we create the ground.
     //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
   
     this.platforms.create(400, 578, 'zoombar').setScale(1).refreshBody();
-   
+    
+    
 
     //  Now let's create some ledges
     //  this.platforms.create(600, 400, 'ground');
-    this.platforms.create(50, 300, 'ground');
-    this.platforms.create(750, 220, 'ground');
+    this.platforms.create(50, 400, 'youtube');
+    this.platforms.create(750, 220, 'stackover');
 
 
     // create the player sprite
@@ -236,7 +250,7 @@ export class MainScene extends Phaser.Scene {
     } else if (
       document.getElementById('characterName').innerText == 'Garrett'
     ) {
-      // this.player = this.physics.add.sprite(10, 0, 'player');
+      this.player = this.physics.add.sprite(100, 450, 'player');
     }
 
     this.player.setBounce(0.2); // our player will bounce from items
@@ -279,7 +293,6 @@ export class MainScene extends Phaser.Scene {
           end: 2,
           zeroPad: 2,
         }),
-        // frames: [{key: 'player', frame: 'p1_stand02'}],
         frameRate: 2.5,
         repeat: -1,
       });
@@ -375,14 +388,14 @@ export class MainScene extends Phaser.Scene {
           end: 2,
           zeroPad: 2,
         }),
-        // frames: [{key: 'player', frame: 'p1_stand02'}],
+        
         frameRate: 2,
         repeat: -1,
       });
 
       this.anims.create({
         key: 'jump',
-        frames: [{ key: 'player', frame: 'p3_jump' }],
+        frames: [{ key: 'player', frame: 'jump' }],
         frameRate: 10,
       });
     }
@@ -408,8 +421,9 @@ export class MainScene extends Phaser.Scene {
 
     this.enemies = this.physics.add.group();
 
-    // this.scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '20px', fill: '#000' });
-    this.assessText = this.add.text(16, 40, 'Current Assessment: Pre Test Deliverables', { fontSize: '20px', fill: '#000', fontColor: 'white' })
+    
+    this.assessText = this.add.text(16, 29, '', { fontFamily: 'ArcadeClassic', fontSize: '30px', fill: 'white'});
+    this.assessText.setText('Pre-Test: Deliverables', {fontFamily: 'ArcadeClassic'});
     //  Collide the player and the stars with the platforms
     this.physics.add.collider(this.player, this.platforms);
     this.physics.add.collider(this.coins, this.platforms);
@@ -428,18 +442,6 @@ export class MainScene extends Phaser.Scene {
   }
 
   update(time, delta) {
-    // this.getSelectedPlayer().speed
-
-    //MOVING PLATFORM BOUNDARIES
-    // if (this.movingPlatform.x >= 500)
-    // {
-    //     this.movingPlatform.setVelocityX(-75);
-    // }
-    // else if (this.movingPlatform.x <= 300)
-    // {
-    //     this.movingPlatform.setVelocityX(75);
-    // }
-
 
     //player 1 controls
     if (document.getElementById('characterName').innerText == 'Aaron') {
@@ -462,6 +464,7 @@ export class MainScene extends Phaser.Scene {
         this.player.anims.play('idle', true);
       }
     }
+    
     //player 2 controls
     else if (document.getElementById('characterName').innerText == 'Amber') {
       if (this.cursors.left.isDown) {
@@ -703,7 +706,7 @@ export class MainScene extends Phaser.Scene {
 
     
     this.assessComplete.play();
-    this.add.text(50, 250, 'DEMO DAY');
+    
     this.assessText.setText('Demo Day ')
     // this.platforms.destroy();
     // this.coins.destroy();
@@ -715,22 +718,25 @@ export class MainScene extends Phaser.Scene {
 
 
   onEvent() {
-    // this.player.setTint(0xff0000)
-    // this.add.text(20,120, 'YOU LOSE!').setScrollFactor(0);
-    // this.phaserGame.destroy(true);
+    
 
   }
 
-  hitBomb() {
-    this.player.setCollideWorldBounds(false);
-    document.getElementById('form').style.display = "flex";
+  hitBomb(player, bomb) {
+    this.physics.pause();
+    this.player.setTint(0xff0000);
+    this.player.anims.play('jump');
     this.music.stop();
+    
     this.failSound.play();
 
-    this.physics.pause();
-
-    this.player.setTint(0xff0000);
+    setTimeout(() => {
+      
+    document.getElementById('form').style.display = "flex";
     this.loadScreen.play();
+    }, 1000);
+
+    
 
   }
 

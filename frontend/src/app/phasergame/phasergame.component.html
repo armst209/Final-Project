@@ -27,38 +27,46 @@
   <div class="game-info">
         <!-- START OF NAVBAR -->
         <nav class="lms-nav">
-          <a href="">Links</a>
-          <div>{{uniqueId.value}}</div>
+          <div>
+            <img style="padding-left: 5px" src="/assets/ham-icon.png" alt="">
+          </div>
+          <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;">
+              <i class="icon fa fa-bell fa-fw " aria-hidden="true" title="Toggle notifications menu" aria-label="Toggle notifications menu"></i>
+              <i class="icon fa fa-comment fa-fw " aria-hidden="true" title="Toggle messages menu" aria-label="Toggle messages menu"></i>
+              <div>{{uniqueId.value}}</div>
+              <img style="border-radius: 25px; padding: 5px;"src="/assets/f2.png" alt="">
+          </div>
         </nav>
         <!-- STAR OF AHBC TITLE -->
-        <div style="display: flex; flex-direction:column; background-color: white; padding: 1em; margin: 10px;">
-          <div>AHBC Front-End 2020 Q2 DET</div>
-          <div>
-            <a href="">Dashboard</a> /
-            <a href="">My Course </a> /
-            <a href="">AHBC FE 2020 Q2 DET</a>
+        <div style="display: flex; flex-direction:column; justify-content:center; align-items: center; background-color: white; padding: 1em; margin: 10px;">
+          <div style="color: #3a3a3a">AHBC Front-End 2020 Q2 DET</div>
+          <div style="display: flex;  flex-direction: row; flex-wrap: wrap; justify-content:center; align-items: center;">
+            <div class="fake-link">Dashboard</div> /
+            <div class="fake-link">My Course </div> /
+            <div class="fake-link">AHBC FE 2020 Q2 DET</div>
           </div>
         </div>
 
         <div style=" display: flex; flex-direction: column; justify-content: center; align-items: center;background-color: white; padding: 1em; margin: 10px;">
           <div>
-            <div>Overall Progress</div>
+            <div style="color:grey">Overall Progress</div>
               <div style="color: black; font-size: 2em; display:flex; flex-direction: row; justify-content:center;">
                 <div id="assess-comp">0</div>
                 <div>%</div>
               </div>
           </div>
-          <div style="text-align: center;">
-            <div >Announcements</div>
-              <a href="">CSS Tools</a> -
-              <a href="">W3Schools HTML</a> -
-              <a href="">W3Schools CSS</a> -
-              <a href="">Class Repo</a> - 
-              <a href="">JS Practice Problems</a> -
+          <div style="color:#3cc">Announcements</div>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; padding: 10px;">
+            
+              <div class="fake-link">CSS Tools</div> -
+              <div class="fake-link">W3Schools HTML</div> -
+              <div class="fake-link">W3Schools CSS</div> -
+              <div class="fake-link">Class Repo</div> - 
+              <div class="fake-link">JS Practice Problems</div> -
           </div>
     
    
-        <div style="display:grid; grid-template-columns: 1fr 1fr; align-self: center; text-align: center;">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; grid-row-gap:6px; grid-column-gap:6px; align-self: center; text-align: center;">
         <div class="lms-box">Weekly Schedules</div>
         <div class="lms-box">Learning to Learn</div>
         <div class="lms-box">Slides & Guides</div>
@@ -85,14 +93,14 @@
       <div class="closeX" (click)="closeGameEnd()" [routerLink]="['/charselect']">X</div>
       <h1>Try Again!</h1>
       <label for=""> Enter Unique ID:</label>
-      <input type="text" #uniqueId />
+      <input style="font-size:.6em" type="text" maxlength="15" #uniqueId />
       <button (click)="getUniqueIdValue(uniqueId.value)">ENTER</button>
       <img class="grace-photo" src="../../assets/grace.png" alt="photo of Grace">
     </div>
   </div>
 </div>
 
-<div style="display:grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: auto; width:100%; padding: 2em;">
+<div style="display:grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto; width:100%;">
   <div *ngFor="let score of scoreInfo">
       <div style="border: 2px white solid; text-align:center; padding: 1em;">
         <div>{{score.username}}</div>

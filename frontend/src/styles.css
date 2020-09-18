@@ -687,8 +687,6 @@ p::after {
 }
 
 
-
-
 #team .team-img {
   position: relative
 }
@@ -751,6 +749,10 @@ p::after {
 #team .team-single:hover .team-social>ul {
   opacity: 1;
   right: 0
+}
+
+.team-img img {
+  max-width: 100%;
 }
 
 @media screen and (max-width:1200px) {

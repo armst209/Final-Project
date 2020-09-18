@@ -144,7 +144,7 @@ export class MainScene extends Phaser.Scene {
     if (document.getElementById('characterName').innerText == 'Aaron') {
 
       //loading background
-      this.load.image('sky', 'assets/sky.png');
+      this.load.image('sky', 'assets/group.png');
 
       //loading coins
       this.load.atlas(

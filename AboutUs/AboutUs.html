@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,78 +8,104 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Document</title>
 </head>
+
 <body>
-    <!-- START TEAM -->
-<section id="team">
-    <div class="container">
-
-           <div id="team-1" class="team-single active">
-                            <div class="team-img">
-                                <img src="https://i.ibb.co/dK66nm5/aaron.png" alt="Aaron">
-                                <div class="team-social">
-                                    <ul>
-                                        <li><a href=""><i class="fa fa-github"></i></a></li>                                        
-                                        <li><a href=""><i class="fa fa-envelope-o"></i></a></li>
-                                        <li><a href=""><i class="fa fa-linkedin"></i></a></li>
-                                    </ul>
-                                </div>
-                                <!-- END team-social-->
-                            </div>
-                            <!-- END team-img-->
-                            <div class="team-info text-center">
-<div class="signature">
-
-  <h1 data-text="Aaron Armstrong">Aaron Armstrong</h1>
-</div>
-</div>
-                            </div>
-<div id="team-2" class="team-single active">
-                            <div class="team-img">
-                                <img src="https://i.ibb.co/dL6ypmd/propic.png" alt="Garrett">
-                                <div class="team-social">
-                                    <ul>
-                                        <li><a href=""><i class="fa fa-github"></i></a></li>                                        
-                                        <li><a href=""><i class="fa fa-envelope-o"></i></a></li>
-                                        <li><a href=""><i class="fa fa-linkedin"></i></a></li>
-                                    </ul>
-                                </div>
-                                <!-- END team-social-->
-                            </div>
-                            <!-- END team-img-->
-                            <div class="team-info text-center">
-<div class="signature">
-
-  <h1 data-text="Garrett Brown">Garrett Brown</h1>
-</div>
-</div>
-                            <!-- END team-info-->
-                        </div>
-                        <!-- END team-single-->
-
+    <div class="bar">
+        <div class="nav">
+          <div [routerLink]="['/home']" (click)="closePhaserInstance()" class="logo">
+            <p data-text="Break">Break</p>
+          </div>
+          <div class="item" id="selected" (click)="closePhaserInstance()">Discover</div>
+          <div class="item" (click)="closePhaserInstance()">Library</div>
+          <div class="modal-container">
+            <input id="modal-toggle" type="checkbox">
+            <label class="item" for="modal-toggle">Current Score</label>
+            <label class="modal-backdrop" for="modal-toggle"></label>
+            <div class="modal-content">
+              <label class="modal-close" for="modal-toggle">&#x2715;</label>
+              <h2></h2>
+              <hr />
+              <h1></h1>
+              <label class="modal-content-btn" for="modal-toggle">OK</label>
+            </div>
+          </div>
+          <div class="item">About us</div>
         </div>
-<div id="team-3" class="team-single active">
-                            <div class="team-img">
-                                <img src="https://i.ibb.co/JnQzWfB/image-from-ios.png" alt="Amber">
-                                <div class="team-social">
-                                    <ul>
-                                        <li><a href=""><i class="fa fa-github"></i></a></li>                                        
-                                        <li><a href=""><i class="fa fa-envelope-o"></i></a></li>
-                                        <li><a href=""><i class="fa fa-linkedin"></i></a></li>
-                                    </ul>
-                                </div>
-                                <!-- END team-social-->
-                            </div>
-                            <!-- END team-img-->
-                            <div class="team-info text-center">
-<div class="signature">
-
-  <h1 data-text="Amber Dostert">Amber Dostert</h1>
-</div>
-</div>
-        <!-- END row-->
     </div>
-    <!-- END container-->
-</section>
+    <!-- START TEAM -->
+    <section id="team">
+        <div class="container">
+
+            <div id="team-1" class="team-single active">
+                <div class="team-img">
+                    <img src="https://i.ibb.co/sC4QS3r/aaron.png" alt="Aaron">
+                    <div class="team-social">
+                        <ul>
+                            <li><a href=""><i class="fa fa-github"></i></a></li>
+                            <li><a href=""><i class="fa fa-envelope-o"></i></a></li>
+                            <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- END team-social-->
+                </div>
+                <!-- END team-img-->
+                <div class="team-info text-center">
+                    <div class="signature">
+
+                        <h1 data-text="Aaron Armstrong">Aaron Armstrong</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div id="team-2" class="team-single active">
+                <div class="team-img">
+                    <img src="https://i.ibb.co/dL6ypmd/propic.png" alt="Garrett">
+                    <div class="team-social">
+                        <ul>
+                            <li><a href=""><i class="fa fa-github"></i></a></li>
+                            <li><a href=""><i class="fa fa-envelope-o"></i></a></li>
+                            <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- END team-social-->
+                </div>
+                <!-- END team-img-->
+                <div class="team-info text-center">
+                    <div class="signature">
+
+                        <h1 data-text="Garrett Brown">Garrett Brown</h1>
+                    </div>
+                </div>
+                <!-- END team-info-->
+            </div>
+            <!-- END team-single-->
+        
+
+         <div id="team-3" class="team-single active">
+            <div class="team-img">
+                <img src="https://i.ibb.co/JnQzWfB/image-from-ios.png" alt="Amber">
+                <div class="team-social">
+                    <ul>
+                        <li><a href=""><i class="fa fa-github"></i></a></li>
+                        <li><a href=""><i class="fa fa-envelope-o"></i></a></li>
+                        <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+                <!-- END team-social-->
+            </div>
+            <!-- END team-img-->
+            <div class="team-info text-center">
+                <div class="signature">
+
+                    <h1 data-text="Amber Dostert">Amber Dostert</h1>
+                </div>
+            </div>
+
+            <!-- END row-->
+        </div>
+        <!-- END container-->
+    </section>
 
 </body>
+
 </html>

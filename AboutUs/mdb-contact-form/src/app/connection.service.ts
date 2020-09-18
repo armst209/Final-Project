@@ -17,4 +17,5 @@ sendMessage(messageContent: any) {
 sendEmail(subject, message, email) {
   this.http.post('http://localhost:3000/send-email', {subject: subject, message: message, email: email});
 }
+
 }

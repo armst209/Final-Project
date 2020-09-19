@@ -11,8 +11,7 @@ import { GameinfoService } from '../service/gameinfo.service';
 export class PhasergameComponent implements OnInit, OnDestroy {
   phaserGame: Phaser.Game;
   config: Phaser.Types.Core.GameConfig;
-
-  title = 'game-testing';
+  // input = document.getElementById('input').valueOf();
   value = '';
   
 
@@ -25,8 +24,19 @@ export class PhasergameComponent implements OnInit, OnDestroy {
 
   getUniqueIdValue(value: string) {
     let score = document.getElementById('score').innerHTML;
-    document.getElementById('form').style.display = "none";
-    this.phaserGame.destroy(true);
+
+    if (value.length == 0)
+    { 
+       console.log("was hit");
+       alert("please enter a Unique ID");  	
+       return false; 
+    } else{
+
+      document.getElementById('submit').style.display = "none";
+      document.getElementById('submit-button').style.display = "none";
+    }
+    
+    // this.phaserGame.destroy(true);
     this.value = value;
     console.log(this.value);
     console.log(score);
@@ -36,7 +46,10 @@ export class PhasergameComponent implements OnInit, OnDestroy {
     })
   };
 
-
+  onSubmit(){
+     
+   
+     }
 
   constructor(private gameInfoService: GameinfoService) {
     this.config = {
@@ -55,14 +68,17 @@ export class PhasergameComponent implements OnInit, OnDestroy {
       audio: {
         disableWebAudio: true,
       },
+      
     };
+
+    
   }
 
   ngOnDestroy() {
     document.getElementById('characterName').innerText = 'Choose Your Character';
 
   }
-
+  
   // tslint:disable-next-line:typedef
   ngOnInit() {
     this.phaserGame = new Phaser.Game(this.config);
@@ -74,6 +90,7 @@ export class PhasergameComponent implements OnInit, OnDestroy {
     this.phaserGame.destroy(true);
 
   }
+ 
 }
 
 @Component({
@@ -117,6 +134,7 @@ export class MainScene extends Phaser.Scene {
   uniqueId: string;
   winText: any;
   gameOver = false;
+ 
 
 
   constructor(private gameInfoService: GameinfoService, private route: Router) {
@@ -207,6 +225,7 @@ export class MainScene extends Phaser.Scene {
     this.load.audio('tryagain', '../assets/arp.wav');
     this.load.audio('nicoleSound', '../assets/nicolesound.mp3')
     this.load.audio('loadScreen', '../assets/level_1.mp3')
+   
     
     
   }
@@ -218,7 +237,7 @@ export class MainScene extends Phaser.Scene {
 
     //playing music & sound effects
     this.music = this.sound.add('level1', { volume: 0.3 });
-    // this.music.play();
+    this.music.play();
     
     this.coinSound = this.sound.add('coinSound', { volume: 0.4 });
     this.nicoleSound = this.sound.add('nicoleSound');

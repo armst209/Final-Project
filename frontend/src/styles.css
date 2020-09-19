@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bentham&family=Permanent+Marker&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Bungee+Shade");
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 @import '../src/assets/fonts/scss/modules/_fonts.scss';
 
 :root {
@@ -600,29 +601,49 @@ p::after {
 
 #game-area {
   display: flex;
-  border: 5px red solid;
+  /* border: 5px red solid; */
   justify-content: center;
   align-items: center;
+  
   margin: 10px;
   font-family:'ArcadeClassic';
   /* border: 2px solid red; */
 }
 
 #form {
-  display:flex;
+  width: 100%;
+  height: auto;
+  display:none;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   position: absolute;
   color:black;
-  /* background-color: rgba(0, 0, 0, 0.644); */
-  background-color: white;
-
+  background-color:black;
   z-index: 999;
   width:800px;
   height:600px;
   font-family: 'ArcadeClassic';
+  font-size: 1.3em;
+  padding: .5em;
+  text-align:center;
 }
+
+.inner-form {
+  display:flex; 
+  flex-direction: column; 
+  align-items: center; 
+  background-color: white;
+  /* border: 2px solid red; */
+ 
+  
+}
+#submit {
+
+  display:flex;
+  flex-direction: column;
+}
+
 .pixel-button{
 
   line-height: 0;
@@ -700,17 +721,7 @@ p::after {
 #show-grace{
   display:none;
 }
-.closeX {
 
-  cursor: pointer;
-  display:flex;
-  position: absolute;
-  color:black;
-  justify-content: center;
-  align-items: center;
-  
-  width:100%;
-}
 .game-info {
 
   display:flex;

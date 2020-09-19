@@ -48,6 +48,18 @@
         </div>
 
         <div style=" display: flex; flex-direction: column; justify-content: center; align-items: center;background-color: white; padding: 1em; margin: 10px;">
+
+          <div style="display:flex; flex-direction: column; font-family:'ArcadeClassic'; color: black; font-size: 2em; margin-bottom: .3em; border: 2px solid blue;">
+            <div style="display:flex; flex-direction: row;justify-content: center;">
+              <div >Score:</div>
+              <div style="padding:0 .2em;" id="score">0</div>
+              <div><img class="floater" src="../../assets/coin stack.png" alt="stackofcoins"></div> 
+            </div>
+            <div>
+              <div style="font-size: .4em; font-family:'ArcadeClassic';">(# of Jacob Coins Collected x 10)</div>
+            </div>
+        </div>
+
           <div>
             <div style="color:grey">Overall Progress</div>
               <div style="color: black; font-size: 2em; display:flex; flex-direction: row; justify-content:center;">
@@ -77,29 +89,37 @@
         <div class="lms-box">Admin</div>
         <div class="lms-box">1:1 Sign-ups</div>
         </div>
-       </div>
       
-          <div style="color: black; font-size: 2em;background-color: white; padding: 1em;  margin:10px; display:flex; flex-direction: column; text-align: center;" >
-            <div style="display:flex; flex-direction: row;">
-              <div>Score:</div>
-              <div id="score">0</div>
-            </div>
-            <div><img src="../../assets/jacob.png" alt="jacobphoto" ></div>
-           
-          </div>
+    </div>
+      
+      
 </div>
 <!-- END OF LMS BAR -->
 
+
+<!-- PHASER GAME CONTAINER -->
   <div id='game-area'>
+    <!-- START OF GAME OVER SCREEN -->
+    
+    
     <div id="form">
-      <div class="closeX" (click)="closeGameEnd()" [routerLink]="['/charselect']">X</div>
-      <h1>Try Again!</h1>
-      <label for=""> Enter Unique ID:</label>
-      <input style="font-size:.6em" type="text" maxlength="15" #uniqueId />
-      <button (click)="getUniqueIdValue(uniqueId.value)">ENTER</button>
-      <img class="grace-photo" src="../../assets/grace.png" alt="photo of Grace">
+      
+      
+      <div style="display:flex; flex-direction: column; align-items: center; border: 2px solid black;">
+          <h2>Hey Bootcampers!</h2>
+          <label for=""> Enter Unique ID:</label>
+          <input style="font-size:.6em;" type="text" maxlength="15" #uniqueId />
+          <div class="pixel-button" (click)="getUniqueIdValue(uniqueId.value)"><div>ENTER</div>
+            </div>
+      </div>
+      <div style="border: 2px solid black">
+        <div class="closeX" (click)="closeGameEnd()" [routerLink]="['/charselect']">X</div>
+      </div>
     </div>
   </div>
-
-
+<!-- JACOB ZOOM WINDOW -->
+  <div style="display:flex; flex-direction: column; height: auto;position: relative; border: 3px solid red">
+    <img src="../../assets/jacob.png" alt="">
+    <img id="show-grace" class="wiggle" src="../../assets/grace_zoom.png" alt="photo of Grace">
+  </div> 
 </div>

@@ -4,6 +4,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { PhasergameComponent } from './phasergame/phasergame.component';
 import { AboutUsComponent } from "./about-us/about-us.component";
 import { CharactersComponent } from './characters/characters.component';
+import { HighscoresComponent } from './highscores/highscores.component';
 
 const routes: Routes = [
 
@@ -11,6 +12,7 @@ const routes: Routes = [
   {path: "charselect", component: CharactersComponent},
   {path: "game", component: PhasergameComponent},
   {path: "aboutus", component: AboutUsComponent},
+  {path: "highscores", component: HighscoresComponent},
   {path: "", redirectTo: '/home', pathMatch: "full"}
 ];
 

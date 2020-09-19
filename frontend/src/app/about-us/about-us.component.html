@@ -28,8 +28,86 @@
                 <div class="team-social">
                     <ul>
                         <li><a href=""><i class="fab fa-github"></i></a></li>
-                        <li><a href=""><i class="fa fa-address-book"></i></a></li>
-                        <li><a href=""><i class="fab fa linkedin"></i></a></li>
+
+                        <li><a href=""><i class="fa fa-envelope" data-toggle="modal" data-target="#basicExample"
+                            (click)="frame.show()"></i></a></li> 
+                    <div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+                        aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="modal-title w-100 font-weight-bold">Write to us</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body mx-3">
+                            <div class="md-form mb-5">
+                            <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
+                            <input type="text" id="form34" class="form-control" mdbInput mdbValidate [formControl]="contactFormModalName">
+                            <label for="form34">Your name</label>
+                            <mdb-error
+                                *ngIf="contactFormModalName.invalid && (contactFormModalName.dirty || contactFormModalName.touched)">Input
+                                invalid
+                            </mdb-error>
+                            <mdb-success
+                                *ngIf="contactFormModalName.valid && (contactFormModalName.dirty || contactFormModalName.touched)">Input
+                                valid
+                            </mdb-success>
+                            </div>
+                            <div class="md-form mb-5">
+                            <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
+                            <input type="email" id="form29" class="form-control" mdbInput mdbValidate
+                                    [formControl]="contactFormModalEmail">
+                            <label for="form29">Your email</label>
+                            <mdb-error
+                                *ngIf="contactFormModalEmail.invalid && (contactFormModalEmail.dirty || contactFormModalEmail.touched)">
+                                Input invalid
+                            </mdb-error>
+                            <mdb-success
+                                *ngIf="contactFormModalEmail.valid && (contactFormModalEmail.dirty || contactFormModalEmail.touched)">Input
+                                valid
+                            </mdb-success>
+                            </div>
+                            <div class="md-form mb-5">
+                            <mdb-icon fas icon="tag" class="prefix grey-text"></mdb-icon>
+                            <input type="text" id="form32" class="form-control" mdbInput mdbValidate
+                                    [formControl]="contactFormModalSubject">
+                            <label for="form32">Subject</label> */YOU'LL ALSO WANT TO CHANGE SUBJECT TO BE "STUDENT:"*/
+                            <mdb-error
+                                *ngIf="contactFormModalSubject.invalid && (contactFormModalSubject.dirty || contactFormModalSubject.touched)">
+                                Input invalid
+                            </mdb-error>
+                            <mdb-success
+                                *ngIf="contactFormModalSubject.valid && (contactFormModalSubject.dirty || contactFormModalSubject.touched)">
+                                Input valid
+                            </mdb-success>
+                            </div>
+                            <div class="md-form">
+                            <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
+                            <textarea type="text" id="form8" class="md-textarea form-control" rows="1" mdbInput mdbValidate
+                                        [formControl]="contactFormModalMessage"></textarea>
+                            <label for="form8">Your message</label>
+                            <mdb-error
+                                *ngIf="contactFormModalMessage.invalid && (contactFormModalMessage.dirty || contactFormModalMessage.touched)">
+                                Input invalid
+                            </mdb-error>
+                            <mdb-success
+                                *ngIf="contactFormModalMessage.valid && (contactFormModalMessage.dirty || contactFormModalMessage.touched)">
+                                Input valid
+                            </mdb-success>
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button mdbBtn color="unique" class="waves-light" mdbWavesEffect>Send
+                            <mdb-icon far icon="paper-plane" class="ml-1"></mdb-icon>
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
+                        <li><a href=""><i class="fab fa-linkedin-in"></i></a></li>
                     </ul>
                 </div>
                 <!-- END team-social-->
@@ -48,9 +126,9 @@
                 <img src="https://i.ibb.co/dL6ypmd/propic.png" alt="Garrett">
                 <div class="team-social">
                     <ul>
-                        <li><a href=""><i class="fa fa-github"></i></a></li>
-                        <li><a href=""><i class="fa fa-envelope-o"></i></a></li>
-                        <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href=""><i class="fab fa-github"></i></a></li>
+                        <li><a href=""><i class="fa fa-envelope"></i></a></li>
+                        <li><a href=""><i class="fab fa-linkedin-in"></i></a></li>
                     </ul>
                 </div>
                 <!-- END team-social-->
@@ -72,9 +150,9 @@
             <img src="https://i.ibb.co/JnQzWfB/image-from-ios.png" alt="Amber">
             <div class="team-social">
                 <ul>
-                    <li><a href=""><i class="fa fa-github"></i></a></li>
-                    <li><a href=""><i class="fa fa-envelope-o"></i></a></li>
-                    <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href=""><i class="fab fa-github"></i></a></li>
+                        <li><a href=""><i class="fa fa-envelope"></i></a></li>
+                        <li><a href=""><i class="fab fa-linkedin-in"></i></a></li>
                 </ul>
             </div>
             <!-- END team-social-->

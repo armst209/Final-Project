@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bentham&family=Permanent+Marker&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Bungee+Shade");
+@import '../src/assets/fonts/scss/modules/_fonts.scss';
 
 :root {
   --f-size: 15;
@@ -590,6 +591,7 @@ p::after {
 .phaser-lms-container {
   display:flex;
   flex-direction: row;
+  margin: 1em;
   justify-content: center;
   align-items: center;
   font-family: "Open Sans","Helvetica Neue",Arial,sans-serif;
@@ -598,35 +600,112 @@ p::after {
 
 #game-area {
   display: flex;
+  border: 5px red solid;
   justify-content: center;
   align-items: center;
   margin: 10px;
+  font-family:'ArcadeClassic';
   /* border: 2px solid red; */
 }
 
 #form {
-  display:none;
-  flex-direction: column;
+  display:flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   position: absolute;
-  color:white;
-  background-color: rgba(0, 0, 0, 0.644);
-  top:4.3em;
+  color:black;
+  /* background-color: rgba(0, 0, 0, 0.644); */
+  background-color: white;
+
   z-index: 999;
   width:800px;
-  height:630px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  height:600px;
+  font-family: 'ArcadeClassic';
 }
+.pixel-button{
+
+  line-height: 0;
+  
+  image-rendering: optimizeSpeed;
+  image-rendering: -moz-crisp-edges; /* Firefox */
+  image-rendering: -o-crisp-edges; /* Opera */
+  image-rendering: -webkit-optimize-contrast; /* Webkit (non-standard naming) */
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
+  
+  border-style: solid;
+  border-width: 20px;
+  -moz-border-image: url(https://i.imgur.com/sREM8Yn.png) 20 stretch;
+  -webkit-border-image: url(https://i.imgur.com/sREM8Yn.png) 20 stretch;
+  -o-border-image: url(https://i.imgur.com/sREM8Yn.png) 20 stretch;
+  border-image: url(https://i.imgur.com/sREM8Yn.png) 20 stretch;
+
+ 
+  color: white;
+  height: auto;
+  margin: 10px;
+  font-family: 'VT323';
+  
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  text-transform: uppercase;
+  
+  cursor: pointer;
+  
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.pixel-button:active {
+  top:2px;
+}
+.pixel-button div{
+  font-family:'ArcadeClassic';
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  width: auto;
+  text-align: center;
+  margin: -20px -20px;
+  line-height: 20px;
+  padding: 10px 20px;
+  
+	background: #000000;
+	background:
+		linear-gradient(135deg, transparent 10px, #000000 0) top left,
+		linear-gradient(225deg, transparent 10px, #000000 0) top right,
+		linear-gradient(315deg, transparent 10px, #000000 0) bottom right,
+		linear-gradient(45deg,  transparent 10px, #000000 0) bottom left;
+	background-size: 50% 50%;
+	background-repeat: no-repeat;
+	background-image:
+		radial-gradient(circle at 0 0, rgba(204,0,0,0) 14px, #000000 15px),
+		radial-gradient(circle at 100% 0, rgba(204,0,0,0) 14px, #000000 15px),
+		radial-gradient(circle at 100% 100%, rgba(204,0,0,0) 14px, #000000 15px),
+		radial-gradient(circle at 0 100%, rgba(204,0,0,0) 14px, #000000 15px);
+}
+
 .grace-photo {
 
   width: 300px;
   height:300px;
 }
+
+#show-grace{
+  display:none;
+}
 .closeX {
 
   cursor: pointer;
   display:flex;
+  position: absolute;
+  color:black;
   justify-content: center;
   align-items: center;
   
@@ -640,6 +719,7 @@ p::after {
   align-items: center;
   background-color: #f4f4f4;
   width: 300px;
+  height: auto;
   
 }
 
@@ -660,7 +740,7 @@ p::after {
 
   border-top: 4px solid #3cc;
   background-color: rgba(51,204,204, 0.05);
-  width: 100px;
+  width: 100%;
   color: #666;
   box-shadow: 4px 4px grey;
 }

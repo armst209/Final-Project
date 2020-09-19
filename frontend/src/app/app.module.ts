@@ -12,6 +12,7 @@ import { CharactersComponent } from './characters/characters.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { PhasergameComponent, MainScene } from './phasergame/phasergame.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { HighscoresComponent } from './highscores/highscores.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
     LandingPageComponent,
     PhasergameComponent,
     MainScene,
-    AboutUsComponent
+    AboutUsComponent,
+    HighscoresComponent
   ],
   imports: [
     BrowserModule,

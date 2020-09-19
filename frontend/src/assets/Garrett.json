@@ -1,234 +1,234 @@
 {
     "frames": [
         {
-        "filename": "p3_walk01", 
+        "filename": "p3_walk01",
             "frame": {
                 "x": 0,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             },
             "rotated": false,
             "trimmed": false,
             "spriteSourceSize": {
                 "x": 0,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             },
             "sourceSize": {
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             }
         },
         {
         "filename": "p3_walk02",
             "frame": {
-                "x": 144,
+                "x": 70,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             },
             "rotated": false,
             "trimmed": false,
             "spriteSourceSize": {
                 "x": 0,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             },
             "sourceSize": {
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             }
         },
         {
         "filename": "p3_walk03",
             "frame": {
-                "x": 288,
+                "x": 140,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             },
             "rotated": false,
             "trimmed": false,
             "spriteSourceSize": {
                 "x": 0,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             },
             "sourceSize": {
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             }
         },
         {
         "filename": "p3_walk04",
             "frame": {
-                "x": 432,
+                "x": 210,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             },
             "rotated": false,
             "trimmed": false,
             "spriteSourceSize": {
                 "x": 0,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             },
             "sourceSize": {
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             }
         },
         {
         "filename": "p3_stand01",
             "frame": {
-                "x": 576,
+                "x": 280,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             },
             "rotated": false,
             "trimmed": false,
             "spriteSourceSize": {
                 "x": 0,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             },
             "sourceSize": {
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             }
         },
         {
         "filename": "p3_stand02",
             "frame": {
-                "x": 720,
+                "x": 350,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             },
             "rotated": false,
             "trimmed": false,
             "spriteSourceSize": {
                 "x": 0,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             },
             "sourceSize": {
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             }
         },
         {
-        "filename": "p3_jump",
+        "filename": "jump",
             "frame": {
-                "x": 864,
+                "x": 420,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             },
             "rotated": false,
             "trimmed": false,
             "spriteSourceSize": {
                 "x": 0,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             },
             "sourceSize": {
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             }
         },
         {
         "filename": "p3_walk05",
             "frame": {
-                "x": 1008,
+                "x": 490,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             },
             "rotated": false,
             "trimmed": false,
             "spriteSourceSize": {
                 "x": 0,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             },
             "sourceSize": {
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             }
         },
         {
         "filename": "p3_walk06",
             "frame": {
-                "x": 1152,
+                "x": 560,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             },
             "rotated": false,
             "trimmed": false,
             "spriteSourceSize": {
                 "x": 0,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             },
             "sourceSize": {
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             }
         },
         {
         "filename": "p3_walk07",
             "frame": {
-                "x": 1296,
+                "x": 630,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             },
             "rotated": false,
             "trimmed": false,
             "spriteSourceSize": {
                 "x": 0,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             },
             "sourceSize": {
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             }
         },
         {
         "filename": "p3_walk08",
             "frame": {
-                "x": 1440,
+                "x": 700,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             },
             "rotated": false,
             "trimmed": false,
             "spriteSourceSize": {
                 "x": 0,
                 "y": 0,
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             },
             "sourceSize": {
-                "w": 144,
-                "h": 144
+                "w": 70,
+                "h": 70
             }
         }
     ],
@@ -238,9 +238,9 @@
         "image": "Garrett.png",
         "format": "RGBA8888",
         "size": {
-            "w": 1584,
-            "h": 144
+            "w": 770,
+            "h": 70
         },
-       "scale": 1 
+        "scale":1
     }
 }

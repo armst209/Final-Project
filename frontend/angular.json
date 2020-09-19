@@ -32,7 +32,7 @@
               "node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
               "node_modules/animate.css/animate.css",
               "src/styles.css",
-              "src/assets/styles.css"
+              "src/assets/wickedcss.min.css"
             ],
             "scripts": [
               "node_modules/chart.js/dist/Chart.js",

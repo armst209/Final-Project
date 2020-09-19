@@ -213,10 +213,12 @@ export class MainScene extends Phaser.Scene {
 
   create() {
     this.background = this.add.image(400, 300, 'sky');
+    this.assessText = this.add.text(16, 29, 'Pre-Test: Deliverables', { fontFamily: 'ArcadeClassic',fontSize: '30px', fill: 'white'});
 
-    //playing music
+
+    //playing music & sound effects
     this.music = this.sound.add('level1', { volume: 0.3 });
-    this.music.play();
+    // this.music.play();
     
     this.coinSound = this.sound.add('coinSound', { volume: 0.4 });
     this.nicoleSound = this.sound.add('nicoleSound');
@@ -422,8 +424,7 @@ export class MainScene extends Phaser.Scene {
     this.enemies = this.physics.add.group();
 
     
-    this.assessText = this.add.text(16, 29, '', { fontFamily: 'ArcadeClassic', fontSize: '30px', fill: 'white'});
-    this.assessText.setText('Pre-Test: Deliverables', {fontFamily: 'ArcadeClassic'});
+    
     //  Collide the player and the stars with the platforms
     this.physics.add.collider(this.player, this.platforms);
     this.physics.add.collider(this.coins, this.platforms);
@@ -723,6 +724,7 @@ export class MainScene extends Phaser.Scene {
   }
 
   hitBomb(player, bomb) {
+    
     this.physics.pause();
     this.player.setTint(0xff0000);
     this.player.anims.play('jump');
@@ -731,7 +733,7 @@ export class MainScene extends Phaser.Scene {
     this.failSound.play();
 
     setTimeout(() => {
-      
+    document.getElementById('show-grace').style.display = "flex"; 
     document.getElementById('form').style.display = "flex";
     this.loadScreen.play();
     }, 1000);

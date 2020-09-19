@@ -123,13 +123,15 @@
             <input style="font-size:1em; " type="text" maxlength="15" #uniqueId />
           </div>
           <div type="submit" id="submit-button" display="block" class="pixel-button" (click)="getUniqueIdValue(uniqueId.value)"><div>SUBMIT</div></div>
-          <div class="pixel-button" (click)="closeGameEnd()" [routerLink]="['/charselect']"><div>Try Again</div></div>
+          <div style="padding: .7em; background-color: white;border: 3px solid #4a154b; color:black;"   *ngIf="dadJoke" class="dad-joke">
+            <div>{{dadJoke.setup}}</div>
+            <div>{{dadJoke.punchline}}</div>
+          </div>
+          <div style="margin: .8em 0;" class="pixel-button floater" (click)="closeGameEnd()" [routerLink]="['/charselect']"><div>Try Again</div></div>
           
       </div>
 
-      <div class="dad-joke">
-
-      </div>
+      
    
     </div>
   </div>

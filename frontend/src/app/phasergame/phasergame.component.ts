@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Phaser from 'phaser';
+import { stringify } from 'querystring';
 import { GameinfoService } from '../service/gameinfo.service';
 
 @Component({
@@ -13,7 +14,16 @@ export class PhasergameComponent implements OnInit, OnDestroy {
   config: Phaser.Types.Core.GameConfig;
   // input = document.getElementById('input').valueOf();
   value = '';
+  dadJoke: any;
   
+  getDadJoke(){
+
+    this.gameInfoService.getDadJokes().subscribe(response =>{
+
+      this.dadJoke = response;
+      console.log(this.dadJoke);
+    })
+  }
 
   closeGameEnd() {
 
@@ -46,10 +56,6 @@ export class PhasergameComponent implements OnInit, OnDestroy {
     })
   };
 
-  onSubmit(){
-     
-   
-     }
 
   constructor(private gameInfoService: GameinfoService) {
     this.config = {
@@ -82,7 +88,8 @@ export class PhasergameComponent implements OnInit, OnDestroy {
   // tslint:disable-next-line:typedef
   ngOnInit() {
     this.phaserGame = new Phaser.Game(this.config);
-   
+    this.getDadJoke()
+;   
 
   }
 

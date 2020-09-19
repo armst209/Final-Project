@@ -10,9 +10,11 @@ export class GameinfoService {
   selectedCharacter: any;
   playerOne: any;
   random: string = 'random';
+
  
   constructor(private http: HttpClient ) { }
 
+  
   getCharInfo(): Observable<any> {
     return this.http.get<any>('https://char-info.herokuapp.com/characters/');
   }
@@ -25,6 +27,11 @@ export class GameinfoService {
    getFullScoreInfo():Observable<any>{
 
     return this.http.get<any>('https://game-backend3412.herokuapp.com/scores/');
+   }
+
+   getDadJokes():Observable<any>{
+    
+    return this.http.get<any>('https://us-central1-dadsofunny.cloudfunctions.net/DadJokes/random/jokes/');
    }
 
 }

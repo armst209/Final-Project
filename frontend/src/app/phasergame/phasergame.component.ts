@@ -136,7 +136,7 @@ export class MainScene extends Phaser.Scene {
   x: any;
   background: any;
   platforms: any;
-  movingPlatform: any;
+  nicoleChar: any;
   enemyHitSound: any;
   uniqueId: string;
   winText: any;
@@ -187,7 +187,32 @@ export class MainScene extends Phaser.Scene {
       
     } else if (document.getElementById('characterName').innerText == 'Amber') {
 
+       //loading background
+       this.load.image('sky', 'assets/city.png');
+
+       //loading coins
+       this.load.image(
+         'coin', '../assets/coin_5.gif');
  
+       // player animations
+       this.load.atlas('player', '../assets/Amber.png', '../assets/Amber.json');
+ 
+       //loading platforms
+       this.load.image('zoombar', 'assets/zoombar.png');
+       this.load.image('youtube', 'assets/ytplatform.png');
+       this.load.image('stackover','assets/soplatform.png')
+       this.load.image('ground', 'assets/platform.png');
+       //loads enemies
+       this.load.image('nicole', 'assets/nicole.png');
+       this.load.image('bomb', 'assets/html.png');
+       this.load.image('bomb-1', 'assets/css.png');
+       this.load.image('bomb2', 'assets/javascript.png');
+       this.load.image('bomb3', 'assets/dom.png');
+       this.load.image('bomb4', 'assets/typescript.png');
+       this.load.image('bomb5', 'assets/angular.png');
+       this.load.image('bomb6', 'assets/node-express.png');
+       this.load.image('bomb7', 'assets/sql.png');
+  
 
     } else if (document.getElementById('characterName').innerText == 'Garrett') {
 
@@ -274,11 +299,9 @@ export class MainScene extends Phaser.Scene {
     if (document.getElementById('characterName').innerText == 'Aaron') {
       this.player = this.physics.add.sprite(100, 450, 'player');
     } else if (document.getElementById('characterName').innerText == 'Amber') {
-      // this.player = this.physics.add.sprite(10, 30, 'player');
-    } else if (
-      document.getElementById('characterName').innerText == 'Garrett'
-    ) {
       this.player = this.physics.add.sprite(100, 450, 'player');
+    } else if (document.getElementById('characterName').innerText == 'Garrett'
+    ) {this.player = this.physics.add.sprite(100, 450, 'player');
     }
 
     this.player.setBounce(0.2); // our player will bounce from items
@@ -559,8 +582,7 @@ export class MainScene extends Phaser.Scene {
     this.nicoleSound.play();
     this.score += 10;
     this.setScore();
-    // this.scoreText.setText('Score: ' + this.score);
-    this.movingPlatform.destroy();
+    this.nicoleChar.destroy();
 
   }
 
@@ -571,34 +593,32 @@ export class MainScene extends Phaser.Scene {
     //  Add and update the score
     this.score += 10;
     this.setScore();
-    // this.scoreText.setText('Score: ' + this.score);
-
+    
     if (this.coins.countActive(true) === 2) {
-      //  A new batch of stars to collect
+      //  A new batch of coins to collect
       this.coins.children.iterate(function (child) {
 
         child.enableBody(true, child.x, 0, true, true);
 
       });
 
-      let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+      let x = (this.player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
 
 
     }
     //LEVEL 1 - HTML & CSS
     if (this.score == 80) {
      
-      this.setAssessComp();
       this.assessComplete.play();
       this.assessText.setText('Current Assessment: ' + this.assessScore)
       
-      
-
-      this.movingPlatform = this.physics.add.image(16, 500, 'nicole');
-      this.movingPlatform.setImmovable(true);
-      this.movingPlatform.body.allowGravity = false;
-      this.movingPlatform.setVelocityX(50);
-      this.physics.add.overlap(this.player, this.movingPlatform, this.collectNicole, null, this);
+      //adding nicole sprite and moving it across the screen
+      this.nicoleChar = this.physics.add.image(645, 47, 'nicole');
+      this.nicoleChar.setImmovable(true);
+      this.nicoleChar.body.allowGravity = false;
+      this.nicoleChar.flipX = true;
+      this.nicoleChar.setVelocityX(-50);
+      this.physics.add.overlap(this.player, this.nicoleChar, this.collectNicole, null, this);
 
       let x = (this.player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
       let bomb2 = this.enemies.create(x, 16, 'bomb');
@@ -615,12 +635,9 @@ export class MainScene extends Phaser.Scene {
     }
     //LEVEL 2 - JAVASCRIPT
     else if (this.score == 160) {
+      this.setAssessComp();
       this.assessComplete.play();
-      
-      this.setAssessCompTwo();
-      this.assessScore++
       this.assessText.setText('Current Assessment: ' + this.assessScore)
-      
 
       let x = (this.player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
       let bomb2 = this.enemies.create(x, 19, 'bomb2');
@@ -641,7 +658,12 @@ export class MainScene extends Phaser.Scene {
       this.setAssessCompTwo();
       this.assessScore++
       this.assessText.setText('Current Assessment: ' + this.assessScore)
-     
+
+      this.nicoleChar = this.physics.add.image(1, 475, 'nicole');
+      this.nicoleChar.setImmovable(true);
+      this.nicoleChar.body.allowGravity = false;
+      this.nicoleChar.setVelocityX(50);
+      this.physics.add.overlap(this.player, this.nicoleChar, this.collectNicole, null, this);
 
       let x = (this.player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
       let bomb2 = this.enemies.create(x, 12, 'bomb3');
@@ -680,11 +702,12 @@ export class MainScene extends Phaser.Scene {
       let x = (this.player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
       let bomb2 = this.enemies.create(x, 8, 'bomb5');
 
-      this.movingPlatform = this.physics.add.image(16, 300, 'nicole');
-      this.movingPlatform.setImmovable(true);
-      this.movingPlatform.body.allowGravity = false;
-      this.movingPlatform.setVelocityX(50);
-      this.physics.add.overlap(this.player, this.movingPlatform, this.collectNicole, null, this);
+      this.nicoleChar = this.physics.add.image(645, 47, 'nicole');
+      this.nicoleChar.setImmovable(true);
+      this.nicoleChar.body.allowGravity = false;
+      this.nicoleChar.flipX = true;
+      this.nicoleChar.setVelocityX(-50);
+      this.physics.add.overlap(this.player, this.nicoleChar, this.collectNicole, null, this);
 
       
       bomb2.setBounce(1);
@@ -719,7 +742,12 @@ export class MainScene extends Phaser.Scene {
       this.setAssessCompTwo();
       this.assessScore++
       this.assessText.setText('Current Assessment: ' + this.assessScore)
-      
+
+      this.nicoleChar = this.physics.add.image(1, 475, 'nicole');
+      this.nicoleChar.setImmovable(true);
+      this.nicoleChar.body.allowGravity = false;
+      this.nicoleChar.setVelocityX(50);
+      this.physics.add.overlap(this.player, this.nicoleChar, this.collectNicole, null, this);
 
       let x = (this.player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
       let bomb2 = this.enemies.create(x, 5, 'bomb7');
@@ -733,12 +761,14 @@ export class MainScene extends Phaser.Scene {
 
     
     this.assessComplete.play();
+    this.setAssessCompTwo();
+      this.assessScore++
     
-    this.assessText.setText('Demo Day ')
-    // this.platforms.destroy();
-    // this.coins.destroy();
-    // this.movingPlatform.destroy();
-    // this.enemies.destroy();
+    this.assessText.setText('Demo Day')
+    this.coins.clear(true);
+    this.platforms.clear(true);
+    this.enemies.clear(true);
+    this.platforms.create(400, 578, 'zoombar').setScale(1).refreshBody();
   }
 
   }
@@ -759,12 +789,12 @@ export class MainScene extends Phaser.Scene {
     this.failSound.play();
 
     setTimeout(() => {
+    document.getElementById('show-jacob').style.display="none";
+    document.getElementById('show-nicole').style.display= "none";
     document.getElementById('show-grace').style.display = "flex"; 
     document.getElementById('form').style.display = "flex";
     this.loadScreen.play();
     }, 1000);
-
-    
 
   }
 

@@ -712,14 +712,26 @@ p::after {
 		radial-gradient(circle at 0 100%, rgba(204,0,0,0) 14px, #000000 15px);
 }
 
-.grace-photo {
 
-  width: 300px;
-  height:300px;
+
+#show-jacob{
+
+  flex-direction: column;
+  border: 3px solid lawngreen;
+
 }
 
 #show-grace{
   display:none;
+  flex-direction: column;
+  border: 3px solid lawngreen;
+}
+
+#show-nicole{
+ 
+  flex-direction: column;
+  /* border: 3px solid lawngreen; */
+
 }
 
 .game-info {
@@ -759,11 +771,20 @@ p::after {
 
  box-shadow:none;
 }
+.zoom-windows{
+ 
+  display:grid; 
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  position: relative; 
+  /* border: 3px solid red */
 
-.grace-photo {
+}
 
-  width: 300px;
-  height:300px;
+.z-window {
+
+  width:200px;
+  height:200px;
 }
 
 /* About Us Page */

@@ -59,7 +59,7 @@ git clone https://github.com/armst209/Final-Project.git
 ```
 2. Install NPM packages
 ```sh
-npm install
+npm install phaser angular express 
 ```
 
 <!-- CONTRIBUTING -->

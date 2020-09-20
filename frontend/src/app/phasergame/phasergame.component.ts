@@ -600,14 +600,14 @@ export class MainScene extends Phaser.Scene {
       this.movingPlatform.setVelocityX(50);
       this.physics.add.overlap(this.player, this.movingPlatform, this.collectNicole, null, this);
 
-      let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+      let x = (this.player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
       let bomb2 = this.enemies.create(x, 16, 'bomb');
       bomb2.setBounce(1);
       bomb2.setCollideWorldBounds(true);
       bomb2.setVelocity(Phaser.Math.Between(-200, 200), 20);
       bomb2.allowGravity = false;
 
-      let bomb2One = this.enemies.create(x, 16, 'bomb-1');
+      let bomb2One = this.enemies.create(x, 10, 'bomb-1');
       bomb2One.setBounce(1);
       bomb2One.setCollideWorldBounds(true);
       bomb2One.setVelocity(Phaser.Math.Between(-200, 200), 20);
@@ -622,8 +622,8 @@ export class MainScene extends Phaser.Scene {
       this.assessText.setText('Current Assessment: ' + this.assessScore)
       
 
-      let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
-      let bomb2 = this.enemies.create(x, 16, 'bomb2');
+      let x = (this.player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+      let bomb2 = this.enemies.create(x, 19, 'bomb2');
 
       bomb2.setBounce(1);
       bomb2.setCollideWorldBounds(true);
@@ -643,8 +643,8 @@ export class MainScene extends Phaser.Scene {
       this.assessText.setText('Current Assessment: ' + this.assessScore)
      
 
-      let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
-      let bomb2 = this.enemies.create(x, 16, 'bomb3');
+      let x = (this.player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+      let bomb2 = this.enemies.create(x, 12, 'bomb3');
       
       bomb2.setBounce(1);
       bomb2.setCollideWorldBounds(true);
@@ -659,8 +659,8 @@ export class MainScene extends Phaser.Scene {
       this.assessScore++
       this.assessText.setText('Current Assessment: ' + this.assessScore)
     
-      let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
-      let bomb2 = this.enemies.create(x, 16, 'bomb4');
+      let x = (this.player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+      let bomb2 = this.enemies.create(x, 7, 'bomb4');
       bomb2.setBounce(1);
       bomb2.setCollideWorldBounds(true);
       bomb2.setVelocity(Phaser.Math.Between(-200, 200), 20);
@@ -677,8 +677,8 @@ export class MainScene extends Phaser.Scene {
       this.assessText.setText('Current Assessment: ' + this.assessScore)
       
 
-      let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
-      let bomb2 = this.enemies.create(x, 16, 'bomb5');
+      let x = (this.player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+      let bomb2 = this.enemies.create(x, 8, 'bomb5');
 
       this.movingPlatform = this.physics.add.image(16, 300, 'nicole');
       this.movingPlatform.setImmovable(true);
@@ -703,8 +703,8 @@ export class MainScene extends Phaser.Scene {
       this.assessText.setText('Current Assessment: ' + this.assessScore)
       
 
-      let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
-      let bomb2 = this.enemies.create(x, 16, 'bomb6');
+      let x = (this.player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+      let bomb2 = this.enemies.create(x, 2, 'bomb6');
       bomb2.setBounce(1);
       bomb2.setCollideWorldBounds(true);
       bomb2.setVelocity(Phaser.Math.Between(-200, 200), 20);
@@ -721,8 +721,8 @@ export class MainScene extends Phaser.Scene {
       this.assessText.setText('Current Assessment: ' + this.assessScore)
       
 
-      let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
-      let bomb2 = this.enemies.create(x, 16, 'bomb7');
+      let x = (this.player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+      let bomb2 = this.enemies.create(x, 5, 'bomb7');
       bomb2.setBounce(1);
       bomb2.setCollideWorldBounds(true);
       bomb2.setVelocity(Phaser.Math.Between(-200, 200), 20);

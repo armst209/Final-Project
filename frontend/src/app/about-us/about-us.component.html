@@ -1,28 +1,28 @@
 
-<div class="bar">
-    <div class="nav">
-        <div [routerLink]="['/home']" class="logo">
-            <p data-text="Break">Break</p>
+    <div class="bar">
+        <div class="nav">
+            <div [routerLink]="['/home']" class="logo">
+                <p  data-text="Break" >Break</p>
+            </div>
+            <div class="item" id="selected">Discover</div>
+            <div class="modal-container">
+              <input id="modal-toggle" type="checkbox">
+          <label class="item" for="modal-toggle"  [routerLink]="['/highscores']">High Scores</label>
+          <label class="modal-backdrop" for="modal-toggle"></label>
+          <div class="modal-content">
+            <label class="modal-close" for="modal-toggle">&#x2715;</label>
+            <h2>Unique ID here</h2><hr />
+            <h1></h1> 
+            <label class="modal-content-btn" for="modal-toggle">OK</label>   
+          </div>   
+          </div>
+
+            <div class="item" [routerLink]="['/about-us']">About us</div>
         </div>
-        <div class="item" id="selected">Discover</div>
-        
-        <div class="modal-container">
-          <input id="modal-toggle" type="checkbox">
-      <label class="item" for="modal-toggle" [routerLink]="['/highscores']">High Scores</label>
-      <label class="modal-backdrop" for="modal-toggle"></label>
-      <div class="modal-content">
-        <label class="modal-close" for="modal-toggle">&#x2715;</label>
-        <h2>Unique ID here</h2><hr />
-        <h1>Score information</h1> 
-        <label class="modal-content-btn" for="modal-toggle">OK</label>   
-      </div>   
-      </div> 
-      
     </div>
-</div>
 <!-- START TEAM -->
 <section id="team">
-    <div class="container">
+    <div class="about-container">
 
         <div id="team-1" class="team-single active">
             <div class="team-img">
@@ -95,7 +95,7 @@
 </section>
 <section id="user-info">
     <h2>Get in Touch</h2>
-    <form [formGroup]="validatingForm" action="/action_page.php">
+    <form id="about-form" [formGroup]="validatingForm" action="/action_page.php">
      <input type="text" name="FirstName" placeholder="Your name..."><br>
      <input type="text" name="LastName" placeholder="Your email..."><br>
      <textarea placeholder="Add students name and your message here..."></textarea><br> 

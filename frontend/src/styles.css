@@ -797,10 +797,11 @@ p::after {
 /* About Us Page */
 .about-container {
   display: flex;
+  flex-direction:row;
 }
 
 #team {
-  padding: 150px 0;
+  padding: 2em;
 
 }
 
@@ -973,6 +974,174 @@ p::after {
 }
 
 
+/* ABOUT US STYLES */
+/*---USER INFOR STYLING---*/
+
+
+#user-info{
+  display:flex;  
+  flex-direction:column;  
+  align-items:center; 
+  justify-content: center; 
+  margin: 1em;
+ 
+  }
+
+  #about-form {
+
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  #company-contact-info h2,
+  #user-info h2{
+  letter-spacing:0.2em;
+  }
+  
+  #user-info input,
+  #user-info textarea{
+  background-color:#E9E8E8;   
+  }
+  
+  
+  #user-info button{
+  background-color:#DAA520;  
+  }
+  
+  
+  #user-info button{
+  color:black;    
+  }
+  
+  #user-info,
+  #user-info button:hover{
+  background-color:black;   
+  }
+  
+  /*border*/
+  #user-info input,
+  #user-info textarea,
+  #user-info button{
+  border:none;
+  }
+  
+  /*box shadow*/
+  #user-info{
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.1),
+  0 6px 10px 5px rgba(0, 0, 0, 0.1), 0 8px 10px -5px rgba(0, 0, 0, 0.2);   
+  }
+  
+  
+  /*---USER INFO---*/
+
+  
+  #user-info h2{
+  margin-top:2em;  
+  font-size:2em;
+  word-spacing:-0.2em;  
+  color: #1AF0DC
+  }
+  
+  #user-info p{
+  margin:0.4em 0 0.5em 0;   
+  }
+  
+  #user-info input,
+  #user-info textarea{
+  width:40em;  
+  margin:0.8em 0;
+  padding:0.8em 0;
+  text-indent:1em;  
+  border-radius:0.2em;  
+  }
+  
+  #user-info textarea{ 
+  height:6em;  
+  }
+  
+  #user-info button{
+  padding:0.7em 3em; 
+  border-radius:1.5em;
+  cursor:pointer; 
+  transition: background .6s ease-in, transform .2s ease-out;  
+  }
+  
+  #user-info button:hover{
+  color:#008080;
+  border:0.0625em solid #008080;  
+  transform: scale(1.1) rotateX(30deg);  
+  }
+  
+  
+  @media (max-width: 1070px){
+  
+    #user-info{ 
+    justify-content:center;
+    width:30%; 
+    }
+  }
+  
+  
+  @media (max-width: 990px){
+  
+    #user-info{ 
+    background-color:#000;
+    }
+  
+    #user-info h2,
+    #user-info p{
+    color:#DAA520;
+    }
+    
+  
+    #user-info input,
+    #user-info textarea{
+    background-color:#008080; 
+    border:0.0625em solid #fff; 
+  
+    }
+    
+    #user-info input::placeholder,
+    #user-info textarea::placeholder{
+    color:#fff;   
+    }
+    
+    #user-info textarea{ 
+    height:6em;  
+    }
+  
+    #user-info button{
+    background-color:#DAA520;  
+    color: #008080;   
+    margin:0 auto; 
+    display:flex;  
+    }
+  
+    #user-info button:hover{
+    color:#008080;
+    border:0.0625em solid #fff;  
+    transform: scale(1.1) rotateX(30deg);  
+    background-color:#008080;  
+    }
+  }
+  
+  @media (max-width: 575px){
+    #user-info{ 
+    height:100%;
+    width:100vw; 
+    justify-content:center;  
+    }
+    
+    #user-info input,
+    #user-info textarea{
+    width:80vw
+    }  
+  }
+  
+/* ABOUT US STYLES END */
 .signature {
 width: 100%;
 display: inline-block;

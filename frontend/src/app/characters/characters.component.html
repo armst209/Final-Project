@@ -5,7 +5,6 @@
                 <p data-text="Break">Break</p>
             </div>
             <div class="item" id="selected">Discover</div>
-            <div class="item">Library</div>
             <div class="modal-container">
               <input id="modal-toggle" type="checkbox">
           <label class="item" for="modal-toggle" [routerLink]="['/highscores']">High Scores</label>
@@ -17,7 +16,7 @@
             <label class="modal-content-btn" for="modal-toggle">OK</label>   
           </div>   
           </div> 
-            <div class="item">About us</div>
+          <div [routerLink]="['/aboutus']" class="item">About us</div>
         </div>
     </div>
 

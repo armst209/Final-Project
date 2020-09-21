@@ -1,25 +1,14 @@
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
   <h3 align="center">Phaser game in an Angular app</h3>
 
   <p align="center">
     Created by: Amber Dostert, Aaron Armstron, Garrett Brown
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://break-ent.surge.sh">View Demo</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    <a href="https://github.com/armst209/Final-Project/issues">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/armst209/Final-Project/projects/1">Request Feature</a>
   </p>
 </p>
 
@@ -32,18 +21,18 @@
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
   * [Installation](#installation)
-* [Usage](#usage)
 * [Contributing](#contributing)
-* [License](#license)
 * [Contact](#contact)
 
 
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-[![Product Name Screen Shot]
-blah blah blah stuff about the project
+For our final project at Grand Circus for the front end program, we have decided to really challenge ourselves and go above and beyond. 
+This is a huge passion project for the three of us, since we're all share common interests in anime and video games. All artwork and music was created by the students. 
+We implemented our own database, three different API's, Angular, Phaser, CSS, HTML, Typescript, Javascript, SCSS, JSON, Jquery and SQL. 
+The project is an 2D platform game that is based off the three developers. Amber, Aaron and Garrett. 
+Please review our app, and contact us either from our Linkedin down below. Or you can submit a message on the "About Us" page in our app. 
 
 ### Built With
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
@@ -70,15 +59,8 @@ git clone https://github.com/armst209/Final-Project.git
 ```
 2. Install NPM packages
 ```sh
-npm install
+npm install phaser angular express 
 ```
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Image examples
-_For more examples, please refer to the [Documentation](https://example.com)_
-
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -93,33 +75,19 @@ Contributions are what make the open source community such an amazing place to b
 
 
 
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-
-
 <!-- CONTACT -->
 ## Contact
+Amber Dostert:
+* [email](mailto:amber.dostert@gmail.com)
+* [LinkedIn](https://www.linkedin.com/in/amberdostert/)
+
+Garrett Brown: 
+* [email](mailto:garrett.brown2@loop.colum.edu)
+* [LinkedIn](linkedin.com/in/garrettbrowndev/)
+
+Aaron Armstrong:
+* [email](mailto:armst209@gmail.com)
+* [LinkedIn](https://www.linkedin.com/in/aaronlamararmstrong/)
 
 
 
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square
-[contributors-url]: https://github.com/armst209/Final-Project/watchers
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=flat-square
-[forks-url]: https://github.com/armst209/Final-Project/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=flat-square
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=flat-square
-[issues-url]: https://github.com/armst209/Final-Project/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/amberdostert/
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/garrettbrowndev/
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/aaronlamararmstrong/

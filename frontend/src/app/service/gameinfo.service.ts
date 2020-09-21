@@ -34,4 +34,34 @@ export class GameinfoService {
     return this.http.get<any>('https://us-central1-dadsofunny.cloudfunctions.net/DadJokes/random/jokes/');
    }
 
+   closePhaserInstance() {
+    
+  }
+
+//    HandleBackFunctionality()  
+//  {  
+//      if(window.event)  
+//     {  
+//           if(window.X < 40 && window.event.clientY < 0)  
+//          {  
+//              alert("Browser back button is clicked...");  
+//          }  
+//          else  
+//          {  
+//              alert("Browser refresh button is clicked...");  
+//          }  
+//      }  
+//      else  
+//      {  
+//           if(event.currentTarget.performance.navigation.type == 1)  
+//          {  
+//               alert("Browser refresh button is clicked...");  
+//          }  
+//          if(event.currentTarget.performance.navigation.type == 2)  
+//         {  
+//               alert("Browser back button is clicked...");  
+//         }  
+//      }  
+//  } 
+
 }

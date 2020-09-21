@@ -40,6 +40,7 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.slides = this.chunk(this.cards, 3);
+    
    
   }
 

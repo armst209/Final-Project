@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Phaser from 'phaser';
-import { stringify } from 'querystring';
 import { GameinfoService } from '../service/gameinfo.service';
 
 @Component({
@@ -46,7 +45,6 @@ export class PhasergameComponent implements OnInit, OnDestroy {
       document.getElementById('submit-button').style.display = "none";
     }
     
-    // this.phaserGame.destroy(true);
     this.value = value;
     console.log(this.value);
     console.log(score);
@@ -88,15 +86,40 @@ export class PhasergameComponent implements OnInit, OnDestroy {
   // tslint:disable-next-line:typedef
   ngOnInit() {
     this.phaserGame = new Phaser.Game(this.config);
-    this.getDadJoke()
-;   
+    this.getDadJoke();  
 
-  }
+  this.closingPhaser();
+   
+
+
+
+}
 
   closePhaserInstance() {
     this.phaserGame.destroy(true);
-
   }
+
+ closingPhaser(){
+  window.addEventListener('popstate', function(event) {
+    // The popstate event is fired each time when the current history entry changes.
+    window.stop()
+    let r = confirm("You pressed a Back button! Are you sure?!");
+    
+    if (r == true) {
+      // Call Back button programmatically as per user confirmation.
+        
+      // Uncomment below line to redirect to the previous page instead.
+      // window.location = document.referrer // Note: IE11 is not supporting this.
+  } else {
+      // Stay on the current page.
+      history.pushState(null, null, window.location.pathname);
+  }
+
+  history.pushState(null, null, window.location.pathname);
+
+}, false); 
+
+ }
  
 }
 
@@ -145,9 +168,10 @@ export class MainScene extends Phaser.Scene {
 
 
   constructor(private gameInfoService: GameinfoService, private route: Router) {
-    super({ key: 'main' });
-
-
+    super({ key: 'main' }
+    );
+    
+    
   }
 
 
@@ -276,7 +300,7 @@ export class MainScene extends Phaser.Scene {
     this.assessComplete = this.sound.add('assess_complete');
     
     this.failSound = this.sound.add('tryagain');
-    this.loadScreen = this.sound.add('loadScreen'), { volume: 0.3 };
+    this.loadScreen = this.sound.add('loadScreen'), { volume: 0.2 };
      
     //TIMERS
 

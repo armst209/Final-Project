@@ -1,3 +1,5 @@
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -6,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
 import { CharactersComponent } from './characters/characters.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
@@ -22,13 +23,15 @@ import { HighscoresComponent } from './highscores/highscores.component';
     PhasergameComponent,
     MainScene,
     AboutUsComponent,
-    HighscoresComponent
+    HighscoresComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     MDBBootstrapModule.forRoot()
   ],
   providers: [],

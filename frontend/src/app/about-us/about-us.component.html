@@ -17,7 +17,7 @@
         <label class="modal-content-btn" for="modal-toggle">OK</label>   
       </div>   
       </div> 
-      <div [routerLink]="['/aboutus']" class="item">About us</div>
+      
     </div>
 </div>
 <!-- START TEAM -->
@@ -95,7 +95,7 @@
 </section>
 <section id="user-info">
     <h2>Get in Touch</h2>
-    <form action="/action_page.php">
+    <form [formGroup]="validatingForm" action="/action_page.php">
      <input type="text" name="FirstName" placeholder="Your name..."><br>
      <input type="text" name="LastName" placeholder="Your email..."><br>
      <textarea placeholder="Add students name and your message here..."></textarea><br> 

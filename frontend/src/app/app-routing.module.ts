@@ -11,8 +11,8 @@ const routes: Routes = [
   {path: "home", component: LandingPageComponent},
   {path: "charselect", component: CharactersComponent},
   {path: "game", component: PhasergameComponent},
-  {path: "aboutus", component: AboutUsComponent},
   {path: "highscores", component: HighscoresComponent},
+  {path: "about-us", component: AboutUsComponent},
   {path: "", redirectTo: '/home', pathMatch: "full"}
 ];
 

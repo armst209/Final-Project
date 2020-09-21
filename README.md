@@ -78,15 +78,15 @@ Contributions are what make the open source community such an amazing place to b
 <!-- CONTACT -->
 ## Contact
 Amber Dostert:
-* [email](amber.dostert@gmail.com)
+* [email](mailto:amber.dostert@gmail.com)
 * [LinkedIn](https://www.linkedin.com/in/amberdostert/)
 
 Garrett Brown: 
-* [email](garrett.brown2@loop.colum.edu)
+* [email](mailto:garrett.brown2@loop.colum.edu)
 * [LinkedIn](linkedin.com/in/garrettbrowndev/)
 
 Aaron Armstrong:
-* [email](armst209@gmail.com)
+* [email](mailto:armst209@gmail.com)
 * [LinkedIn](https://www.linkedin.com/in/aaronlamararmstrong/)
 
 

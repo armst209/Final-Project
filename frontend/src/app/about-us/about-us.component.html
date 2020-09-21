@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../about-us/about-us.component.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+
+<body>
 <div class="bar">
     <div class="nav">
         <div [routerLink]="['/home']" class="logo">
@@ -16,98 +28,21 @@
         <label class="modal-content-btn" for="modal-toggle">OK</label>   
       </div>   
       </div> 
-        <div class="item">About us</div>
+      <div class="item">About us</div>
     </div>
 </div>
 <!-- START TEAM -->
-<div id="team">
-    <div class="about-container">
+<section id="team">
+    <div class="container">
+
         <div id="team-1" class="team-single active">
             <div class="team-img">
                 <img src="https://i.ibb.co/sC4QS3r/aaron.png" alt="Aaron">
                 <div class="team-social">
                     <ul>
-                        <li><a href=""><i class="fab fa-github"></i></a></li>
-
-                        <li><a href=""><i class="fa fa-envelope" data-toggle="modal" data-target="#basicExample"
-                            (click)="frame.show()"></i></a></li> 
-                    <div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
-                        aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                        <div class="modal-header text-center">
-                            <h4 class="modal-title w-100 font-weight-bold">Write to us</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body mx-3">
-                            <div class="md-form mb-5">
-                            <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
-                            <input type="text" id="form34" class="form-control" mdbInput mdbValidate [formControl]="contactFormModalName">
-                            <label for="form34">Your name</label>
-                            <mdb-error
-                                *ngIf="contactFormModalName.invalid && (contactFormModalName.dirty || contactFormModalName.touched)">Input
-                                invalid
-                            </mdb-error>
-                            <mdb-success
-                                *ngIf="contactFormModalName.valid && (contactFormModalName.dirty || contactFormModalName.touched)">Input
-                                valid
-                            </mdb-success>
-                            </div>
-                            <div class="md-form mb-5">
-                            <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
-                            <input type="email" id="form29" class="form-control" mdbInput mdbValidate
-                                    [formControl]="contactFormModalEmail">
-                            <label for="form29">Your email</label>
-                            <mdb-error
-                                *ngIf="contactFormModalEmail.invalid && (contactFormModalEmail.dirty || contactFormModalEmail.touched)">
-                                Input invalid
-                            </mdb-error>
-                            <mdb-success
-                                *ngIf="contactFormModalEmail.valid && (contactFormModalEmail.dirty || contactFormModalEmail.touched)">Input
-                                valid
-                            </mdb-success>
-                            </div>
-                            <div class="md-form mb-5">
-                            <mdb-icon fas icon="tag" class="prefix grey-text"></mdb-icon>
-                            <input type="text" id="form32" class="form-control" mdbInput mdbValidate
-                                    [formControl]="contactFormModalSubject">
-                            <label for="form32">Subject</label> */YOU'LL ALSO WANT TO CHANGE SUBJECT TO BE "STUDENT:"*/
-                            <mdb-error
-                                *ngIf="contactFormModalSubject.invalid && (contactFormModalSubject.dirty || contactFormModalSubject.touched)">
-                                Input invalid
-                            </mdb-error>
-                            <mdb-success
-                                *ngIf="contactFormModalSubject.valid && (contactFormModalSubject.dirty || contactFormModalSubject.touched)">
-                                Input valid
-                            </mdb-success>
-                            </div>
-                            <div class="md-form">
-                            <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
-                            <textarea type="text" id="form8" class="md-textarea form-control" rows="1" mdbInput mdbValidate
-                                        [formControl]="contactFormModalMessage"></textarea>
-                            <label for="form8">Your message</label>
-                            <mdb-error
-                                *ngIf="contactFormModalMessage.invalid && (contactFormModalMessage.dirty || contactFormModalMessage.touched)">
-                                Input invalid
-                            </mdb-error>
-                            <mdb-success
-                                *ngIf="contactFormModalMessage.valid && (contactFormModalMessage.dirty || contactFormModalMessage.touched)">
-                                Input valid
-                            </mdb-success>
-                            </div>
-                        </div>
-                        <div class="modal-footer d-flex justify-content-center">
-                            <button mdbBtn color="unique" class="waves-light" mdbWavesEffect>Send
-                            <mdb-icon far icon="paper-plane" class="ml-1"></mdb-icon>
-                            </button>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-
-                        <li><a href=""><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="mailto:armst209@gmail.com?subject=Mail from Angular App"target="_blank"><i class="fa fa-google"></i></a></li>
+                        <li><a href="https://github.com/armst209"target="_blank"><i class="fa fa-github"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/aaronlamararmstrong/"target="_blank"><i class="fa fa-linkedin"></i></a></li>
                     </ul>
                 </div>
                 <!-- END team-social-->
@@ -126,9 +61,9 @@
                 <img src="https://i.ibb.co/dL6ypmd/propic.png" alt="Garrett">
                 <div class="team-social">
                     <ul>
-                        <li><a href=""><i class="fab fa-github"></i></a></li>
-                        <li><a href=""><i class="fa fa-envelope"></i></a></li>
-                        <li><a href=""><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="mailto:garrett.brown2@loop.colum.edu?subject=Mail from Angular App"target="_blank"><i class="fa fa-google"></i></a></li>
+                        <li><a href="https://github.com/MrGBrown"target="_blank"><i class="fa fa-github"></i></a></li>
+                        <li><a href="linkedin.com/in/garrettbrowndev/"target="_blank"><i class="fa fa-linkedin"></i></a></li>
                     </ul>
                 </div>
                 <!-- END team-social-->
@@ -150,9 +85,9 @@
             <img src="https://i.ibb.co/JnQzWfB/image-from-ios.png" alt="Amber">
             <div class="team-social">
                 <ul>
-                    <li><a href=""><i class="fab fa-github"></i></a></li>
-                        <li><a href=""><i class="fa fa-envelope"></i></a></li>
-                        <li><a href=""><i class="fab fa-linkedin-in"></i></a></li>
+                    <li><a href="mailto:amber.dostert@gmail.com?subject=Mail from Angular App"target="_blank"><i class="fa fa-google"></i></a></li>
+                    <li><a href="https://github.com/Adostert"target="_blank"><i class="fa fa-github"></i></a></li>
+                    <li><a href="https://www.linkedin.com/in/amberdostert/"target="_blank"><i class="fa fa-linkedin"></i></a></li>
                 </ul>
             </div>
             <!-- END team-social-->
@@ -168,4 +103,16 @@
         <!-- END row-->
     </div>
     <!-- END container-->
-</div>
+</section>
+<section id="user-info">
+    <h2>Get in Touch</h2>
+    <form action="/action_page.php">
+     <input type="text" name="FirstName" placeholder="Your name..."><br>
+     <input type="text" name="LastName" placeholder="Your email..."><br>
+     <textarea placeholder="Add students name and your message here..."></textarea><br> 
+     <button type="submit" value="submit">Send</button>
+    </form>
+      
+  </section>
+</body>
+</html>

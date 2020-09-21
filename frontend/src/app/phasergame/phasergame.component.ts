@@ -80,14 +80,15 @@ export class PhasergameComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     document.getElementById('characterName').innerText = 'Choose Your Character';
-
+    console.log("it worked")
+    this.phaserGame.destroy(true);
   }
   
   // tslint:disable-next-line:typedef
   ngOnInit() {
     this.phaserGame = new Phaser.Game(this.config);
     this.getDadJoke();  
-
+    
 }
 
   closePhaserInstance() {

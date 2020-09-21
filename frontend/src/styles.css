@@ -717,10 +717,9 @@ p::after {
 #show-jacob{
 
   flex-direction: column;
-  background: linear-gradient(to right, red, purple);
-  
-  width:270px; 
-  height:173px;
+  width:206px; 
+  background: linear-gradient(to right, yellow , lawngreen);
+
 
 }
 
@@ -728,17 +727,19 @@ p::after {
   display:none;
   flex-direction: column;
   border: 3px solid linear-gradient(to right, yellow , lawngreen);
-  width:270px; 
-  height:173px;
+  width:200px; 
+  
 
 }
 
 #show-nicole{
  
   flex-direction: column;
-  /* border: 3px solid lawngreen; */
-  width:270px; 
-  height:173px;
+  background: linear-gradient(to right, yellow , lawngreen);
+  width:206px; 
+  position: relative;
+  padding:3px;
+  
 }
 
 .game-info {

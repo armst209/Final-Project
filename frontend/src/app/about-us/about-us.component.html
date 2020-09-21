@@ -95,10 +95,10 @@
 </section>
 <section id="user-info">
     <h2>Get in Touch</h2>
-    <form id="about-form" [formGroup]="validatingForm" action="/action_page.php">
-     <input type="text" name="FirstName" placeholder="Your name..."><br>
-     <input type="text" name="LastName" placeholder="Your email..."><br>
-     <textarea placeholder="Add students name and your message here..."></textarea><br> 
+    <form (submit)="submitEmail(contactForm.value)"id="about-form" #contactForm="ngForm" >
+     <input type="text" name="FirstName" placeholder="Your name..." ngModel><br>
+     <input type="text" name="LastName" placeholder="Your email..." ngModel><br>
+     <textarea name="message" placeholder="Add students name and your message here..." ngModel></textarea><br> 
      <button type="submit" value="submit">Send</button>
     </form>
 </section>

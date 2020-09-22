@@ -4,7 +4,7 @@
             <div [routerLink]="['/home']" class="logo">
                 <p  data-text="Break" >Break</p>
             </div>
-            <div class="item" id="selected">Discover</div>
+            
             <div class="modal-container">
               <input id="modal-toggle" type="checkbox">
           <label class="item" for="modal-toggle"  [routerLink]="['/highscores']">High Scores</label>
@@ -95,7 +95,7 @@
 </section>
 <section id="user-info">
     <h2>Get in Touch</h2>
-    <form id="about-form" [formGroup]="validatingForm" action="/action_page.php">
+    <form id="about-form" [formGroup]="validatingForm" action="/action_page.php" method="POST">
      <input type="text" name="FirstName" placeholder="Your name..."><br>
      <input type="text" name="LastName" placeholder="Your email..."><br>
      <textarea placeholder="Add students name and your message here..."></textarea><br> 

@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Phaser from 'phaser';
+import { threadId } from 'worker_threads';
 import { GameinfoService } from '../service/gameinfo.service';
 
 @Component({
@@ -30,6 +31,12 @@ export class PhasergameComponent implements OnInit, OnDestroy {
     this.phaserGame.destroy(true);
     
   }
+
+  startGame(){
+    this.phaserGame.scene.stop("MainScene");
+    document.getElementById('instructions').style.display = "none";
+  
+    }
 
   getUniqueIdValue(value: string) {
     let score = document.getElementById('score').innerHTML;
@@ -87,14 +94,15 @@ export class PhasergameComponent implements OnInit, OnDestroy {
   // tslint:disable-next-line:typedef
   ngOnInit() {
     this.phaserGame = new Phaser.Game(this.config);
-    this.getDadJoke();  
-    
+    this.getDadJoke();
+ 
 }
 
   closePhaserInstance() {
     this.phaserGame.destroy(true);
   }
 }
+
 
 @Component({
   selector: 'app-game',
@@ -147,6 +155,7 @@ export class MainScene extends Phaser.Scene {
     
   }
 
+  
 
   getSelectedPlayer() {
     return this.gameInfoService.selectedCharacter;
@@ -300,7 +309,7 @@ export class MainScene extends Phaser.Scene {
     } else if (document.getElementById('characterName').innerText == 'Garrett'
     ) {this.player = this.physics.add.sprite(100, 450, 'player');
     }
-
+    
     this.player.setBounce(0.2); // our player will bounce from items
     this.player.setCollideWorldBounds(true); // don't go out of the map
 
@@ -447,6 +456,8 @@ export class MainScene extends Phaser.Scene {
         frameRate: 10,
       });
     }
+
+      
 
     //INPUT
     this.cursors = this.input.keyboard.createCursorKeys();
@@ -614,6 +625,7 @@ export class MainScene extends Phaser.Scene {
       //adding nicole sprite and moving it across the screen
       
       this.nicoleShowUpperOne();
+      console.log(this.nicoleChar);
       
       let x = (this.player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
       let bomb2 = this.enemies.create(x, 16, 'bomb');
@@ -630,6 +642,8 @@ export class MainScene extends Phaser.Scene {
     }
     //LEVEL 2 - JAVASCRIPT
     else if (this.score == 160) {
+      document.getElementById('show-jacob').style.display = "flex";
+      document.getElementById('show-nicole').style.background = "none";
       this.setAssessComp();
       this.assessComplete.play();
       this.assessText.setText('Current Assessment: ' + this.assessScore)
@@ -666,6 +680,8 @@ export class MainScene extends Phaser.Scene {
     }
     //LEVEL 4 - TYPESCRIPT
     else if (this.score == 320) {
+      document.getElementById('show-jacob').style.display = "flex";
+      document.getElementById('show-nicole').style.background = "none";
       this.assessComplete.play();
       this.setAssessCompTwo();
 
@@ -706,6 +722,8 @@ export class MainScene extends Phaser.Scene {
     //LEVEL 6 - NODE & EXPRESS
 
     else if (this.score == 480) {
+      document.getElementById('show-jacob').style.display = "flex";
+      document.getElementById('show-nicole').style.background = "none";
       this.assessComplete.play();
       
       this.setAssessCompTwo();
@@ -741,7 +759,8 @@ export class MainScene extends Phaser.Scene {
     }
 
   else if(this.score == 640){
-
+    document.getElementById('show-jacob').style.display = "flex";
+    document.getElementById('show-nicole').style.background = "none";
     this.assessScore++
     this.assessText.setText('Demo Day')
     this.assessComplete.play();
@@ -763,20 +782,20 @@ export class MainScene extends Phaser.Scene {
 
   hitBomb(player, bomb) {
     
-    // this.physics.pause();
-    // this.player.setTint(0xff0000);
-    // this.player.anims.play('jump');
-    // this.music.stop();
+    this.physics.pause();
+    this.player.setTint(0xff0000);
+    this.player.anims.play('jump');
+    this.music.stop();
     
-    // this.failSound.play();
+    this.failSound.play();
 
-    // setTimeout(() => {
-    // document.getElementById('show-jacob').style.display="none";
-    // document.getElementById('show-nicole').style.display= "none";
-    // document.getElementById('show-grace').style.display = "flex"; 
-    // document.getElementById('form').style.display = "flex";
-    // this.loadScreen.play();
-    // }, 1000);
+    setTimeout(() => {
+    document.getElementById('show-jacob').style.display="none";
+    document.getElementById('show-nicole').style.display= "none";
+    document.getElementById('show-grace').style.display = "flex"; 
+    document.getElementById('form').style.display = "flex";
+    this.loadScreen.play();
+    }, 1000);
 
   }
   nicoleShowUpperOne(){
@@ -825,6 +844,7 @@ export class MainScene extends Phaser.Scene {
     // setTimeout(() => {
     //   document.getElementById('show-jacob').style.display = "flex";
     //   document.getElementById('show-nicole').style.background = "none";
+      
     //   }, 14000);
   
   }
@@ -849,6 +869,8 @@ export class MainScene extends Phaser.Scene {
 
     document.getElementById('score').innerText = this.score.toString();
   }
+
+  
 
   
 

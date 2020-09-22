@@ -619,9 +619,24 @@ p::after {
   font-family:'ArcadeClassic';
   /* border: 2px solid red; */
 }
+#instructions{
+  
+  width:800px;
+  height:600px;
+  position:absolute;
+  display:flex;
+  color:white;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.87);
+  padding:0 7em;
+
+}
 
 #form {
-  width: 100%;
+  
   height: auto;
   display:none;
   flex-direction: row;
@@ -630,7 +645,7 @@ p::after {
   position: absolute;
   color:black;
   background-color:black;
-  z-index: 999;
+  z-index: 10;
   width:800px;
   height:600px;
   font-family: 'ArcadeClassic';
@@ -740,7 +755,8 @@ p::after {
   flex-direction: column;
   background: linear-gradient(to right, yellow , lawngreen);
   position: relative;
-  width:206px; 
+  width:206px;
+  padding:3px;
   
 
 }

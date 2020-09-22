@@ -98,6 +98,14 @@
 
 <!-- PHASER GAME CONTAINER -->
   <div id='game-area'>
+
+    <div id="instructions">
+      <h2>Instructions:</h2>
+      <div style="font-size: 25px">
+        <li>Collect coins to advance to the next assessment while trying to avoid the incoming technologies(HTML, CSS, etc). After you've collected 8 coins you automatically move on to the next assessment and 8 new coins are loaded in.</li> 
+        <li>There are 7 assessments in total. Your score and completion percentage is displayed to the left in the LMS bar. Coins are 10 points each. Nicole zoom links are 10 points each as well.</li>  </div>
+      <button (click)="startGame()">START</button>
+    </div>
     <!-- START OF GAME OVER SCREEN -->
     
     
@@ -122,7 +130,9 @@
             <input style="font-size:1em; " type="text" maxlength="15" #uniqueId />
           </div>
           <div type="submit" id="submit-button" display="block" class="pixel-button" (click)="getUniqueIdValue(uniqueId.value)"><div>SUBMIT</div></div>
+          
           <div style="padding: .7em; background-color: white;border: 3px solid #4a154b; color:black;"   *ngIf="dadJoke" class="dad-joke">
+            <div style="font-size: 30px;">Dad Joke Of The Night:</div>
             <div>{{dadJoke.setup}}</div>
             <div>{{dadJoke.punchline}}</div>
           </div>
@@ -151,8 +161,8 @@
       </div>
     </div>
     <div id="show-grace">
-      <img style="background:lightseagreen" class="wiggle" src="../../assets/grace.png"  width="200" height="173" alt="photo of Grace">
-      <div style ="display:flex; flex-direction: row; justify-content: center; align-items: center;">
+      <img style="background:lightseagreen" class="" src="../../assets/grace.png"  width="200" height="173" alt="photo of Grace">
+      <div style ="display:flex; flex-direction: row; justify-content: center; align-items: center; background:black">
         <div><img src="../../assets/wifi-bar.png" alt="wifi"></div>
         <div style="padding-top:.2em">Grace Erdmann</div>
       </div>

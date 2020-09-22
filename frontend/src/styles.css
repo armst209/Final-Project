@@ -3,6 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Bungee+Shade");
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;515;600;700&display=swap');
 @import '../src/assets/fonts/scss/modules/_fonts.scss';
 
 :root {
@@ -619,7 +620,7 @@ p::after {
   font-family:'ArcadeClassic';
   /* border: 2px solid red; */
 }
-#instructions{
+#instructions-1{
   
   width:800px;
   height:600px;
@@ -629,9 +630,27 @@ p::after {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: dotted yellow;
   z-index: 999;
-  background-color: rgba(0, 0, 0, 0.87);
-  padding:0 7em;
+  background-color: black;
+  padding:0 3em;
+
+}
+
+#instructions-2{
+  
+  width:800px;
+  height:600px;
+  position: absolute;
+  display:flex;
+  color:white;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: dotted yellow;
+ 
+  background-color:black;
+  padding:0 5em;
 
 }
 
@@ -639,19 +658,22 @@ p::after {
   
   height: auto;
   display:none;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   position: absolute;
   color:black;
-  background-color:black;
+  background-color:white;;
   z-index: 10;
   width:800px;
   height:600px;
   font-family: 'ArcadeClassic';
+  font-weight:500;
   font-size: 1.3em;
-  padding: .5em;
-  text-align:center;
+  padding-top:3em;
+ 
+ 
+  
 }
 
 .inner-form {
@@ -659,7 +681,12 @@ p::after {
   flex-direction: column; 
   align-items: center; 
   background-color: white;
+  color:black;
   /* border: 2px solid red; */
+  font-family: 'Comfortaa', cursive;
+  padding:0;
+  margin:0;
+
  
   
 }
@@ -667,6 +694,9 @@ p::after {
 
   display:flex;
   flex-direction: column;
+}
+#try-again{
+  display:none;
 }
 
 .pixel-button{
@@ -1177,6 +1207,33 @@ width: 100%;
 display: inline-block;
 font-size: 20px;
 font-weight: bold;
+}
+
+.regularh1 {
+
+font-family:'ArcadeClassic';
+position: static;
+text-transform: none;
+font-size: 3em;
+margin: 0;
+padding: 0;
+align-self: none;
+letter-spacing:none;
+color: white;
+
+}
+.regularh1::before{
+
+  content: none;
+position: none;
+
+width:none;
+height: none;
+color:white;
+overflow: none;
+border-right: none;
+animation: none;
+white-space: none;
 }
 
 h1 {

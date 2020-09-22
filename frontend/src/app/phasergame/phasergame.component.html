@@ -37,7 +37,8 @@
           </div>
         </nav>
         <!-- STAR OF AHBC TITLE -->
-        <div style="display: flex; flex-direction:column; justify-content:center; align-items: center; background-color: white; padding: 1em; margin: 10px;">
+        <div id="AHBC" style="display: flex; flex-direction:column; justify-content:center; align-items: center; background-color: white; padding: 1em; margin: 10px;">
+          <div id="try-again" style="margin: .8em 0;" class="pixel-button pulse" (click)="closeGameEnd()" [routerLink]="['/charselect']"><div>Try Again</div></div>
           <div style="color: #3a3a3a">AHBC Front-End 2020 Q2 DET</div>
           <div style="display: flex;  flex-direction: row; flex-wrap: wrap; justify-content:center; align-items: center;">
             <div class="fake-link">Dashboard</div> /
@@ -49,7 +50,9 @@
         <div style=" display: flex; flex-direction: column; justify-content: center; align-items: center;background-color: white; padding: 1em; margin: 10px;">
 
           <div style="display:flex; flex-direction: column; font-family:'ArcadeClassic'; color: black; font-size: 2em; margin-bottom: .3em; ">
+            
             <div style="display:flex; flex-direction: row;justify-content: center;">
+              
               <div >Score:</div>
               <div style="padding:0 .2em;" id="score">0</div>
               <div><img class="floater" src="../../assets/coin stack.png" alt="stackofcoins"></div> 
@@ -87,6 +90,7 @@
         <div class="lms-box">Textbook</div>
         <div class="lms-box">Admin</div>
         <div class="lms-box">1:1 Sign-ups</div>
+        
         </div>
       
     </div>
@@ -99,44 +103,88 @@
 <!-- PHASER GAME CONTAINER -->
   <div id='game-area'>
 
-    <div id="instructions">
-      <h2>Instructions:</h2>
-      <div style="font-size: 25px">
-        <li>Collect coins to advance to the next assessment while trying to avoid the incoming technologies(HTML, CSS, etc). After you've collected 8 coins you automatically move on to the next assessment and 8 new coins are loaded in.</li> 
-        <li>There are 7 assessments in total. Your score and completion percentage is displayed to the left in the LMS bar. Coins are 10 points each. Nicole zoom links are 10 points each as well.</li>  </div>
-      <button (click)="startGame()">START</button>
+        
+
+    
+    <div id="instructions-1">
+      <h1 style="font-size:30px; " class="regularh1">Welcome to: </h1>
+        <div style="display:flex; flex-direction: row; font-size: 42px; justify-content: center;align-items: center; padding-bottom: 10px;">
+          <div style="padding-right:10px;">Can't </div> 
+          <p data-text="Break">Break</p> 
+          <div  style="padding-left:10px;"> Us!</div> 
+        </div>
+       
+
+        <div style="font-size: 20px;  font-family: 'Comfortaa', cursive;">
+          <li>Collect enough coins to advance to the next assessment while trying to avoid the oncoming technologies (HTML, CSS, JavaScript, DOM, Typescript, Angular, Node/Express and SQL). </li>
+          <li>Coins are <span style="font-family:'ArcadeClassic'; font-size: 25px" class="floater">10 points</span>  each and Nicole Tutoring Sessions are <span style="font-family:'ArcadeClassic'; font-size: 25px;" class="floater">10 points </span>  each as well.</li>
+          <div style="display:flex; flex-direction: row; justify-content: center; align-items: center; padding:0; margin:0;">
+            <img src="../../assets/coin_5.gif" height="32" width="32" alt=""><span style="font-family:'ArcadeClassic'">= 10 points</span> 
+            <img src="../../assets/nicole.png" alt=""><span style="font-family:'ArcadeClassic'">= 10 points</span> 
+          </div>
+          <li>After you've collected 8 coins or reached 80 points you will automatically move on to the next assessment and 8 new coins will be loaded in. There are 7 assessments in total, with a Pretest at the beginning. Demo Day is the end goal.</li>
+        </div>
+        <p data-text="=>" style="margin-top:.5em; cursor: pointer; color: yellow" (click)="nextInstructions()">=></p>
+        
+    </div>
+
+    <div id="instructions-2">
+      
+      <div style="font-size: 20px; font-family: 'Comfortaa', cursive;">
+          
+        
+        <li style="margin-bottom:1em">The score is calculated as follows:</li>
+            <ol>
+              <li>80 points = Assessment 1</li>
+              <li>160 points = Assessment 2</li>
+              <li>240 points = Assessment 3</li>
+            </ol>
+    
+            And so on. All the way up to 640 points where your completion will be 100% and you will have reached Demo Day. 
+      
+          <li style="margin: 1em 0">If you run into a technology, it is an automatic game over and you will have to select a new character and start from the Pre-Test once again.  </li>
+          <li>The player is controlled with the main arrows keys. To jump is <span>UP</span>, to move left is <span>LEFT</span> and to move right is <span>RIGHT</span>.</li>
+          <li>Your score and completion percentage are displayed to the left in the LMS bar. </li>
+      </div>
+      <p style="cursor: pointer; margin-top: 1em;"data-text="START" (click)="startGame()">START</p>
     </div>
     <!-- START OF GAME OVER SCREEN -->
-    
+
     
     <div id="form">
-     
+      <div style="display: flex; background-color: #4a154b;font-family:'Lato', sans-serif; justify-content:center; color:white; width:100%;height:auto; position: absolute; top:0;">
+        <img  src="../../assets/slack.png" alt="">
+      </div>
       
       <div class="inner-form">
-          <div style="display: flex; background-color: #4a154b;font-family:'Lato', sans-serif; justify-content:center; color:white; width:100%;">
-          <img src="../../assets/slack.png" alt="">
+         
+          
+          <h1 class="regularh1" style="color:black; font-family: 'ArcadeClassic';">Hey Bootcampers!</h1>
+          <div style="display:flex; flex-direction: column; justify-content: center;align-items: center;margin:0 5em; ">
+            <h4 style="font-weight: 700; text-align:center">Hope everyone had a good long weekend! Reminding you:</h4>
+              <ol>
+                <li>Surveys are due by end of week.</li>
+                <li>Enter you Unique ID (15 characters max) below then press the "SUBMIT" button to submit your scores! To play again, hit the "TRY AGAIN" button at the top of the LMS bar. </li>
+                <li>As always, please feel free to reach out with any questions! Rooting for you!!! </li>
+                <li> ~ Feedback is a gift!</li>
+              
+            </ol>
+          </div>
+          <div style="display: flex; flex-direction: row; justify-content: center; align-items: baseline;">
+              <div style=" display:flex; flex-direction: row; justify-content: center; align-items: baseline;"id="submit" >
+                <label style="padding-right: 10px;"> Enter Your Unique ID:</label>
+                <input style="font-size:.8em; " type="text" maxlength="15" #uniqueId />
+            
+              </div>
+              <div type="submit" id="submit-button" display="block" class="pixel-button pulse" (click)="getUniqueIdValue(uniqueId.value)"><div>SUBMIT</div></div>
           </div>
           
-          <div style="font-size: 3em">Hey Bootcampers!</div>
-          <div>Hope everyone had a good long weekend! Reminding you:</div>
-          <div>
-              <li> Surveys are due by end of week </li>
-              <li>Enter you Unique ID below then press the "SUBMIT" button to submit your scores!</li>
-          </div>
-          <div>As always, please feel free to reach out with any questions!</div>
-          <div>Rooting for you!!! ~ Feedback is a gift!</div>
-          <div id="submit" >
-            <label> Enter Your Unique ID:</label>
-            <input style="font-size:1em; " type="text" maxlength="15" #uniqueId />
-          </div>
-          <div type="submit" id="submit-button" display="block" class="pixel-button" (click)="getUniqueIdValue(uniqueId.value)"><div>SUBMIT</div></div>
-          
-          <div style="padding: .7em; background-color: white;border: 3px solid #4a154b; color:black;"   *ngIf="dadJoke" class="dad-joke">
-            <div style="font-size: 30px;">Dad Joke Of The Night:</div>
+          <div style="margin-bottom: 1em; padding: .7em; background-color: white;border: 3px solid #4a154b; color:black; text-align: center;"   *ngIf="dadJoke" class="dad-joke">
+            <div style="font-size: 25px; font-weight: 700;">Dad Joke Of The Night:</div>
             <div>{{dadJoke.setup}}</div>
             <div>{{dadJoke.punchline}}</div>
           </div>
-          <div style="margin: .8em 0;" class="pixel-button floater" (click)="closeGameEnd()" [routerLink]="['/charselect']"><div>Try Again</div></div>
+         
           
       </div>
 

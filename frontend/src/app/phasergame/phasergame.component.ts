@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Phaser from 'phaser';
-import { threadId } from 'worker_threads';
 import { GameinfoService } from '../service/gameinfo.service';
 
 @Component({
@@ -12,7 +11,7 @@ import { GameinfoService } from '../service/gameinfo.service';
 export class PhasergameComponent implements OnInit, OnDestroy {
   phaserGame: Phaser.Game;
   config: Phaser.Types.Core.GameConfig;
-  // input = document.getElementById('input').valueOf();
+  
   value = '';
   dadJoke: any;
   
@@ -34,8 +33,13 @@ export class PhasergameComponent implements OnInit, OnDestroy {
 
   startGame(){
     this.phaserGame.scene.stop("MainScene");
-    document.getElementById('instructions').style.display = "none";
+    document.getElementById('instructions-2').style.display = "none";
   
+    }
+  
+  nextInstructions(){
+      document.getElementById('instructions-1').style.display = "none";
+
     }
 
   getUniqueIdValue(value: string) {
@@ -275,7 +279,7 @@ export class MainScene extends Phaser.Scene {
 
     //playing music & sound effects
     this.music = this.sound.add('level1', { volume: 0.3 });
-    // this.music.play();
+    this.music.play();
     
     this.coinSound = this.sound.add('coinSound', { volume: 0.4 });
     this.nicoleSound = this.sound.add('nicoleSound');
@@ -794,6 +798,8 @@ export class MainScene extends Phaser.Scene {
     document.getElementById('show-nicole').style.display= "none";
     document.getElementById('show-grace').style.display = "flex"; 
     document.getElementById('form').style.display = "flex";
+    document.getElementById('try-again').style.display = "flex";
+    document.getElementById('AHBC').style.padding = "0";
     this.loadScreen.play();
     }, 1000);
 

@@ -719,6 +719,8 @@ p::after {
   flex-direction: column;
   width:206px; 
   background: linear-gradient(to right, yellow , lawngreen);
+  position: relative;
+  padding:3px;
 
 
 }
@@ -726,8 +728,9 @@ p::after {
 #show-grace{
   display:none;
   flex-direction: column;
-  border: 3px solid linear-gradient(to right, yellow , lawngreen);
-  width:200px; 
+  background: linear-gradient(to right, yellow , lawngreen);
+  position: relative;
+  width:206px; 
   
 
 }
@@ -735,7 +738,7 @@ p::after {
 #show-nicole{
  
   flex-direction: column;
-  background: linear-gradient(to right, yellow , lawngreen);
+ 
   width:206px; 
   position: relative;
   padding:3px;

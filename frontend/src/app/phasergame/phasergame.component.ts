@@ -28,7 +28,7 @@ export class PhasergameComponent implements OnInit, OnDestroy {
 
     document.getElementById('form').style.display = "none"
     this.phaserGame.destroy(true);
-    // location.reload();
+    
   }
 
   getUniqueIdValue(value: string) {
@@ -81,7 +81,7 @@ export class PhasergameComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     document.getElementById('characterName').innerText = 'Choose Your Character';
     console.log("it worked")
-    this.phaserGame.destroy(true);
+    // this.phaserGame.destroy(true);
   }
   
   // tslint:disable-next-line:typedef
@@ -266,7 +266,7 @@ export class MainScene extends Phaser.Scene {
 
     //playing music & sound effects
     this.music = this.sound.add('level1', { volume: 0.3 });
-    this.music.play();
+    // this.music.play();
     
     this.coinSound = this.sound.add('coinSound', { volume: 0.4 });
     this.nicoleSound = this.sound.add('nicoleSound');
@@ -580,6 +580,8 @@ export class MainScene extends Phaser.Scene {
     this.score += 10;
     this.setScore();
     this.nicoleChar.destroy();
+    document.getElementById('show-nicole').style.background = "none";
+    document.getElementById('show-jacob').style.display = "flex"
 
   }
 
@@ -610,13 +612,9 @@ export class MainScene extends Phaser.Scene {
       this.assessText.setText('Current Assessment: ' + this.assessScore)
       
       //adding nicole sprite and moving it across the screen
-      this.nicoleChar = this.physics.add.image(645, 47, 'nicole');
-      this.nicoleChar.setImmovable(true);
-      this.nicoleChar.body.allowGravity = false;
-      this.nicoleChar.flipX = true;
-      this.nicoleChar.setVelocityX(-50);
-      this.physics.add.overlap(this.player, this.nicoleChar, this.collectNicole, null, this);
-
+      
+      this.nicoleShowUpperOne();
+      
       let x = (this.player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
       let bomb2 = this.enemies.create(x, 16, 'bomb');
       bomb2.setBounce(1);
@@ -656,12 +654,8 @@ export class MainScene extends Phaser.Scene {
       this.assessScore++
       this.assessText.setText('Current Assessment: ' + this.assessScore)
 
-      this.nicoleChar = this.physics.add.image(1, 475, 'nicole');
-      this.nicoleChar.setImmovable(true);
-      this.nicoleChar.body.allowGravity = false;
-      this.nicoleChar.setVelocityX(50);
-      this.physics.add.overlap(this.player, this.nicoleChar, this.collectNicole, null, this);
-
+      this.nicoleShowUpperTwo()
+    
       let x = (this.player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
       let bomb2 = this.enemies.create(x, 12, 'bomb3');
       
@@ -699,12 +693,8 @@ export class MainScene extends Phaser.Scene {
       let x = (this.player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
       let bomb2 = this.enemies.create(x, 8, 'bomb5');
 
-      this.nicoleChar = this.physics.add.image(645, 47, 'nicole');
-      this.nicoleChar.setImmovable(true);
-      this.nicoleChar.body.allowGravity = false;
-      this.nicoleChar.flipX = true;
-      this.nicoleChar.setVelocityX(-50);
-      this.physics.add.overlap(this.player, this.nicoleChar, this.collectNicole, null, this);
+      this.nicoleShowLowerOne();
+   
 
       
       bomb2.setBounce(1);
@@ -739,12 +729,8 @@ export class MainScene extends Phaser.Scene {
       this.setAssessCompTwo();
       this.assessScore++
       this.assessText.setText('Current Assessment: ' + this.assessScore)
-
-      this.nicoleChar = this.physics.add.image(1, 475, 'nicole');
-      this.nicoleChar.setImmovable(true);
-      this.nicoleChar.body.allowGravity = false;
-      this.nicoleChar.setVelocityX(50);
-      this.physics.add.overlap(this.player, this.nicoleChar, this.collectNicole, null, this);
+      this.nicoleShowLowerTwo();
+   
 
       let x = (this.player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
       let bomb2 = this.enemies.create(x, 5, 'bomb7');
@@ -756,12 +742,11 @@ export class MainScene extends Phaser.Scene {
 
   else if(this.score == 640){
 
-    
+    this.assessScore++
+    this.assessText.setText('Demo Day')
     this.assessComplete.play();
     this.setAssessCompTwo();
-      this.assessScore++
     
-    this.assessText.setText('Demo Day')
     this.coins.clear(true);
     this.platforms.clear(true);
     this.enemies.clear(true);
@@ -778,21 +763,85 @@ export class MainScene extends Phaser.Scene {
 
   hitBomb(player, bomb) {
     
-    this.physics.pause();
-    this.player.setTint(0xff0000);
-    this.player.anims.play('jump');
-    this.music.stop();
+    // this.physics.pause();
+    // this.player.setTint(0xff0000);
+    // this.player.anims.play('jump');
+    // this.music.stop();
     
-    this.failSound.play();
+    // this.failSound.play();
 
-    setTimeout(() => {
-    document.getElementById('show-jacob').style.display="none";
-    document.getElementById('show-nicole').style.display= "none";
-    document.getElementById('show-grace').style.display = "flex"; 
-    document.getElementById('form').style.display = "flex";
-    this.loadScreen.play();
-    }, 1000);
+    // setTimeout(() => {
+    // document.getElementById('show-jacob').style.display="none";
+    // document.getElementById('show-nicole').style.display= "none";
+    // document.getElementById('show-grace').style.display = "flex"; 
+    // document.getElementById('form').style.display = "flex";
+    // this.loadScreen.play();
+    // }, 1000);
 
+  }
+  nicoleShowUpperOne(){
+      document.getElementById('show-jacob').style.display = 'none';
+      document.getElementById('show-nicole').style.background = "linear-gradient(to right, yellow , lawngreen)";
+      this.nicoleChar = this.physics.add.image(645, 47, 'nicole');
+      this.nicoleChar.setImmovable(true);
+      this.nicoleChar.body.allowGravity = false;
+      this.nicoleChar.flipX = true;
+      this.nicoleChar.setVelocityX(-50);
+      this.physics.add.overlap(this.player, this.nicoleChar, this.collectNicole, null, this);
+
+      // setTimeout(() => {
+      // document.getElementById('show-jacob').style.display = "flex";
+      // document.getElementById('show-nicole').style.background = "none";
+      // }, 14000);
+  
+  }
+
+  nicoleShowUpperTwo(){
+    document.getElementById('show-jacob').style.display = 'none';
+    document.getElementById('show-nicole').style.background = "linear-gradient(to right, yellow , lawngreen)";
+    this.nicoleChar = this.physics.add.image(1, 475, 'nicole');
+    this.nicoleChar.setImmovable(true);
+    this.nicoleChar.body.allowGravity = false;
+    this.nicoleChar.setVelocityX(50);
+    this.physics.add.overlap(this.player, this.nicoleChar, this.collectNicole, null, this);
+
+    // setTimeout(() => {
+    //   document.getElementById('show-jacob').style.display = "flex";
+    //   document.getElementById('show-nicole').style.background = "none";
+    //   }, 14000);
+  
+
+  }
+  nicoleShowLowerOne(){
+    document.getElementById('show-jacob').style.display = 'none';
+    document.getElementById('show-nicole').style.background = "linear-gradient(to right, yellow , lawngreen)";
+    this.nicoleChar = this.physics.add.image(645, 47, 'nicole');
+    this.nicoleChar.setImmovable(true);
+    this.nicoleChar.body.allowGravity = false;
+    this.nicoleChar.flipX = true;
+    this.nicoleChar.setVelocityX(-50);
+    this.physics.add.overlap(this.player, this.nicoleChar, this.collectNicole, null, this); 
+
+    // setTimeout(() => {
+    //   document.getElementById('show-jacob').style.display = "flex";
+    //   document.getElementById('show-nicole').style.background = "none";
+    //   }, 14000);
+  
+  }
+  nicoleShowLowerTwo(){
+    document.getElementById('show-jacob').style.display = 'none';
+    document.getElementById('show-nicole').style.background = "linear-gradient(to right, yellow , lawngreen)";
+    this.nicoleChar = this.physics.add.image(1, 475, 'nicole');
+    this.nicoleChar.setImmovable(true);
+    this.nicoleChar.body.allowGravity = false;
+    this.nicoleChar.setVelocityX(50);
+    this.physics.add.overlap(this.player, this.nicoleChar, this.collectNicole, null, this);
+
+    // setTimeout(() => {
+    //   document.getElementById('show-jacob').style.display = "flex";
+    //   document.getElementById('show-nicole').style.background = "none";
+    //   }, 14000);
+  
   }
 
 

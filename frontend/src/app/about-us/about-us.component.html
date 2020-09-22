@@ -4,7 +4,7 @@
             <div [routerLink]="['/home']" class="logo">
                 <p  data-text="Break" >Break</p>
             </div>
-            <div class="item" id="selected">Discover</div>
+            
             <div class="modal-container">
               <input id="modal-toggle" type="checkbox">
           <label class="item" for="modal-toggle"  [routerLink]="['/highscores']">High Scores</label>
@@ -95,10 +95,17 @@
 </section>
 <section id="user-info">
     <h2>Get in Touch</h2>
+<<<<<<< HEAD
+    <form id="about-form" [formGroup]="validatingForm" action="/action_page.php" method="POST">
+     <input type="text" name="FirstName" placeholder="Your name..."><br>
+     <input type="text" name="LastName" placeholder="Your email..."><br>
+     <textarea placeholder="Add students name and your message here..."></textarea><br> 
+=======
     <form (submit)="submitEmail(contactForm.value)"id="about-form" #contactForm="ngForm" >
      <input type="text" name="FirstName" placeholder="Your name..." ngModel><br>
      <input type="text" name="LastName" placeholder="Your email..." ngModel><br>
      <textarea name="message" placeholder="Add students name and your message here..." ngModel></textarea><br> 
+>>>>>>> 4987f7f0b6367f984ac3bf3210f4e0a9a1de6e3a
      <button type="submit" value="submit">Send</button>
     </form>
 </section>

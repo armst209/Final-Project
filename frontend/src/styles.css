@@ -252,7 +252,9 @@ p::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 2em;
+  margin-top: 1em;
+  font-family:'ArcadeClassic';
+  
 }
 
 .games-carousel {
@@ -586,7 +588,15 @@ p::after {
   padding: 30px;
   align-self: center;
 }
-
+.b-game-card div{
+  font-size: 40px;
+  color:goldenrod;
+  align-items: center;
+  font-family:'ArcadeClassic';
+  justify-content: center;
+  display: flex;
+  padding-top: 18%;
+}
 /* PHASER DIV CSS */
 
 .phaser-lms-container {
@@ -839,7 +849,7 @@ p::after {
 }
 
 #team .team-social>ul {
-  bottom: 0;
+  top: 0;
   list-style: none;
   margin: 0 0 0 20px;
   padding: 0;

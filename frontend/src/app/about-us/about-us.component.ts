@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { GameinfoService } from '../service/gameinfo.service';
 
 
 
@@ -11,7 +12,7 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
 export class AboutUsComponent implements OnInit {
   validatingForm: FormGroup;
 
-  constructor() { }
+  constructor(private gameInfoService: GameinfoService) { }
 
   // tslint:disable-next-line:typedef
   ngOnInit() {
@@ -37,6 +38,14 @@ export class AboutUsComponent implements OnInit {
 
   get contactFormModalMessage() {
     return this.validatingForm.get('contactFormModalMessage');
+  }
+
+  submitEmail(data) {
+    this.gameInfoService.sendEmail(data.FirstName, data.LastName, data.message).subscribe(x => {
+
+      alert('Email Sent');
+  
+    })
   }
 }
 

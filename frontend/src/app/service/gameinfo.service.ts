@@ -11,32 +11,33 @@ export class GameinfoService {
   playerOne: any;
   random: string = 'random';
 
- 
-  constructor(private http: HttpClient ) { }
 
-  
+  constructor(private http: HttpClient) { }
+
+
   getCharInfo(): Observable<any> {
     return this.http.get<any>('https://char-info.herokuapp.com/characters/');
   }
 
-  getUniqueScore(id: string, score: number){
+  getUniqueScore(id: string, score: number) {
 
-    return this.http.post<any>('https://game-backend3412.herokuapp.com/scores/', {id:id, score: score})
-   }
-
-   getFullScoreInfo():Observable<any>{
-
-    return this.http.get<any>('https://game-backend3412.herokuapp.com/scores/');
-   }
-
-   getDadJokes():Observable<any>{
-    
-    return this.http.get<any>('https://us-central1-dadsofunny.cloudfunctions.net/DadJokes/random/jokes/');
-   }
-
-   closePhaserInstance() {
-    
+    return this.http.post<any>('https://game-backend3412.herokuapp.com/scores/', { id: id, score: score })
   }
 
+  getFullScoreInfo(): Observable<any> {
+
+    return this.http.get<any>('https://game-backend3412.herokuapp.com/scores/');
+  }
+
+  getDadJokes(): Observable<any> {
+
+    return this.http.get<any>('https://us-central1-dadsofunny.cloudfunctions.net/DadJokes/random/jokes/');
+  }
+
+  sendEmail(name: string, email: string, message: string) {
+    const msg = `${email} - ${message}`
+    return this.http.post('https://amberaarongarrettemail.herokuapp.com/send-email', {subject:name, message:msg})
+
+  }
 
 }

@@ -6,7 +6,7 @@
     <div class="item" id="selected" (click)="closePhaserInstance()">Discover</div>
     <div class="modal-container">
       <input id="modal-toggle" type="checkbox">
-      <label class="item" for="modal-toggle" [routerLink]="['/highscores']">High Scores</label>
+      <label class="item" for="modal-toggle" [routerLink]="['/highscores']" (click)="closePhaserInstance()">High Scores</label>
       <label class="modal-backdrop" for="modal-toggle"></label>
       <div class="modal-content">
         <label class="modal-close" for="modal-toggle">&#x2715;</label>
@@ -28,7 +28,9 @@
         <nav class="lms-nav">
           <div>
             <img style="padding-left: 5px" src="/assets/ham-icon.png" alt="">
+            <span style="padding-left: 5px;">LMS</span>
           </div>
+          
           <div style="display:flex; flex-direction: row; justify-content: center; align-items: center;">
               <i class="icon fa fa-bell fa-fw " aria-hidden="true" title="Toggle notifications menu" aria-label="Toggle notifications menu"></i>
               <i class="icon fa fa-comment fa-fw " aria-hidden="true" title="Toggle messages menu" aria-label="Toggle messages menu"></i>
@@ -107,24 +109,38 @@
 
     
     <div id="instructions-1">
-      <h1 style="font-size:30px; " class="regularh1">Welcome to: </h1>
-        <div style="display:flex; flex-direction: row; font-size: 42px; justify-content: center;align-items: center; padding-bottom: 10px;">
+      <h1 style="font-size: 25px; margin-top:10px;" class="regularh1">Welcome to: </h1>
+        <div style="display:flex; flex-direction: row; font-size: 42px; justify-content: center;align-items: center; ">
           <div style="padding-right:10px;">Can't </div> 
           <p data-text="Break">Break</p> 
           <div  style="padding-left:10px;"> Us!</div> 
         </div>
        
 
-        <div style="font-size: 20px;  font-family: 'Comfortaa', cursive;">
-          <li>Collect enough coins to advance to the next assessment while trying to avoid the oncoming technologies (HTML, CSS, JavaScript, DOM, Typescript, Angular, Node/Express and SQL). </li>
-          <li>Coins are <span style="font-family:'ArcadeClassic'; font-size: 25px" class="floater">10 points</span>  each and Nicole Tutoring Sessions are <span style="font-family:'ArcadeClassic'; font-size: 25px;" class="floater">10 points </span>  each as well.</li>
-          <div style="display:flex; flex-direction: row; justify-content: center; align-items: center; padding:0; margin:0;">
-            <img src="../../assets/coin_5.gif" height="32" width="32" alt=""><span style="font-family:'ArcadeClassic'">= 10 points</span> 
-            <img src="../../assets/nicole.png" alt=""><span style="font-family:'ArcadeClassic'">= 10 points</span> 
+        <div style="font-size: 19px;  font-family: 'Comfortaa', cursive;">
+          <li>Collect enough Jacob coins to advance to the next assessment while trying to avoid the oncoming technologies (HTML, CSS, JavaScript, DOM, Typescript, Angular, Node/Express and SQL). </li>
+          <div style="display: flex; flex-direction: row; justify-content: space-evenly;align-items: center; height: 45px; padding: 5px 0">
+          <img src="../../assets/html.png" width="40px" height="40px" alt="">
+          <img src="../../assets/css.png" width="40px" height="40px"alt="">
+          <img src="../../assets/javascript.png" width="40px" height="40px"alt="">
+          <img src="../../assets/dom.png" height="24px" width="auto" alt="">
+          <img src="../../assets/typescript.png" width="40px" height="40px" alt="">
+          <img src="../../assets/angular.png" width="40px" height="40px" alt="">
+          <img src="../../assets/node-express.png" height="24px" width="auto" alt="">
+          <img src="../../assets/sql.png"width="40px" height="40px" alt="">
           </div>
-          <li>After you've collected 8 coins or reached 80 points you will automatically move on to the next assessment and 8 new coins will be loaded in. There are 7 assessments in total, with a Pretest at the beginning. Demo Day is the end goal.</li>
+          <li>Coins are <span style="font-family:'ArcadeClassic'; font-size: 25px; color:yellow;" class="floater">10 points</span>  each and Nicole Tutoring Sessions are <span style="font-family:'ArcadeClassic'; font-size: 25px; color:yellow;" >10 points </span>  each as well.</li>
+          <div style="display:flex; flex-direction: row; justify-content: center; align-items: center; padding:0; margin:0;">
+            <img class="heartbeat" src="../../assets/coin_instruct.png" height="32" width="32" alt=""><span style="padding-left: 10px; font-family:'ArcadeClassic'">= 10 points</span> 
+            <img class="wiggle" src="../../assets/nicole_instruct.png" alt=""><span style="font-family:'ArcadeClassic'; ">= 10 points</span> 
+          </div>
+          <li>After you've collected <span style="color:yellow;font-family:'ArcadeClassic'; font-size: 25px;">8 </span> coins or reached <span style="font-family:'ArcadeClassic'; font-size: 25px; color:yellow;">80 points</span>
+            , you will automatically move on to the next assessment and <span style="font-family:'ArcadeClassic'; font-size: 25px; color:yellow;">8 </span> new coins will be loaded in. There are 
+            <span style="font-family:'ArcadeClassic'; font-size: 25px; color:yellow;">7</span>assessments in total, with a Pretest at the beginning. Demo Day is the end goal. 
+            <div><div class="wiggle" style=" display:flex; flex-direction:row; justify-content:flex-end; align-items:center;font-family:'ArcadeClassic'; cursor: pointer; font-size: 40px;" (click)="nextInstructions()">Next</div></div></li>
+            
         </div>
-        <p data-text="=>" style="margin-top:.5em; cursor: pointer; color: yellow" (click)="nextInstructions()">=></p>
+        
         
     </div>
 
@@ -134,37 +150,46 @@
           
         
         <li style="margin-bottom:1em">The score is calculated as follows:</li>
-            <ol>
-              <li>80 points = Assessment 1</li>
-              <li>160 points = Assessment 2</li>
-              <li>240 points = Assessment 3</li>
+            <ol style="display:flex; flex-direction: row;">
+              <div>
+                <li><span style="font-family:'ArcadeClassic'; font-size: 25px; color:yellow;">80 points </span> = Assessment 1</li>
+                <li><span style="font-family:'ArcadeClassic'; font-size: 25px; color:yellow;">160 points </span> = Assessment 2</li>
+                <li><span style="font-family:'ArcadeClassic'; font-size: 25px; color:yellow;">240 points </span> = Assessment 3</li>
+              </div>
+              <div style="padding: 10px;">
+                <img src="../../assets/Aaron.gif" alt="">
+                <img src="../../assets/Amber.gif" alt="">
+                <img src="../../assets/Garrett.gif" alt="">
+              </div>
             </ol>
     
-            And so on. All the way up to 640 points where your completion will be 100% and you will have reached Demo Day. 
+            And so on. All the way up to <span style="font-family:'ArcadeClassic'; font-size: 25px; color:yellow;">640 points </span> where your "Overall Progress" will be 100% and you will have reached Demo Day. 
       
           <li style="margin: 1em 0">If you run into a technology, it is an automatic game over and you will have to select a new character and start from the Pre-Test once again.  </li>
-          <li>The player is controlled with the main arrows keys. To jump is <span>UP</span>, to move left is <span>LEFT</span> and to move right is <span>RIGHT</span>.</li>
+          <li>The player is controlled with the main arrows keys. To jump is <span><img src="../../assets/up_key.png" width="32px" height="32px" alt=""></span>, to move left is <span><img src="../../assets/left_key.png" width="32px" height="32px" alt=""></span> and to move right is <span><img src="../../assets/right_key.png" width="32px" height="32px" alt=""></span>.</li>
           <li>Your score and completion percentage are displayed to the left in the LMS bar. </li>
       </div>
-      <p style="cursor: pointer; margin-top: 1em;"data-text="START" (click)="startGame()">START</p>
+      <div style="  display:flex; flex-direction: row; justify-content: flex-end; font-family:'ArcadeClassic';cursor: pointer;  color:white; font-size: 40px;" class="heartbeat" (click)="startGame()">START</div>
     </div>
     <!-- START OF GAME OVER SCREEN -->
 
     
     <div id="form">
-      <div style="display: flex; background-color: #4a154b;font-family:'Lato', sans-serif; justify-content:center; color:white; width:100%;height:auto; position: absolute; top:0;">
-        <img  src="../../assets/slack.png" alt="">
+      <div style="display: flex; background-color: #4a154b;font-family:'Lato', sans-serif; justify-content:center; color:white; width:100%;height:50px;">
+        
       </div>
       
       <div class="inner-form">
-         
+        <div style="display: flex; background-color: #4a154b;font-family:'Lato', sans-serif; justify-content:center; color:white; width:100%;height:auto;">
+          <img  src="../../assets/slack.png" alt="">
+        </div>
           
           <h1 class="regularh1" style="color:black; font-family: 'ArcadeClassic';">Hey Bootcampers!</h1>
-          <div style="display:flex; flex-direction: column; justify-content: center;align-items: center;margin:0 5em; ">
+          <div style="display:flex; flex-direction: column; justify-content: center;align-items: center;margin:0 1em; ">
             <h4 style="font-weight: 700; text-align:center">Hope everyone had a good long weekend! Reminding you:</h4>
               <ol>
                 <li>Surveys are due by end of week.</li>
-                <li>Enter you Unique ID (15 characters max) below then press the "SUBMIT" button to submit your scores! To play again, hit the "TRY AGAIN" button at the top of the LMS bar. </li>
+                <li>Enter you Unique ID (15 characters max) below then press the "SUBMIT" button to submit your scores! To play again, hit the "TRY AGAIN" button at the top of the LMS bar. Scores can be viewed by clicking the "High Scores" link in the navigation bar above. </li>
                 <li>As always, please feel free to reach out with any questions! Rooting for you!!! </li>
                 <li> ~ Feedback is a gift!</li>
               

@@ -32,7 +32,7 @@
         </div>
 
         <div  class="tl-content">
-            <h1>STATS</h1>
+            <div>BIO</div>
             <div *ngIf="charSelect">
                 <div>Super Power: {{charSelect[2].superpower}}</div>
                 <div>Speed: {{charSelect[2].speed}}</div>
@@ -40,7 +40,7 @@
                 <div>Weapon: {{charSelect[2].weapon}}</div>
             </div>
             
-            <button  (click)="playerOneSelected()">SELECT</button>
+            <p  style="cursor: pointer;" (click)="playerOneSelected()">SELECT</p>
 
         </div>
 
@@ -56,14 +56,14 @@
         </div>
 
         <div class="tl-content">
-            <h1>STATS</h1>
+            <div >BIO</div>
             <div *ngIf="charSelect">
                 <div>Super Power: {{charSelect[0].superpower}}</div>
                 <div>Speed: {{charSelect[0].speed}}</div>
                 <div>JumpHeight: {{charSelect[0].jumpheight}}</div>
                 <div>Weapon: {{charSelect[0].weapon}}</div>
             </div>
-            <button (click)="playerTwoSelected()">SELECT</button>
+            <p style="cursor: pointer;" (click)="playerTwoSelected()">SELECT</p>
         </div>
 
     </div>
@@ -77,14 +77,14 @@
         </div>
 
         <div class="tl-content">
-            <h1>STATS</h1>
+            <div>BIO</div>
             <div *ngIf="charSelect">
                 <div>Super Power: {{charSelect[1].superpower}}</div>
                 <div>Speed: {{charSelect[1].speed}}</div>
                 <div>JumpHeight: {{charSelect[1].jumpheight}}</div>
                 <div>Weapon: {{charSelect[1].weapon}}</div>
             </div>
-            <button  (click)="playerThreeSelected()">SELECT</button>
+            <p style="cursor: pointer;" (click)="playerThreeSelected()">SELECT</p>
         </div>
     </div>
 

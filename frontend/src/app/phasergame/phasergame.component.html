@@ -3,7 +3,7 @@
     <div [routerLink]="['/home']" (click)="closePhaserInstance()" class="logo">
       <p data-text="Break">Break</p>
     </div>
-    <div class="item" id="selected" (click)="closePhaserInstance()">Discover</div>
+   
     <div class="modal-container">
       <input id="modal-toggle" type="checkbox">
       <label class="item" for="modal-toggle" [routerLink]="['/highscores']" (click)="closePhaserInstance()">High Scores</label>
@@ -40,7 +40,7 @@
         </nav>
         <!-- STAR OF AHBC TITLE -->
         <div id="AHBC" style="display: flex; flex-direction:column; justify-content:center; align-items: center; background-color: white; padding: 1em; margin: 10px;">
-          <div id="try-again" style="margin: .8em 0;" class="pixel-button pulse" (click)="closeGameEnd()" [routerLink]="['/charselect']"><div>Try Again</div></div>
+          <div id="try-again" style=" cursor:pointer; font-size: 30px; " class=" heartbeat high-score-title" (click)="closeGameEnd()" [routerLink]="['/charselect']"><div style="border: solid #1AF0DC 3px; border-radius:10px; background:black; padding:10px;">Try Again</div></div>
           <div style="color: #3a3a3a">AHBC Front-End 2020 Q2 DET</div>
           <div style="display: flex;  flex-direction: row; flex-wrap: wrap; justify-content:center; align-items: center;">
             <div class="fake-link">Dashboard</div> /
@@ -189,7 +189,8 @@
             <h4 style="font-weight: 700; text-align:center">Hope everyone had a good long weekend! Reminding you:</h4>
               <ol>
                 <li>Surveys are due by the end of the week.</li>
-                <li>Enter your Unique ID (15 characters max) below then press the "SUBMIT" button to submit your scores! To play again, hit the "TRY AGAIN" button at the top of the LMS bar. Scores can be viewed by clicking the "High Scores" link in the navigation bar above. </li>
+                <li> To play again, hit the <span style="margin:0; padding: none; font-size: 12px; background: black; border-radius: 10px; border: solid #1AF0DC 3px;" class="heartbeat high-score-title"> TRY AGAIN</span> button at the top of the LMS bar. Scores can be viewed by clicking the "High Scores" link in the navigation bar above. 
+                  Enter your Unique ID (15 characters max) below then press the "SUBMIT" button to submit your final scores! </li>
                 <li>As always, please feel free to reach out with any questions! Rooting for you!!! </li>
                 <li> ~ Feedback is a gift!</li>
               
@@ -203,14 +204,14 @@
               </div>
               <div type="submit" id="submit-button" display="block" class="pixel-button pulse" (click)="getUniqueIdValue(uniqueId.value)"><div>SUBMIT</div></div>
           </div>
-          
-          <div style="margin-bottom: 1em; padding: .7em; background-color: white;border: 3px solid #4a154b; color:black; text-align: center;"   *ngIf="dadJoke" class="dad-joke">
-            <div style="font-size: 25px; font-weight: 700;">Dad Joke Of The Night:</div>
-            <div>{{dadJoke.setup}}</div>
-            <div>{{dadJoke.punchline}}</div>
-          </div>
-         
-          
+        
+              <div style="margin-bottom: 1em; padding: .7em; background-color: white;border: 3px solid #4a154b; color:black; text-align: center;"   *ngIf="dadJoke" class="dad-joke">
+                <div style="font-size: 25px; font-weight: 700;">Dad Joke Of The Night:</div>
+                <div>{{dadJoke.setup}}</div>
+                <div>{{dadJoke.punchline}}</div>
+              </div>
+      
+      
       </div>
 
       

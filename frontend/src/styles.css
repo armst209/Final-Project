@@ -255,6 +255,9 @@ p::after {
   justify-content: center;
   margin-top: 1em;
   font-family:'ArcadeClassic';
+  /* background-repeat: no-repeat, repeat;
+  background: url('../src/assets/brick-back.jpg');
+  background-blend-mode: lighten; */
   
 }
 
@@ -513,6 +516,52 @@ p::after {
   perspective: 1000px;
 }
 
+/* LANDING PAGE STYLES */
+.title-click {
+
+  font-family: 'Games'; 
+
+  text-align:center;
+  padding: .7em;
+ 
+  text-shadow: 5px 5px 8px #1AF0DC;
+}
+
+.click:hover{
+  cursor: pointer;
+}
+
+
+.neon{
+
+  font-family: 'HELLO DENVER DISPLAY';
+  font-size: 55px;
+  text-shadow: 
+  .1vw 0vw .25vw #ffd8d8, .2vw 0vw .25vw #ffd8d8, .4vw 0vw .25vw #ffd8d8, 
+  .1vw 0vw   0vw #f25757, .2vw 0vw   0vw #f25757, .4vw 0vw   0vw #f25757,
+  .1vw 0vw  .1vw #f25757, .2vw 0vw  .1vw #f25757, .4vw 0vw  .1vw #f25757,
+  .1vw 0vw   2vw #f25757, .2vw 0vw   2vw #f25757, .4vw 0vw   2vw #f25757, 
+  .1vw 0vw   1vw #e50b0b, .2vw 0vw   1vw #e50b0b, .4vw 0vw   5vw #e50b0b, 
+  .1vw 0vw   5vw #e50b0b, .2vw 0vw  20vw #e50b0b, .4vw 0vw  10vw #e50b0b,
+  .1vw 0vw  10vw #e50b0b, .2vw 0vw  30vw #e50b0b, .4vw 0vw  10vw #e50b0b;
+  
+}
+.neon-wrapper{
+ 
+  /* margin: 20px; */
+  box-shadow:
+  0 0 0.1vw  0.4vw #fff7f7,   
+  0 0 0.4vw  0.6vw #e97272, 
+  0 0   4vw  0.4vw #e50b0b,
+  inset 0 0 1.5vw  0.4vw #e50b0b,
+  inset 0 0 0.4vw  0.2vw #e97272,
+  inset 0 0 0.5vw  0.2vw #fff7f7;
+  border-radius: 1.5rem;
+  
+}
+
+
+
 .b-game-card__cover {
   position: absolute;
   z-index: 1;
@@ -554,6 +603,7 @@ p::after {
 
 .b-game-card:hover .b-game-card__cover {
   transform: rotateX(7deg) translateY(-6px);
+  cursor: pointer;
 }
 
 .b-game-card:hover .b-game-card__cover::after {
@@ -861,6 +911,7 @@ p::after {
 .about-container {
   display: flex;
   flex-direction:row;
+  margin: 8px;
 }
 
 #team {
@@ -874,7 +925,7 @@ p::after {
 }
 
 #team .team-single {
-  border: 8px solid #008080;
+  /* border: 8px solid #008080; */
   margin: 10px auto;
   padding: 15px;
   width: 320px;
@@ -1121,8 +1172,7 @@ p::after {
   padding: .7em;
   color:#1AF0DC;
   text-shadow: 5px 5px 8px #1AF0DC;
-  /* -webkit-text-stroke-color: black;
-  -webkit-text-stroke-width: .5px; */
+  
 
 }
 
@@ -1247,7 +1297,8 @@ p::after {
   
     #user-info{ 
     justify-content:center;
-    width:30%; 
+    align-items:center;
+    
     }
   }
   
@@ -1297,14 +1348,14 @@ p::after {
   
   @media (max-width: 575px){
     #user-info{ 
-    height:100%;
-    width:100vw; 
+   
     justify-content:center;  
     }
     
     #user-info input,
     #user-info textarea{
-    width:80vw
+    width:80vw;
+    text-align: center;
     }  
   }
   /*tool tip*/
@@ -1320,9 +1371,9 @@ p::after {
     /* Position the tooltip text */
     position: absolute;
     z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -60px;
+    bottom: 15%;
+    /* left: 50%; */
+    margin-left: -155px;
   
     /* Fade in tooltip */
     opacity: 0;
@@ -1402,6 +1453,7 @@ overflow: hidden;
 border-right: 1px solid #000;
 animation: type 10s steps(30) infinite;
 white-space: nowrap;
+
 }
 
 @keyframes type {
@@ -1442,6 +1494,8 @@ white-space: nowrap;
   .l-container {
     grid-template-columns: repeat(2, 1fr);
   }
+
+ 
 }
 
 @media screen and (max-width: 730px) {

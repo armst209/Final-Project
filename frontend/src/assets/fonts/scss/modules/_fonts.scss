@@ -5,5 +5,43 @@
     font-weight: normal;
     font-style: normal;
     font-display: swap;
+
 }
+
+@font-face {
+    font-family: 'Upheaval Pro';
+    src: url('../../UpheavalPro-Regular.woff2') format('woff2'),
+        url('../../UpheavalPro-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Games';
+    src: url('../../Games.woff2') format('woff2'),
+        url('../../Games.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Retronoid';
+    src: url('../../Retronoid.woff2') format('woff2'),
+        url('../../Retronoid.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Retronoid';
+    src: url('../../Retronoid-Italic.woff2') format('woff2'),
+        url('../../Retronoid-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
 

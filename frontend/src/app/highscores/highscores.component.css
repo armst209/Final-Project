@@ -1,0 +1,66 @@
+@import '../../assets/fonts/scss/modules/_fonts.scss';
+
+
+
+@media screen and (min-width: 550px){
+    .scores-grid{
+    grid-template-columns: 1fr 1fr;
+}
+}
+
+@media screen and (max-width: 700px){
+    .username {
+
+        font-size: 1.5em;
+      }
+
+      .individual-scores:hover {
+
+    
+        font-size: 20px;
+      
+      }
+}
+
+
+@media screen and (max-width: 500px){
+
+    .scores-grid {
+     
+      grid-template-columns: 1fr; 
+  
+      
+    }
+
+    .individual-scores:hover {
+
+    
+        font-size: 20px;
+      
+      }
+  }
+
+  @media screen and (max-width: 290px){
+
+  .individual-scores{
+    
+      grid-template-columns: max-content;
+      /* border:solid red; */
+  }
+  
+  .username {
+
+    font-size: 1.2em;
+  }
+
+  
+  .individual-scores:hover {
+
+    
+    font-size: 20px;
+  
+  }
+      
+    
+  }
+  

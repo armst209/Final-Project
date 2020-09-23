@@ -23,13 +23,21 @@
 
 
 
-<h1>HIGH SCORES</h1>
-<h3>Can't Break Us: </h3>
+    <h2 class="high-score-title pulse">HIGH SCORES</h2>
+    
+    <div class="score-container">
 
-<div style="display:grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto; width:100%;">
-    <div *ngFor="let score of scoreInfo">
-        <div style="border: 2px white solid; text-align:center; padding: 1em;">
-          <div>{{score.username}}</div>
-          <div>{{score.score}} Points</div>
-      </div>
-  </div>
+        
+       <div class="scores-grid">
+            <div *ngFor="let score of scoreInfo">
+                 
+                <div class="individual-scores">
+                    
+                    <div class="username">{{score.username}}</div>
+                    <!-- <span>Player #{{score.id}}</span> -->
+                    <div class="points">{{score.score}} Points</div>
+                    
+                </div>
+           </div>
+       </div>
+    </div>

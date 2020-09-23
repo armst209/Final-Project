@@ -1037,6 +1037,110 @@ p::after {
 }
 
 
+/* HIGH SCORES STYLES */
+
+.score-container {
+
+   /* border: double white 7px; */
+  border-radius: 10px;
+  padding: 0 20px;
+  color:white;
+  
+
+
+}
+.scores-grid {
+  display:grid; 
+  grid-template-columns: auto; 
+  column-gap: 0;
+  grid-template-rows: auto; 
+  width:100%; 
+  font-family: 'Upheaval Pro';
+  /* border: solid red; */
+}
+
+.individual-scores {
+
+  text-align:center; 
+  
+  /* padding: 1em; */
+}
+.individual-scores:hover {
+
+  animation-name: floater;
+  -webkit-animation-name: floater;
+  animation-duration: 1.5s;
+  -webkit-animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  font-size: 50px;
+  border: solid yellow;
+  transition: .5s ease-in-out;
+  background-image: url(../src/assets/arcade_back_6.jpg);
+  background-position: center;
+  text-shadow: 5px 5px 8px black;
+}
+
+@keyframes individual-scores {
+
+  0%,
+  100% {
+    transform: translateY(0)
+  }
+
+  50% {
+    transform: translateY(8%)
+  }
+}
+
+@-webkit-keyframes individual-scores {
+
+  0%,
+  100% {
+    -webkit-transform: translateY(0)
+  }
+
+  50% {
+    -webkit-transform: translateY(8%)
+  }
+}
+
+.username{
+
+  font-size: 30px;
+  text-decoration:  underline #1AF0DC;
+  /* border-bottom: 4px solid #1AF0DC; */
+
+  
+}
+
+.high-score-title{
+  font-family: 'Games'; 
+  font-size: 60px;
+  text-align:center;
+  padding: .7em;
+  color:#1AF0DC;
+  text-shadow: 5px 5px 8px #1AF0DC;
+  /* -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: .5px; */
+
+}
+
+
+.high-score-title:hover{
+
+  /* flex: 1; */
+  /* line-height: 0.75; */
+  /* margin: auto;
+  color: #1af0dc;
+  text-align: center;
+  transform: scaleX(var(--scale, 1));
+  animation: glitch-p 11s infinite alternate;
+  font-family: "Bungee Shade", cursive;
+  font-size: 60px; */
+}
+
+
 /* ABOUT US STYLES */
 /*---USER INFOR STYLING---*/
 
@@ -1344,6 +1448,7 @@ white-space: nowrap;
   .nav {
     flex-direction: column;
   }
+
 }
 
 @media (max-width: 400px) {
@@ -1351,4 +1456,5 @@ white-space: nowrap;
   #modal-toggle:checked ~ .modal-content {
     left: 0;
   }
+  
 }

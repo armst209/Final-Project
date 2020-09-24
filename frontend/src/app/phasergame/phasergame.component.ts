@@ -149,6 +149,9 @@ export class MainScene extends Phaser.Scene {
   uniqueId: string;
   winText: any;
   gameOver = false;
+  aaron:any;
+  garrett: any;
+  amber: any;
  
 
 
@@ -178,6 +181,8 @@ export class MainScene extends Phaser.Scene {
 
       // player animations
       this.load.atlas('player', '../assets/Aaron.png', '../assets/Aaron.json');
+      this.load.image('aaron', '../assets/Aaron.gif');
+
 
       //loading platforms
       this.load.image('zoombar', 'assets/zoombar.png');
@@ -206,6 +211,7 @@ export class MainScene extends Phaser.Scene {
  
        // player animations
        this.load.atlas('player', '../assets/Amber.png', '../assets/Amber.json');
+       this.load.image('amber', '../assets/Amber.gif')
  
        //loading platforms
        this.load.image('zoombar', 'assets/zoombar.png');
@@ -235,6 +241,7 @@ export class MainScene extends Phaser.Scene {
       
             // player animations
             this.load.atlas('player', '../assets/Garrett.png', '../assets/Garrett.json');
+            this.load.image('garrett', '../assets/Garrett.gif');
       
             //loading platforms
             this.load.image('zoombar', 'assets/zoombar.png');
@@ -275,6 +282,8 @@ export class MainScene extends Phaser.Scene {
   create() {
     this.background = this.add.image(400, 300, 'sky');
     this.assessText = this.add.text(16, 29, 'Pre-Test: Deliverables', { fontFamily: 'ArcadeClassic',fontSize: '30px', fill: 'white'});
+    
+    //DEMO DAY IMAGES
 
 
     //playing music & sound effects
@@ -761,7 +770,7 @@ export class MainScene extends Phaser.Scene {
       bomb2.setVelocity(Phaser.Math.Between(-200, 200), 20);
       bomb2.allowGravity = false;
     }
-
+    //DEMO DAY
   else if(this.score == 640){
     document.getElementById('show-jacob').style.display = "flex";
     document.getElementById('show-nicole').style.background = "none";
@@ -774,9 +783,23 @@ export class MainScene extends Phaser.Scene {
     this.platforms.clear(true);
     this.enemies.clear(true);
     this.platforms.create(400, 578, 'zoombar').setScale(1).refreshBody();
+    this.add.text(180, 166, 'Congratulations!', { fontFamily: 'ArcadeClassic',fontSize: '40px', fill: 'white'});
+    this.add.text(180, 195, 'You made it to Demo Day!', { fontFamily: 'ArcadeClassic',fontSize: '40px', fill: 'white'});
+    this.add.text(180, 220, 'Thank you for playing!', { fontFamily: 'ArcadeClassic',fontSize: '40px', fill: 'white'});
+   
+    setTimeout(() => {
+    this.music.stop();
+    document.getElementById('show-jacob').style.display="none";
+    document.getElementById('show-nicole').style.display= "none";
+    document.getElementById('show-grace').style.display = "flex"; 
+    document.getElementById('form').style.display = "flex";
+    document.getElementById('try-again').style.display = "flex";
+    document.getElementById('AHBC').style.padding = "0";
+    this.loadScreen.play();
+    }, 10000);
+     
   }
-
-  }
+}
 
 
   onEvent() {
@@ -862,6 +885,8 @@ export class MainScene extends Phaser.Scene {
     this.nicoleChar.body.allowGravity = false;
     this.nicoleChar.setVelocityX(50);
     this.physics.add.overlap(this.player, this.nicoleChar, this.collectNicole, null, this);
+    
+    
 
     // setTimeout(() => {
     //   document.getElementById('show-jacob').style.display = "flex";

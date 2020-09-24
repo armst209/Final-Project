@@ -196,14 +196,22 @@
           <h1 class="regularh1" style="color:black; font-family: 'ArcadeClassic';">Hey Bootcampers!</h1>
           <div style="display:flex; flex-direction: column; justify-content: center;align-items: center;margin:0 1em; ">
             <h4 style="font-weight: 700; text-align:center">Hope everyone had a good long weekend! Reminding you:</h4>
-              <ol>
-                <li>Surveys are due by the end of the week.</li>
-                <li> To play again, hit the <span style=" font-family:'Games'; margin:0; padding:5px; font-size: 20px; background: black; border-radius: 10px; border: solid #1AF0DC 3px; color: #1AF0DC;" class="heartbeat"> TRY AGAIN</span> button at the top of the LMS bar. Scores can be viewed by clicking the "High Scores" link in the navigation bar above. 
+              <ol class="try-text">
+                  <li>Surveys are due by the end of the week.</li>
+                  <li > To play again, click the <span style=" font-family:'Games'; margin:0; padding:5px; font-size: 20px; background: black; border-radius: 10px; border: solid #1AF0DC 3px; color: #1AF0DC;" class="heartbeat"> TRY AGAIN</span> button at the top of the LMS bar. Scores can be viewed by clicking the "High Scores" link in the navigation bar above. 
                   Enter your Unique ID (15 characters max) below then press the "SUBMIT" button to submit your final scores! </li>
-                <li>As always, please feel free to reach out with any questions! Rooting for you!!! </li>
-                <li> ~ Feedback is a gift!</li>
+                  <li>As always, please feel free to reach out with any questions! Rooting for you!!! </li>
+                  <li> ~ Feedback is a gift!</li>
               
-            </ol>
+              </ol>
+              <ol class="mobile-try-text">
+                  <li>Surveys are due by the end of the week.</li>
+                  <li> To play again, click the "TRY AGAIN" button below. Scores can be viewed by clicking the "High Scores" link in the navigation bar above. 
+                  Enter your Unique ID (15 characters max) below then press the "SUBMIT" button to submit your final scores! </li>
+                  <li>As always, please feel free to reach out with any questions! Rooting for you!!! </li>
+                  <li> ~ Feedback is a gift!</li>
+            
+              </ol>
           </div>
           <div style="display: flex; flex-direction: row; justify-content: center; align-items: baseline;">
               <div style=" display:flex; flex-direction: row; justify-content: center; align-items: baseline;"id="submit" >
@@ -219,7 +227,7 @@
                 <div>{{dadJoke.setup}}</div>
                 <div>{{dadJoke.punchline}}</div>
               </div>
-      
+              <div id="try-again-mobile" style="cursor:pointer; font-size: 30px; " class="heartbeat" (click)="closeGameEnd()" [routerLink]="['/charselect']"><div style=" font-family:'Games' ; margin-bottom: 10px; border: solid #1AF0DC 3px; color: #1AF0DC; border-radius:10px; background:black; padding:10px;">Try Again</div></div>
       
       </div>
 

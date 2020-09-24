@@ -721,7 +721,7 @@ p::after {
 #form {
   
   height: auto;
-  display:none;
+  display:flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;

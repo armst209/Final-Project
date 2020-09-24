@@ -9,6 +9,14 @@
 
     display:none;
 }
+
+#try-again-mobile{
+    display:none;
+}
+
+.mobile-try-text {
+    display:none;
+}
   
 @media only screen and (max-width: 1308px){
 
@@ -33,6 +41,19 @@
         border: 4px red solid;
         margin:15px;
         border-radius: 10px;
+    }
+    #try-again-mobile{
+        display:flex;
+        flex-direction: column;
+    }
+
+    .try-text{
+        display:none;
+    }
+
+    .mobile-try-text{
+        display:flex;
+        flex-direction: column;
     }
       
 }

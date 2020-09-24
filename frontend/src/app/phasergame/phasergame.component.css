@@ -4,10 +4,40 @@
     display:none;
     
   }
+
+.no-zoom-lms{
+
+    display:none;
+}
   
+@media only screen and (max-width: 1308px){
 
 
-@media only screen and (max-width : 1350px) {
+
+    .zoom-windows{
+        display:none;
+    }
+
+    .game-info{
+
+        display:none;
+    }
+    .no-zoom-lms{
+
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        color:white;
+        padding:10px;
+        font-size: 20px;
+        border: 4px red solid;
+        margin:15px;
+        border-radius: 10px;
+    }
+      
+}
+
+@media only screen and (max-width : 800px) {
     #game-area{
 
         display:none;
@@ -30,5 +60,13 @@
         color:white;
         padding:10px;
         font-size: 40px;
+        border: 4px red solid;
+        margin:15px;
+        border-radius: 10px;
+    }
+
+    .no-zoom-lms{
+
+        display:none;
     }
     }

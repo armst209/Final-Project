@@ -225,6 +225,8 @@ p::after {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 20px;
+  font-family: 'Upheaval Pro';
 }
 
 .bar .nav .item:hover {
@@ -537,25 +539,34 @@ p::after {
   font-family: 'HELLO DENVER DISPLAY';
   font-size: 55px;
   text-shadow: 
-  .1vw 0vw .25vw #ffd8d8, .2vw 0vw .25vw #ffd8d8, .4vw 0vw .25vw #ffd8d8, 
+  /* .1vw 0vw .25vw #ffd8d8, .2vw 0vw .25vw #ffd8d8, .4vw 0vw .25vw #ffd8d8, 
   .1vw 0vw   0vw #f25757, .2vw 0vw   0vw #f25757, .4vw 0vw   0vw #f25757,
   .1vw 0vw  .1vw #f25757, .2vw 0vw  .1vw #f25757, .4vw 0vw  .1vw #f25757,
   .1vw 0vw   2vw #f25757, .2vw 0vw   2vw #f25757, .4vw 0vw   2vw #f25757, 
   .1vw 0vw   1vw #e50b0b, .2vw 0vw   1vw #e50b0b, .4vw 0vw   5vw #e50b0b, 
   .1vw 0vw   5vw #e50b0b, .2vw 0vw  20vw #e50b0b, .4vw 0vw  10vw #e50b0b,
   .1vw 0vw  10vw #e50b0b, .2vw 0vw  30vw #e50b0b, .4vw 0vw  10vw #e50b0b;
-  
+   */
+
+   .1vw 0vw .25vw #f1d3c7, .2vw 0vw .25vw #f1d3c7, .4vw 0vw .25vw #f1d3c7, 
+   .1vw 0vw   0vw #c37553, .2vw 0vw   0vw #c37553, .4vw 0vw   0vw #c37553,
+   .1vw 0vw  .1vw #c37553, .2vw 0vw  .1vw #c37553, .4vw 0vw  .1vw #c37553,
+   .1vw 0vw   2vw #c37553, .2vw 0vw   2vw #c37553, .4vw 0vw   2vw #c37553, 
+   .1vw 0vw   1vw #973200, .2vw 0vw   1vw #973200, .4vw 0vw   5vw #973200, 
+   .1vw 0vw   5vw #973200, .2vw 0vw  20vw #973200, .4vw 0vw  10vw #973200,
+   .1vw 0vw  10vw #973200, .2vw 0vw  30vw #973200, .4vw 0vw  10vw #973200;
 }
+
 .neon-wrapper{
  
-  /* margin: 20px; */
+  margin: 20px;
   box-shadow:
-  0 0 0.1vw  0.4vw #fff7f7,   
-  0 0 0.4vw  0.6vw #e97272, 
-  0 0   4vw  0.4vw #e50b0b,
-  inset 0 0 1.5vw  0.4vw #e50b0b,
-  inset 0 0 0.4vw  0.2vw #e97272,
-  inset 0 0 0.5vw  0.2vw #fff7f7;
+   0 0 0.1vw  0.4vw #fff7f7, 
+  0 0 0.4vw  0.6vw #c37553, 
+  0 0   4vw  0.4vw #973200,
+  inset 0 0 1.5vw  0.4vw #973200,
+  inset 0 0 0.4vw  0.2vw #c37553,
+  inset 0 0 0.5vw  0.2vw #f1d3c7; 
   border-radius: 1.5rem;
   
 }
@@ -649,6 +660,7 @@ p::after {
   padding-top: 18%;
 }
 /* PHASER DIV CSS */
+
 
 .phaser-lms-container {
   display:flex;
@@ -1127,7 +1139,8 @@ p::after {
   font-size: 50px;
   border: solid yellow;
   transition: .5s ease-in-out;
-  background-image: url(../src/assets/arcade_back_6.jpg);
+  background: url(../src/assets/arcade_back_6.jpg);
+  
   background-position: center;
   text-shadow: 5px 5px 8px black;
 }
@@ -1171,7 +1184,7 @@ p::after {
   text-align:center;
   padding: .7em;
   color:#1AF0DC;
-  text-shadow: 5px 5px 8px #1AF0DC;
+  /* text-shadow: 5px 5px 8px #1AF0DC; */
   
 
 }

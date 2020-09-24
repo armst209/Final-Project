@@ -16,7 +16,7 @@
             <label class="modal-content-btn" for="modal-toggle">OK</label>   
           </div>   
           </div> 
-          <div [routerLink]="['/about-us']" class="item">About us</div>
+          <div [routerLink]="['/about-us']" class="item">Contact Us</div>
         </div>
     </div>
 
@@ -32,15 +32,8 @@
         </div>
 
         <div  class="tl-content">
-            <div>BIO</div>
-            <div *ngIf="charSelect">
-                <div>Super Power: {{charSelect[2].superpower}}</div>
-                <div>Speed: {{charSelect[2].speed}}</div>
-                <div>JumpHeight: {{charSelect[2].jumpheight}}</div>
-                <div>Weapon: {{charSelect[2].weapon}}</div>
-            </div>
             
-            <p  style="cursor: pointer;" (click)="playerOneSelected()">SELECT</p>
+            <div class="heartbeat" style="font-size: 50px; cursor: pointer;font-family: 'Games'; color:#1AF0DC;" (click)="playerOneSelected()">SELECT CHARACTER</div>
 
         </div>
 
@@ -56,14 +49,7 @@
         </div>
 
         <div class="tl-content">
-            <div >BIO</div>
-            <div *ngIf="charSelect">
-                <div>Super Power: {{charSelect[0].superpower}}</div>
-                <div>Speed: {{charSelect[0].speed}}</div>
-                <div>JumpHeight: {{charSelect[0].jumpheight}}</div>
-                <div>Weapon: {{charSelect[0].weapon}}</div>
-            </div>
-            <p style="cursor: pointer;" (click)="playerTwoSelected()">SELECT</p>
+            <div class="heartbeat" style="font-size: 50px; cursor: pointer;font-family: 'Games'; color:#1AF0DC;" (click)="playerTwoSelected()">SELECT CHARACTER</div>
         </div>
 
     </div>
@@ -77,14 +63,8 @@
         </div>
 
         <div class="tl-content">
-            <div>BIO</div>
-            <div *ngIf="charSelect">
-                <div>Super Power: {{charSelect[1].superpower}}</div>
-                <div>Speed: {{charSelect[1].speed}}</div>
-                <div>JumpHeight: {{charSelect[1].jumpheight}}</div>
-                <div>Weapon: {{charSelect[1].weapon}}</div>
-            </div>
-            <p style="cursor: pointer;" (click)="playerThreeSelected()">SELECT</p>
+            
+            <div class="heartbeat" style="font-size: 50px; cursor: pointer;font-family: 'Games'; color:#1AF0DC;" (click)="playerThreeSelected()">SELECT CHARACTER</div>
         </div>
     </div>
 

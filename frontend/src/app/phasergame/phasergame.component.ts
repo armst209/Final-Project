@@ -278,7 +278,7 @@ export class MainScene extends Phaser.Scene {
 
 
     //playing music & sound effects
-    this.music = this.sound.add('level1', { volume: 0.3 });
+    this.music = this.sound.add('level1', { volume: 0.1 });
     this.music.play();
     
     this.coinSound = this.sound.add('coinSound', { volume: 0.4 });
@@ -286,7 +286,7 @@ export class MainScene extends Phaser.Scene {
     this.assessComplete = this.sound.add('assess_complete');
     
     this.failSound = this.sound.add('tryagain');
-    this.loadScreen = this.sound.add('loadScreen'), { volume: 0.2 };
+    this.loadScreen = this.sound.add('loadScreen'), { volume: 0.1 };
      
     //TIMERS
 

@@ -16,10 +16,13 @@
         <label class="modal-content-btn" for="modal-toggle">OK</label>
       </div>
     </div>
-    <div [routerLink]="['/aboutus']" class="item">About us</div>
+    <div [routerLink]="['/about-us']" class="item">Contact Us</div>
   </div>
 </div>
 
+<div class="no-support">
+  <div> Unfortunately, this Phaser game is not supported on mobile screens. Please widen your view or play on desktop.</div>  
+</div>
 
 <div class="phaser-lms-container">
   <!-- START OF LMS BAR -->
@@ -40,7 +43,7 @@
         </nav>
         <!-- STAR OF AHBC TITLE -->
         <div id="AHBC" style="display: flex; flex-direction:column; justify-content:center; align-items: center; background-color: white; padding: 1em; margin: 10px;">
-          <div id="try-again" style=" cursor:pointer; font-size: 30px; " class=" heartbeat high-score-title" (click)="closeGameEnd()" [routerLink]="['/charselect']"><div style="border: solid #1AF0DC 3px; border-radius:10px; background:black; padding:10px;">Try Again</div></div>
+          <div id="try-again" style="cursor:pointer; font-size: 30px; " class="heartbeat" (click)="closeGameEnd()" [routerLink]="['/charselect']"><div style=" font-family:'Games' ; margin-bottom: 10px; border: solid #1AF0DC 3px; color: #1AF0DC; border-radius:10px; background:black; padding:10px;">Try Again</div></div>
           <div style="color: #3a3a3a">AHBC Front-End 2020 Q2 DET</div>
           <div style="display: flex;  flex-direction: row; flex-wrap: wrap; justify-content:center; align-items: center;">
             <div class="fake-link">Dashboard</div> /
@@ -102,6 +105,7 @@
 <!-- END OF LMS BAR -->
 
 
+
 <!-- PHASER GAME CONTAINER -->
   <div id='game-area'>
 
@@ -118,7 +122,7 @@
        
 
         <div style="font-size: 19px;  font-family: 'Comfortaa', cursive;">
-          <li>Collect enough Jacob coins to advance to the next assessment while trying to avoid the oncoming technologies (HTML, CSS, JavaScript, DOM, Typescript, Angular, Node/Express and SQL). </li>
+          <li>Collect enough coins to advance to the next assessment while trying to avoid the oncoming technologies (HTML, CSS, JavaScript, DOM, Typescript, Angular, Node/Express and SQL). </li>
           <div style="display: flex; flex-direction: row; justify-content: space-evenly;align-items: center; height: 45px; padding: 5px 0">
           <img src="../../assets/html.png" width="40px" height="40px" alt="">
           <img src="../../assets/css.png" width="40px" height="40px"alt="">
@@ -189,7 +193,7 @@
             <h4 style="font-weight: 700; text-align:center">Hope everyone had a good long weekend! Reminding you:</h4>
               <ol>
                 <li>Surveys are due by the end of the week.</li>
-                <li> To play again, hit the <span style="margin:0; padding: none; font-size: 12px; background: black; border-radius: 10px; border: solid #1AF0DC 3px;" class="heartbeat high-score-title"> TRY AGAIN</span> button at the top of the LMS bar. Scores can be viewed by clicking the "High Scores" link in the navigation bar above. 
+                <li> To play again, hit the <span style=" font-family:'Games'; margin:0; padding:5px; font-size: 20px; background: black; border-radius: 10px; border: solid #1AF0DC 3px; color: #1AF0DC;" class="heartbeat"> TRY AGAIN</span> button at the top of the LMS bar. Scores can be viewed by clicking the "High Scores" link in the navigation bar above. 
                   Enter your Unique ID (15 characters max) below then press the "SUBMIT" button to submit your final scores! </li>
                 <li>As always, please feel free to reach out with any questions! Rooting for you!!! </li>
                 <li> ~ Feedback is a gift!</li>
@@ -220,6 +224,7 @@
   </div>
 <!-- ZOOM WINDOWS -->
   <div class="zoom-windows">
+   
     <div id="show-jacob">
       <img style="background:lightseagreen" src="../../assets/jacob.png"   width="200" height="173" alt="jacobphoto">
       <div style ="display:flex; flex-direction: row; justify-content: center; align-items: center; background:black">
@@ -242,3 +247,6 @@
       </div>
     </div> 
   </div>
+
+  
+  

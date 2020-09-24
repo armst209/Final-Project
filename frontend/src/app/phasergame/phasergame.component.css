@@ -1,1 +1,34 @@
 @import '../../assets/fonts/scss/modules/_fonts.scss';
+
+.no-support{
+    display:none;
+    
+  }
+  
+
+
+@media only screen and (max-width : 1350px) {
+    #game-area{
+
+        display:none;
+    }
+
+    .zoom-windows {
+
+        display:none;
+    }
+
+    .phaser-lms-container{
+
+        display:none;
+    }
+
+    .no-support{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        color:white;
+        padding:10px;
+        font-size: 40px;
+    }
+    }

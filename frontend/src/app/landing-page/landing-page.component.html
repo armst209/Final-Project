@@ -17,7 +17,7 @@
           </div>   
           </div>
 
-            <div class="item" [routerLink]="['/about-us']">About us</div>
+            <div class="item" [routerLink]="['/about-us']">Contact Us</div>
         </div>
     </div>
     <div class="pop-title">
@@ -25,7 +25,7 @@
     </div>
 
     <div [routerLink]="['/charselect']" style="display:flex; justify-content: center; align-items: center; margin:0 10px 75px 10px; cursor:pointer; ">
-      <div style="display:flex;">
+      <div style="display:flex; justify-content: center; align-items: center;">
         <img class="neon-wrapper" style="display:flex; padding:30px;  width:100%;
         height:auto;" src="../../assets/game-cover.png" alt="">
       </div>
@@ -56,11 +56,11 @@
 <!-- Smaller Carousel    -->
 <mdb-carousel style="display:flex; text-align: center; width: 100%;" [isControls]="true" class="carousel-multi-item multi-animation " [type]="'carousel-multi-item'"
       [animation]="'slide'">
-      <mdb-carousel-item style="margin-top: 1em;" *ngFor="let item of slides; let i = index">
+      <mdb-carousel-item style="margin-top: 1em; " *ngFor="let item of slides; let i = index">
         <div class="col-md-4 click " [ngClass]="{'d-none d-md-block': cardIndex !== 0}"
           *ngFor="let card of item; let cardIndex = index">
           <mdb-card class="my-1">
-            <mdb-card-img style="width:auto; height:250px; display:flex;" [src]="card.img" alt="Card image cap"></mdb-card-img>
+            <mdb-card-img style="width:auto; height:250px; display:flex; border-radius:1.5rem;" [src]="card.img" alt="Card image cap"></mdb-card-img>
           </mdb-card>
         </div>
       </mdb-carousel-item>
